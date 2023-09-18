@@ -217,18 +217,32 @@ nav ul li a {
         left: 0;
     }
 
-    .in-responsive-menu {
+    .item {
         display: block;
         padding: 20px 35px;
     }
 
     .list-item > .slide li a {
         margin-left: 20px;
+    }
+}
 
+@media screen and (max-width: 480px) {
+    .list {
+        padding: 5px;
     }
 
-    .list-item .slide li > ul li a {
-        margin-left: 40px;
+    .item {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .item:hover {
+        width: 100%;
+    }
+
+    .slide li a:hover {
+        width: 90%;
     }
 }
 
@@ -236,47 +250,6 @@ nav ul li a {
     .menu {
         width: 100%;
         height: auto;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .encabezado {
-        width: auto;
-    }
-
-    .list {
-        padding: 5px;
-    }
-
-    .item {
-        width: 20px;
-        padding: 20px;
-    }
-
-    .item:hover {
-        width: 100%;
-        padding: 20px;
-    }
-
-    .slide li a:hover {
-        width: 90%;
-    }
-
-    .list-item:hover > .slide {
-        display: none;
-    }
-
-    .list-item .slide li:hover > ul {
-        display: none;
-    }
-
-    .in-responsive-menu {
-        width: 100%;
-        border-radius: 30px;
-    }
-
-    .in-responsive-menu a {
-        border-radius: 30px;
     }
 }
 
