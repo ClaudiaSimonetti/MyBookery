@@ -45,4 +45,5 @@ BD =[
 ]
 
 
-// document.body.innerHTML = BD[0].price
+
+

@@ -16,7 +16,7 @@
     font-family: var(--primaryFont)
 }
 
-header{
+header {
     height: 60px;
     display: flex;
     flex-direction: row;
@@ -24,25 +24,25 @@ header{
     background-color: var(--blue);
 }
 
-.logo{
+.logo {
     padding: 5px 0 2px 0;
     height: 55px;
 }
 
-.unit-counter-container{
+.unit-counter-container {
     width: 50px;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 }
 
-.bi-cart{
+.bi-cart {
     color: var(--orange);
     font-size: 20px;
 }
 
-.unit-counter{
+.unit-counter {
     color: var(--orange);
     font-size: 20px;
     margin-top: 20px;
@@ -56,7 +56,7 @@ nav ul li a {
     text-decoration: none;
 }
 
-.bi{
+.bi {
     margin-left: 5px;
 }
 
@@ -102,11 +102,11 @@ nav ul li a {
     border-top: 2px solid transparent;
 }
 
-.list-item:hover > .slide {
+.list-item:hover>.slide {
     display: block;
 }
 
-.list-item .slide li:hover > ul {
+.list-item .slide li:hover>ul {
     display: block;
 }
 
@@ -131,21 +131,21 @@ nav ul li a {
     transition: all 0.5s;
 }
 
-.input-search-container{
+.input-search-container {
     padding-left: 34px;
 }
 
-.input-search{
+.input-search {
     border-radius: 5px;
     height: 30px;
     border: 2px solid var(--orange);
 }
 
-.input-search:hover{
+.input-search:hover {
     border: 2px solid var(--blue);
 }
 
-.bi-search{
+.bi-search {
     border: 1px solid var(--blue);
     border-radius: 5px;
     padding: 3px 6px 4px 6px;
@@ -153,7 +153,7 @@ nav ul li a {
     margin-left: 10px;
 }
 
-.bi-search:hover{
+.bi-search:hover {
     background-color: var(--blue);
     color: var(--orange);
 }
@@ -172,7 +172,7 @@ nav ul li a {
     margin-top: -55px;
 }
 
-#responsive-menu-btn:hover{
+#responsive-menu-btn:hover {
     background-color: var(--orange);
     color: var(--blue);
 }
@@ -182,13 +182,13 @@ nav ul li a {
         display: block;
     }
 
-    .responsive-btn-container{ 
+    .responsive-btn-container {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
         padding-left: 10px;
-    } 
+    }
 
     .menu {
         width: 100%;
@@ -222,7 +222,7 @@ nav ul li a {
         padding: 20px 35px;
     }
 
-    .list-item > .slide li a {
+    .list-item>.slide li a {
         margin-left: 20px;
     }
 }
@@ -253,7 +253,7 @@ nav ul li a {
     }
 }
 
-.main-container{
+.main-container {
     height: 56vh;
 }
 
@@ -264,21 +264,32 @@ nav ul li a {
     margin-top: 30px;
 }
 
-footer{
+footer {
+
+    /* position: adsolute; */
+    width: 100%;
+    z-index: 1000;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    /* Establece la altura de tu footer */
     background-color: var(--blue);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    
+
 }
 
-.footer-logo{
+
+.footer-logo {
     height: 70px;
 }
 
-.footer-icon-container{
+.footer-icon-container {
     display: flex;
     flex-direction: row;
     margin-top: 20px;
@@ -287,48 +298,53 @@ footer{
     margin-right: 20px;
 }
 
-.footer-icon{
+.footer-icon {
     color: var(--orange);
     border: px solid var(--orange);
     width: 20px;
     font-size: 1.5em
 }
 
-.footer-text{
+.footer-text {
     color: var(--orange);
     margin-top: 0px;
     margin-left: 15px;
 }
 
-.footer-social-media-container{
+.footer-social-media-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.footer-social-media{
+.footer-social-media {
     margin-right: 25px;
     margin-left: 20px;
 }
 
+<<<<<<< HEAD
 .footer-input-container{
     margin-top: 10px;
+=======
+.footer-input-container {
+    margin-top: 40px;
+>>>>>>> a87f148cf77e7dee23853a2616cd01d88accd956
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.footer-input{
+.footer-input {
     border: 2px solid var(--orange);
     border-radius: 5px;
     width: 250px;
     padding-left: 5px;
 }
 
-.footer-button{
-    background-color:var(--blue);
+.footer-button {
+    background-color: var(--blue);
     color: var(--orange);
     border-radius: 5px;
     border: 2px solid var(--orange);
@@ -336,8 +352,23 @@ footer{
     padding: 5px;
 }
 
+<<<<<<< HEAD
 .footer-button:hover{
     background-color:var(--orange);
+=======
+@media (max-width: 502px) {
+    .footer-button {
+        margin-top: 10px;
+    }
+
+    .footer-input {
+        height: 35px;
+    }
+}
+
+.footer-button:hover {
+    background-color: var(--orange);
+>>>>>>> a87f148cf77e7dee23853a2616cd01d88accd956
     color: var(--blue);
     border: 2px solid var(--orange);
 }
@@ -360,11 +391,12 @@ footer{
 }
 
 @media (max-width: 1016px) {
-    .footer-social-media{
+    .footer-social-media {
         margin-top: 20px;
     }
 }
 
+<<<<<<< HEAD
 @media (max-width: 668px) {
     .footer-logo{
         margin-top: 20px;
@@ -373,6 +405,10 @@ footer{
 
 @media (max-width: 511.50px) {
     .footer-logo{
+=======
+@media (max-width: 620px) {
+    .footer-logo {
+>>>>>>> a87f148cf77e7dee23853a2616cd01d88accd956
         margin-top: 20px;
         margin-bottom: 10px;
         height: 50px;
@@ -394,7 +430,134 @@ footer{
     }
 }
 
+/* cartas y modal  */
+body {
+    position: relative;
+    min-height: 100%;
+    /* Establece una altura mínima del 100% de la altura de la ventana */
+}
+
+main {
+    padding-bottom: 100%;
+    /* Establece un margen inferior igual a la altura del footer */
+    box-sizing: border-box;
+}
+
+.titulo {
+    text-align: center;
+    /* Centra el contenido horizontalmente */
+}
+
+.books {
+    margin-bottom: 100px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.carta {
+    border: 1px solid var(--blue);
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 5px #888;
+    width: 250px;
+    /* Ajusta el ancho de la carta según tus preferencias */
+    /* background-color: var(--blue); */
+}
+
+.btn-modal {
+    cursor: pointer;
+    background-color: var(--orange);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Agregar una imagen */
+.carta img {
+    max-width: 100%;
+    height: 60%;
+}
+
+/* Estilo para ocultar los modales por defecto */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
 
 
 
+/* Estilo para el botón de cerrar */
+.cerrar-modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+}
 
+/* Estilo para el botón Agregar al Carrito */
+.btn-modal {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo para la imagen dentro del modal */
+.modal-content img {
+    max-width: 300px;
+    /* Establece un ancho máximo para la imagen */
+    height: 300px;
+    /* Ajusta automáticamente la altura para mantener la proporción */
+}
+
+/* Estilo para el contenido del modal */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 10px;
+    /* Reduce el espacio interno del modal */
+    max-width: 400px;
+    /* Establece un ancho máximo */
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Estilo para el contenedor flexbox */
+.modal-flex-container {
+    display: flex;
+    flex-direction: row;
+    /* Organiza en fila (imagen a un lado, info al otro) */
+    align-items: center;
+    /* Centra verticalmente */
+}
+
+/* Estilo para la columna de la imagen */
+.modal-image {
+    flex: 1;
+    /* Toma el 50% del ancho disponible */
+    padding: 10px;
+    /* Espacio interno para la imagen */
+}
+
+/* Estilo para la columna de información y botones */
+.modal-info {
+    flex: 1;
+    /* Toma el 50% del ancho disponible */
+    padding: 10px;
+    /* Espacio interno para la información y los botones */
+}

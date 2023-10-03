@@ -1,4 +1,5 @@
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +12,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <p style="width: 80px;"></p>
         <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery">
-        <div class="unit-counter-container"><p class="unit-counter">0</p><i class="bi bi-cart"></i></div>
+        <div class="unit-counter-container">
+            <p class="unit-counter">0</p><i class="bi bi-cart"></i>
+        </div>
     </header>
     <navbar>
         <nav class="menu" id="menu">
@@ -47,7 +51,100 @@
         </div>
     </navbar>
     <main class="main-container">
-        <p class="page-title">Novedades</p>
+        <div >
+            <div class="titulo">
+                <p class="page-title">Novedades</p>
+            </div>
+            <div class="books">
+                <div class="carta">
+                    <img src="https://i.pinimg.com/originals/f1/48/e2/f148e2c987f9f7c24a2373f25609433f.jpg" alt="Imagen de la carta 1">
+                    <h2>Carta 1</h2>
+                    <p>Información de la carta 1.</p>
+                    <button class="btn-modal" data-target="modal1">Ver Detalles</button>
+                </div>
+            
+                <div class="carta">
+                    <img src="https://zumografica.com/wp-content/uploads/2017/09/libro-imprenta-lima.jpg" alt="Imagen de la carta 2">
+                    <h2>Carta 2</h2>
+                    <p>Información de la carta 2.</p>
+                    <button class="btn-modal" data-target="modal2">Ver Detalles</button>
+                </div>
+            
+                <div class="carta">
+                    <img src="https://www.rae.es/sites/default/files/portada_cien_anos_de_soledad_0.jpg" alt="Imagen de la carta 3">
+                    <h2>Carta 3</h2>
+                    <p>Información de la carta 3.</p>
+                    <button class="btn-modal" data-target="modal3">Ver Detalles</button>
+                </div>
+            </div>
+            <!-- Modal para el libro 1 -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <span class="cerrar-modal" data-target="modal1">&times;</span>
+        <div class="modal-flex-container">
+            <div class="modal-image">
+                <img src="https://i.pinimg.com/originals/f1/48/e2/f148e2c987f9f7c24a2373f25609433f.jpg" alt="Imagen del libro 1">
+            </div>
+            <div class="modal-info">
+                <h2>Título del Libro 1</h2>
+                <p>Descripción del libro 1.</p>
+                <p>Precio: $XX.XX</p>
+                <button class="btn-modal" id="addToCart1">Agregar al Carrito</button>
+            </div>
+        </div>
+    </div>
+</div>
+            
+            <!-- Modal para el libro 2 -->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <span class="cerrar-modal" data-target="modal2">&times;</span>
+        <div class="modal-flex-container">
+            <div class="modal-image">
+                <img src="https://zumografica.com/wp-content/uploads/2017/09/libro-imprenta-lima.jpg" alt="Imagen del libro 1">
+            </div>
+            <div class="modal-info">
+                <h2>Título del Libro 2</h2>
+                <p>Descripción del libro 2.</p>
+                <p>Precio: $XX.XX</p>
+                <button class="btn-modal" id="addToCart2">Agregar al Carrito</button>
+            </div>
+        </div>
+    </div>
+</div>
+            
+            <!-- Modal para el libro 3 -->
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <span class="cerrar-modal" data-target="modal2">&times;</span>
+        <div class="modal-flex-container">
+            <div class="modal-image">
+                <img src="https://www.rae.es/sites/default/files/portada_cien_anos_de_soledad_0.jpg" alt="Imagen del libro 3">
+            </div>
+            <div class="modal-info">
+                <h2>Título del Libro 3</h2>
+                <p>Descripción del libro 3.</p>
+                <p>Precio: $XX.XX</p>
+                <button class="btn-modal" id="addToCart2">Agregar al Carrito</button>
+            </div>
+        </div>
+    </div>
+</div>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </main>
     <footer>
         <div>
@@ -96,9 +193,11 @@
                 <input type="text" placeholder=" Ingrese su email..." class="footer-input">
                 <button class="footer-button">Suscribirme al newsletter</button>
             </div>
-        </div>        
+        </div>
     </footer>
     <script src="js/main.js"></script>
+    <script src="js/books.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
