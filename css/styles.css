@@ -254,7 +254,7 @@ nav ul li a {
 }
 
 .main-container {
-    height: 56vh;
+    height: auto;
 }
 
 .page-title {
@@ -265,8 +265,7 @@ nav ul li a {
 }
 
 footer {
-
-    /* position: adsolute; */
+    /* position: adsolute; 
     width: 100%;
     z-index: 1000;
     position: relative;
@@ -274,16 +273,14 @@ footer {
     left: 0;
     width: 100%;
     height: auto;
-    /* Establece la altura de tu footer */
+    Establece la altura de tu footer  */
     background-color: var(--blue);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-
 }
-
 
 .footer-logo {
     height: 70px;
@@ -406,17 +403,18 @@ footer {
 }
 
 /* cartas y modal  */
-body {
+
+/* body {
     position: relative;
     min-height: 100%;
-    /* Establece una altura mínima del 100% de la altura de la ventana */
-}
+    Establece una altura mínima del 100% de la altura de la ventana
+} */
 
-main {
+/* main {
     padding-bottom: 100%;
-    /* Establece un margen inferior igual a la altura del footer */
+    Establece un margen inferior igual a la altura del footer
     box-sizing: border-box;
-}
+} */
 
 .titulo {
     text-align: center;
@@ -469,8 +467,6 @@ main {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
-
-
 
 /* Estilo para el botón de cerrar */
 .cerrar-modal {
