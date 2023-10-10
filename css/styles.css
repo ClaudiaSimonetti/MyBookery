@@ -262,6 +262,7 @@ nav ul li a {
     font-weight: bold;
     margin-left: 20px;
     margin-top: 30px;
+    text-transform: capitalize;
 }
 
 footer {
@@ -531,4 +532,63 @@ footer {
     /* Toma el 50% del ancho disponible */
     padding: 10px;
     /* Espacio interno para la información y los botones */
+}
+
+.cart {
+    display: grid;
+    grid-template-columns: 0.2fr 1.73fr 1fr 1fr 1fr 1fr;
+    height: 100px;
+    align-items: center;
+    border: 1px solid var(--blue);
+    padding-left: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 5px #888;
+    width: 100%;
+}
+
+.title-row{
+    display: grid;
+    grid-template-columns: 0.2fr 1.8fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    text-align: center;
+}
+
+.empty-cart{
+    width: 100%;
+    text-align: center;
+    padding: 20px 0 20px 0;
+}
+
+.delete-button {
+    background-color: var(--blue);
+    color: var(--orange);
+    border-radius: 5px;
+    border: 2px solid var(--blue);
+    width: 50px;
+    padding: 10px 15px 10px 10px;
+    margin-left: 30%;
+}
+
+.delete-button:hover{
+    background-color:var(--orange);
+    color: var(--blue);
+    border: 2px solid var(--orange);
+}
+
+.checkout-button {
+    background-color: var(--blue);
+    color: var(--orange);
+    border-radius: 5px;
+    border: 2px solid var(--blue);
+    width: auto;
+    padding: 10px 15px 10px 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.checkout-button:hover{
+    background-color:var(--orange);
+    color: var(--blue);
+    border: 2px solid var(--orange);
 }
