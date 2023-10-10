@@ -15,18 +15,21 @@
 <body>
     <header>
         <p style="width: 80px;"></p>
-        <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery">
-        <div class="unit-counter-container">
-            <p class="unit-counter">0</p><i class="bi bi-cart"></i>
+        <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery" onclick= "categorySelector('novedades')">
+        <div class="unit-counter-container" onclick="showCart()">
+            <p class="unit-counter">0</p>
+            <i class="bi bi-cart"></i>
         </div>
     </header>
     <navbar>
         <nav class="menu" id="menu">
             <ul class="list">
-                <li class="list-item"><a class="item" href="#">Novedades</a></li>
+                <li class="list-item"><a class="item" href="#" onclick= "categorySelector('novedades')">Novedades</a></li>
                 <li class="list-item"><a class="item" href="#">Novelas<i class="bi bi-caret-down-fill"></i></a>
                     <ul class="slide">
-                        <li><a class="item" href="#">Policial</a></li>
+                        <li><a class="item" href="#" onclick= "genderSelector('policial')">Policial</a></li>
+                        <li><a class="item" href="#" onclick= "genderSelector('drama')">Drama</a></li>
+                        <li><a class="item" href="#" onclick= "genderSelector('aventura')">Aventura</a></li>
                         <li><a class="item" href="#">Misterio</a></li>
                     </ul>
                 </li>
@@ -46,15 +49,15 @@
             </ul>
         </nav>
         <div class="responsive-btn-container">
-            <button id="responsive-menu-btn"><i class="bi bi-list"></i></button>
+            <button id="responsive-menu-btn" onclick="navHandler()"><i class="bi bi-list"></i></button>
         </div>
     </navbar>
     <main class="main-container">
         <div class="titulo">
-            <p class="page-title">Novedades</p>
+            <!-- <p class="page-title">Novedades</p> -->
         </div>
         <div class="books">
-            <div class="carta">
+            <!-- <div class="carta">
                 <img src="https://i.pinimg.com/originals/f1/48/e2/f148e2c987f9f7c24a2373f25609433f.jpg" alt="Imagen de la carta 1">
                 <h2>Carta 1</h2>
                 <p>Información de la carta 1.</p>
@@ -71,10 +74,12 @@
                 <h2>Carta 3</h2>
                 <p>Información de la carta 3.</p>
                 <button class="btn-modal" data-target="modal3">Ver Detalles</button>
-            </div>
+            </div> -->
+            
         </div>
+        <div class="modalBooks"></div>
         <!-- Modal para el libro 1 -->
-        <div id="modal1" class="modal">
+        <!-- <div id="modal1" class="modal">
             <div class="modal-content">
                 <span class="cerrar-modal" data-target="modal1">&times;</span>
                 <div class="modal-flex-container">
@@ -89,9 +94,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Modal para el libro 2 -->
-        <div id="modal2" class="modal">
+        <!-- <div id="modal2" class="modal">
             <div class="modal-content">
                 <span class="cerrar-modal" data-target="modal2">&times;</span>
                 <div class="modal-flex-container">
@@ -106,9 +111,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Modal para el libro 3 -->
-        <div id="modal3" class="modal">
+        <!-- <div id="modal3" class="modal">
             <div class="modal-content">
                 <span class="cerrar-modal" data-target="modal2">&times;</span>
                 <div class="modal-flex-container">
@@ -123,8 +128,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- <div> -->
+        </div> -->
+        <!-- <div> --> 
     </main>
     <footer>
         <div>
@@ -174,8 +179,9 @@
             </div>
         </div>
     </footer>
+    <script src="assets/products.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/books.js"></script>
+    <!-- <script src="js/books.js"></script> -->
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

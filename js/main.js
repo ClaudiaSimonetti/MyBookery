@@ -1,49 +1,206 @@
+let nav = document.getElementById("menu")
+let showMenu = true
 
-    let btn = document.getElementById("responsive-menu-btn");
-    let nav = document.getElementById("menu")
-    let con = true
-    function menu() {
-        if (con) {
-            nav.style.left = "0"
-            con = false
-        } else {
-            nav.style.left = "-200%"
-            con = true
-        }
+function navHandler(){
+    if (showMenu) {
+        nav.style.left = "0"
+        showMenu = false
+    } else {
+        nav.style.left = "-200%"
+        showMenu = true
     }
+}
 
-    btn.addEventListener("click", menu)
+const title = document.querySelector(".titulo")
+const productList  = document.querySelector(".books");
 
-    $(".item").click(function(){
-        let target=$(this).parent().children(".slide")
-        $(target).slideToggle()
+function renderHome(){
+    title.innerHTML = `<p class="page-title">Novedades</p>`;
+    let productsHome = products.filter((prod)=>prod.category === 'novedades')
+    productsHome.forEach((product)=>{
+        productList.innerHTML += `
+            <div class="carta">
+                <img src="${product.img}" alt="Libro ${product.title}">
+                <h2>${product.title}</h2>
+                <p>${product.description}</p>
+                <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
+            </div>
+        `
     })
+};
 
+renderHome();
 
+function categorySelector(category){
+    productList.innerHTML = "";
+    title.innerHTML = `<p class="page-title">${category}</p>`;
+    let filteredProducts = products.filter(el=>el.category === category)
+    filteredProducts.forEach((product)=>{
+        productList.innerHTML += `
+                <div class="carta">
+                    <img src="${product.img}" alt="Libro ${product.title}">
+                    <h2>${product.title}</h2>
+                    <p>${product.description}</p>
+                    <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
+                </div>
+            `
+    });
+    navHandler();
+}
 
-BD =[
-    {
-        id: 1,
-        title:"el inocente",
-        category: "policial",
-        author: "harlan coben",
-        price: 14000,
-        stock: 'en stock',
-        href:"",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9cGyBpIClOxu6-cdEV7fMThDmLlVti3romA&usqp=CAU",
-    },
-    {
-        id: 2,
-        title:"la sombra del viento",
-        category: "drama",
-        author: "ruiz zafon",
-        price: 18000,
-        stock: 'agotado',
-        href:"",
-        img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLH70HN8U7MgAtWnofoCQ7bhjRIfJN5okUthWnXZdOLjUk_pn2eMTRxA9n878yJcbHv1A&usqp=CAU",
-    },
-]
+function genderSelector(gender){
+    productList.innerHTML = ""
+    title.innerHTML = `<p class="page-title">${gender}</p>`
+    let filteredProducts = products.filter(el=>el.gender === gender)
+    filteredProducts.forEach((product)=>{
+        productList.innerHTML += `
+                <div class="carta">
+                    <img src="${product.img}" alt="Libro ${product.title}">
+                    <h2>${product.title}</h2>
+                    <p>${product.description}</p>
+                    <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
+                </div>
+            `
+    });
+    navHandler();
+};
 
+function openModal(modalId){
+    const modal = document.getElementById(`modal${modalId}`);
+    modal.style.display = 'block';
+};
 
+function closeModal(modalId){
+    const modal = document.getElementById(`modal${modalId}`);
+    modal.style.display = 'none';
+    showCart();
+};
 
+const modalBooks = document.querySelector('.modalBooks');
 
+function showModals(){
+    products.forEach((product)=>{
+        modalBooks.innerHTML += `
+            <div id="modal${product.id}" class="modal">
+                <div class="modal-content">
+                    <span class="cerrar-modal" data-target="modal${product.id}" onclick="closeModal(${product.id})">&times;</span>
+                    <div class="modal-flex-container">
+                        <div class="modal-image">
+                            <img src="${product.img}" alt="Imagen del libro 1">
+                        </div>
+                        <div class="modal-info">
+                            <h2>${product.title}</h2>
+                            <p>${product.description}.</p>
+                            <p>Precio: $${product.price}</p>
+                            <button class="btn-modal" id="addToCart${product.id}" onclick="addToCart(${product.id})">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `
+    });
+};
+
+showModals();
+
+let cartList = []
+
+function addToCart(bookId){
+    if(cartList.some(prod => parseInt(prod.id) === parseInt(bookId))){
+        let addProduct = cartList.find(findProd=>parseInt(findProd.id) === parseInt(bookId))
+        addProduct.quantity = addProduct.quantity + 1          
+    } else{
+        const nuevoProducto = {...products[bookId-1]}
+        cartList.push(nuevoProducto)
+    }
+    productCounter();
+    closeModal(bookId)
+}
+
+let counter = document.querySelector(".unit-counter")
+
+function productCounter(){
+    let total = 0
+    cartList.forEach((el) => {
+        total += el.quantity 
+    })
+    counter.innerText = `${total}`
+}
+
+function showCart(){
+    title.innerHTML = `<p class="page-title">Mis Compras</p>`;
+    productList.innerHTML = ""
+    createFirstRowTitles();
+    cartList.forEach((element)=>{
+        productList.innerHTML += `
+            <div class="cart">
+                <img src="${element.img}" alt="" height="90px" onclick="openModal(${element.id})" class="cartGrid">
+                <h2 onclick="openModal(${element.id})" class="cartGrid">${element.title}</h2>
+                <p onclick="openModal(${element.id})"class="cartGrid">${element.author}</p>
+                <p onclick="openModal(${element.id})"class="cartGrid">${element.quantity}</p>
+                <p onclick="openModal(${element.id})"class="cartGrid">${element.price}</p>
+                <button class="delete-button" onclick="deleteProduct(${element.id})"class="cartGrid"><i class="bi bi-trash3-fill"></i></button>
+            </div>
+        `
+    })
+    createCartButtons();
+};
+
+function createFirstRowTitles(){
+    const titleRow = document.createElement("div")
+    productList.appendChild(titleRow)
+    titleRow.setAttribute("class", "title-row")
+    if(cartList.length === 0){
+        titleRow.innerHTML = `<h1>El carrito está vacío</h1>`
+        titleRow.setAttribute("class", "empty-cart")
+    }else{
+        titleRow.innerHTML = `
+            <p class="cartGrid"></p>
+            <p class="cartGrid">Titulo</p>
+            <p class="cartGrid">Autor</p>
+            <p class="cartGrid">Unidades</p>
+            <p class="cartGrid">Precio</p>
+            <p class="cartGrid"></p>
+        `
+    }
+}
+
+function createCartButtons(){
+    const emptyCartButton = document.createElement("button") 
+    emptyCartButton.innerHTML = "Vaciar Carrito"
+    emptyCartButton.setAttribute("class" , "checkout-button")
+    emptyCartButton.addEventListener("click" , emptyCart)
+    productList.appendChild(emptyCartButton)
+
+    const checkoutButton = document.createElement("button")
+    checkoutButton.innerHTML = "Finalizar Compra"
+    checkoutButton.setAttribute("class","checkout-button")
+    checkoutButton.addEventListener("click", finishBuying)
+    productList.appendChild(checkoutButton)
+}
+
+function deleteProduct(bookId){
+    let newCartList = cartList.filter((el)=>el.id !== bookId)
+    cartList = newCartList
+    showCart();
+}
+
+function emptyCart(){
+    cartList = [];
+    productCounter();
+    showCart();
+}
+
+function finishBuying(){
+    if(cartList.length !== 0){
+    title.innerHTML = `<p class="page-title">Checkout</p>`;
+    productList.innerHTML = ""
+    productList.innerHTML = `
+        <div class="cart">
+            <label>Nombre</label><input/>
+        </div>
+    `
+    }else{
+        alert("El carrito debe tener al menos 1 producto")
+    }    
+}
