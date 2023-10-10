@@ -479,7 +479,7 @@ footer {
 
 /* Estilo para el botón Agregar al Carrito */
 .btn-modal {
-    background-color: #007BFF;
+    background-color:var(--blue);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -531,4 +531,33 @@ footer {
     /* Toma el 50% del ancho disponible */
     padding: 10px;
     /* Espacio interno para la información y los botones */
+}
+
+.carta {
+    display: inline-block;
+    margin: 10px; /* Puedes ajustar el margen según tus preferencias */
+    width: 200px; /* Establece un ancho fijo para las cartas */
+    height: 300px; /* Establece una altura fija para las cartas */
+    overflow: hidden; /* Evita que el contenido desborde */
+    text-align: justify;
+}
+
+/* Ajusta el tamaño de la letra del título */
+.carta h2 {
+    font-size: 16px; /* Ajusta este valor según tus preferencias */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.carta p {
+    font-size: 16px; /* Ajusta este valor según tus preferencias */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Agrega este estilo para evitar saltos de línea entre las cartas */
+.results-container {
+    white-space: nowrap;
+    overflow-x: auto; /* Esto agrega una barra de desplazamiento horizontal si el contenido es demasiado ancho */
 }
