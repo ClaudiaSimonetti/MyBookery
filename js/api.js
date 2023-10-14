@@ -1,152 +1,149 @@
-// new Vue({
-//     el: '#app',
-//     data: {
-//       searchTerm: '',
-//       searchResults: [],
-//       mysteryBooks: [],
-//       cookingBooks: [],
-//     },
-//     methods: {
-//       searchBooks() {
-//         var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=' + encodeURIComponent(this.searchTerm);
-
-//         fetch(apiUrl)
-//           .then(response => response.json())
-//           .then(data => {
-//             this.searchResults = data.items;
-//             // También actualiza los resultados de misterio y cocina con los resultados generales
-//             this.mysteryBooks = data.items;
-//             this.cookingBooks = data.items;
-//           })
-//           .catch(error => console.error('Error:', error));
-//       },
-//       loadMysteryBooks() {
-//         var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=subject:mystery&maxResults=5';
-
-//         fetch(apiUrl)
-//           .then(response => response.json())
-//           .then(data => {
-//             this.mysteryBooks = data.items;
-//           })
-//           .catch(error => console.error('Error:', error));
-//       },
-//       loadCookingBooks() {
-//         var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=subject:cooking&maxResults=5';
-
-//         fetch(apiUrl)
-//           .then(response => response.json())
-//           .then(data => {
-//             this.cookingBooks = data.items;
-//           })
-//           .catch(error => console.error('Error:', error));
-//       },
-//     },
-//     mounted() {
-//       // Llama a las funciones para cargar los libros al cargar la página
-//       this.loadMysteryBooks();
-//       this.loadCookingBooks();
-//     },
-//   });
-
-// new Vue({
-//     el: '#app',
-//     data: {
-//         searchTerm: '',
-//         searchResults: [],
-//         mysteryBooks: [],
-//         cookingBooks: [],
-//     },
-//     methods: {
-//         testClick() {
-//             console.log('Button clicked!');
-//           },
-//         searchBooks() {
-//             console.log('searchBooks clicked!');
+// $(document).ready(function () {
+//     new Vue({
+//         el: '#app',
+//         data: {
+//             searchTerm: '',
+//             searchResults: [],
+//             mysteryBooks: [],
+//             cookingBooks: [],
+//             selectedBook: null,
 //         },
-//         loadMysteryBooks() {
-//             var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=subject:mystery&maxResults=5';
+//         methods: {
+//             searchBooks: function () {
+//                 var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=' + encodeURIComponent(this.searchTerm);
+        
+//                 fetch(apiUrl)
+//                     .then(response => response.json())
+//                     .then(data => {
+//                         this.searchResults = data.items;
+//                     })
+//                     .catch(error => console.error('Error:', error));
+//             },
+//             loadMysteryBooks() {
+//                 var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=subject:mystery';
 
-//             fetch(apiUrl)
-//                 .then(response => response.json())
-//                 .then(data => {
-//                     this.mysteryBooks = data.items;
-//                 })
-//                 .catch(error => console.error('Error:', error));
-//         },
-//         loadCookingBooks() {
-//             var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=subject:cooking&maxResults=5';
+//                 fetch(apiUrl)
+//                     .then(response => response.json())
+//                     .then(data => {
+//                         this.mysteryBooks = data.items;
+//                     })
+//                     .catch(error => console.error('Error:', error));
+//             },
+//             loadCookingBooks() {
+//                 var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=subject:cooking';
 
-//             fetch(apiUrl)
-//                 .then(response => response.json())
-//                 .then(data => {
-//                     this.cookingBooks = data.items;
-//                 })
-//                 .catch(error => console.error('Error:', error));
+//                 fetch(apiUrl)
+//                     .then(response => response.json())
+//                     .then(data => {
+//                         this.cookingBooks = data.items;
+//                     })
+//                     .catch(error => console.error('Error:', error));
+//             },
+//             openModal(book) {
+//                 console.log('openModal called!');
+//                 this.selectedBook = book;
+//             },
+//             addToCart(book) {
+//                 console.log('addToCart called!');
+//                 // Lógica para agregar al carrito
+//             },
 //         },
-//     },
-//     mounted() {
-//         this.loadMysteryBooks();
-//         this.loadCookingBooks();
-//     },
+//         mounted() {
+//             this.loadMysteryBooks();
+//             this.loadCookingBooks();
+//         },
+//     });
 // });
 
+$(document).ready(function () {
+    new Vue({
+        el: '#app',
+        data: {
+            searchTerm: '',
+            searchResults: [],
+            mysteryBooks: [],
+            cookingBooks: [],
+            selectedBook: null,
+            
+      
+   },
+        methods: {
+            searchBooks: function () {
+                var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=' + encodeURIComponent(this.searchTerm);
 
-new Vue({
-    el: '#app',
-    data: {
-        searchTerm: '',
-        searchResults: [],
-        mysteryBooks: [],
-        cookingBooks: [],
-    },
-    methods: {
-        
-        searchBooks: function () {
-            console.log('searchBooks inside Vue called!');
-            var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=' + encodeURIComponent(this.searchTerm);
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.searchResults = data.items;
+                    })
+                    .catch(error => console.error('Error:', error));
+            },
+            loadMysteryBooks() {
+                var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=subject:mystery';
 
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    this.searchResults = data.items;
-                })
-                .catch(error => console.error('Error:', error));
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.mysteryBooks = data.items;
+                    })
+                    .catch(error => console.error('Error:', error));
+            },
+            loadCookingBooks() {
+                var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=subject:cooking';
+
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.cookingBooks = data.items;
+                    })
+                    .catch(error => console.error('Error:', error));
+            },
+            // openModal(book) {
+            //     console.log('openModal called!', book);
+            
+            //     if (!book) {
+            //         console.error('Error: Book is null or undefined');
+            //         return;
+            //     }
+            
+            //     // Si los detalles del libro no están cargados, realiza una nueva solicitud a la API
+            //     const apiUrl = `https://www.googleapis.com/books/v1/volumes/${book.id}`;
+            //     fetch(apiUrl)
+            //         .then(response => response.json())
+            //         .then(data => {
+            //             console.log('API response:', data);
+            //             this.selectedBook = data;
+            
+            //             // Mostrar el modal después de asegurarse de que los datos estén actualizados
+            //             this.$nextTick(() => {
+            //                 console.log('Setting isModalVisible to true');
+            //                 this.isModalVisible = true;
+            //             });
+            //         })
+            //         .catch(error => console.error('Error fetching book details:', error));
+            // },
+            
+            // closeModal() {
+            //     console.log('closeModal called!');
+            //     this.selectedBook = null;
+            //     console.log('Selected Book after closing modal:', this.selectedBook);
+            // },
+
+            redirectToDetails(book) {
+                // Redireccionar a la nueva página de detalles
+                window.location.href = `detalle.html?id=${book.id}`;
+            },
+
+
+            addToCart(book) {
+                console.log('addToCart called!');
+                // Lógica para agregar al carrito
+            },
         },
-        loadMysteryBooks() {
-            var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=subject:mystery';
-
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    this.mysteryBooks = data.items;
-                })
-                .catch(error => console.error('Error:', error));
+        mounted() {
+            this.loadMysteryBooks();
+            this.loadCookingBooks();
+            
         },
-        loadCookingBooks() {
-            var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=subject:cooking';
-
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    this.cookingBooks = data.items;
-                })
-                .catch(error => console.error('Error:', error));
-        },
-    },
-    mounted() {
-        this.loadMysteryBooks();
-        this.loadCookingBooks();
-    },
+    });
 });
-
-function searchBooks() {
-    console.log('searchBooks outside Vue called!');
-    var apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=' + encodeURIComponent(this.searchTerm);
-
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            this.searchResults = data.items;
-        })
-        .catch(error => console.error('Error:', error));
-}

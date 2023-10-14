@@ -43,7 +43,7 @@
                 <li class="list-item"><a class="item" href="#" target="_self">Infantiles y Juveniles</a></li>
                 <li class="list-item"><a class="item" href="#" target="_self">Lo más vendido</a></li>
                 <li class="list-item"><a class="item" href="#" target="_self">Contacto</a></li>
-                
+
             </ul>
         </nav>
         <div class="responsive-btn-container">
@@ -53,8 +53,7 @@
     </navbar>
     <main class="main-container" id="app">
         <div class="input-search-container">
-            <input id="searchInput" class='input-search' placeholder=" Buscar..." type="text"
-                v-model="searchTerm">
+            <input id="searchInput" class='input-search' placeholder=" Buscar..." type="text" v-model="searchTerm">
             <i class="bi bi-search" @click="searchBooks"></i>
         </div>
 
@@ -64,7 +63,7 @@
                     :alt="'Imagen del libro ' + book.volumeInfo.title">
                 <h2>{{ book.volumeInfo.title }}</h2>
                 <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
-                <button class="btn-modal" data-target="modal1">Ver Detalles</button>
+                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
             </div>
         </div>
 
@@ -79,7 +78,7 @@
                     :alt="'Imagen del libro ' + book.volumeInfo.title">
                 <h2>{{ book.volumeInfo.title }}</h2>
                 <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
-                <button class="btn-modal" data-target="modal1">Ver Detalles</button>
+                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
             </div>
         </div>
 
@@ -96,27 +95,12 @@
                     :alt="'Imagen del libro ' + book.volumeInfo.title">
                 <h2>{{ book.volumeInfo.title }}</h2>
                 <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
-                <button class="btn-modal" data-target="modal1">Ver Detalles</button>
+                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
             </div>
         </div>
 
-        <!-- <div id="modal1" class="modal">
-            <div class="modal-content">
-                <span class="cerrar-modal" data-target="modal1">&times;</span>
-                <div class="modal-flex-container">
-                    <div class="modal-image">
-                        <img src="https://i.pinimg.com/originals/f1/48/e2/f148e2c987f9f7c24a2373f25609433f.jpg" alt="Imagen del libro 1">
-                    </div>
-                    <div class="modal-info">
-                        <h2>Título del Libro 1</h2>
-                        <p>Descripción del libro 1.</p>
-                        <p>Precio: $XX.XX</p>
-                        <button class="btn-modal" id="addToCart1">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
 
+      
     </main>
     <footer>
         <div>
@@ -169,11 +153,11 @@
             </div>
         </div>
     </footer>
-    <!-- Agrega Vue.js  -->
+    <!-- Agrega Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="js/api.js"></script>
     <script src="js/main.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

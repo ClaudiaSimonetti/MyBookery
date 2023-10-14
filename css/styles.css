@@ -402,19 +402,7 @@ footer {
     }
 }
 
-/* cartas y modal  */
 
-/* body {
-    position: relative;
-    min-height: 100%;
-    Establece una altura mínima del 100% de la altura de la ventana
-} */
-
-/* main {
-    padding-bottom: 100%;
-    Establece un margen inferior igual a la altura del footer
-    box-sizing: border-box;
-} */
 
 .titulo {
     text-align: center;
@@ -437,18 +425,10 @@ footer {
     background-color: #f9f9f9;
     box-shadow: 0px 0px 5px #888;
     width: 250px;
-    /* Ajusta el ancho de la carta según tus preferencias */
-    /* background-color: var(--blue); */
+    
 }
 
-.btn-modal {
-    cursor: pointer;
-    background-color: var(--orange);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
+
 
 /* Agregar una imagen */
 .carta img {
@@ -456,90 +436,16 @@ footer {
     height: 60%;
 }
 
-/* Estilo para ocultar los modales por defecto */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 600px;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
 
-/* Estilo para el botón de cerrar */
-.cerrar-modal {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-    cursor: pointer;
-}
-
-/* Estilo para el botón Agregar al Carrito */
-.btn-modal {
-    background-color:var(--blue);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Estilo para la imagen dentro del modal */
-.modal-content img {
-    max-width: 300px;
-    /* Establece un ancho máximo para la imagen */
-    height: 300px;
-    /* Ajusta automáticamente la altura para mantener la proporción */
-}
-
-/* Estilo para el contenido del modal */
-.modal-content {
-    background-color: #fff;
-    margin: 10% auto;
-    padding: 10px;
-    /* Reduce el espacio interno del modal */
-    max-width: 400px;
-    /* Establece un ancho máximo */
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    position: relative;
-}
-
-/* Estilo para el contenedor flexbox */
-.modal-flex-container {
-    display: flex;
-    flex-direction: row;
-    /* Organiza en fila (imagen a un lado, info al otro) */
-    align-items: center;
-    /* Centra verticalmente */
-}
-
-/* Estilo para la columna de la imagen */
-.modal-image {
-    flex: 1;
-    /* Toma el 50% del ancho disponible */
-    padding: 10px;
-    /* Espacio interno para la imagen */
-}
-
-/* Estilo para la columna de información y botones */
-.modal-info {
-    flex: 1;
-    /* Toma el 50% del ancho disponible */
-    padding: 10px;
-    /* Espacio interno para la información y los botones */
-}
 
 .carta {
     display: inline-block;
-    margin: 10px; /* Puedes ajustar el margen según tus preferencias */
+    margin: 10px; 
     width: 200px; /* Establece un ancho fijo para las cartas */
     height: 300px; /* Establece una altura fija para las cartas */
     overflow: hidden; /* Evita que el contenido desborde */
-    text-align: justify;
+    text-align: center;
+
 }
 
 /* Ajusta el tamaño de la letra del título */
@@ -549,6 +455,28 @@ footer {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.btn-modal{
+background-color: #14213d;
+color: #fca311;
+margin-bottom: auto;
+align-self: center;
+
+}
+.btn-regresa{
+    background-color:#fca311;
+    color:#14213d;
+    margin-bottom: auto;
+    align-self: center;
+    
+    }
+
+
+.buttons-container {
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+}
+
 .carta p {
     font-size: 16px; /* Ajusta este valor según tus preferencias */
     overflow: hidden;
@@ -561,3 +489,48 @@ footer {
     white-space: nowrap;
     overflow-x: auto; /* Esto agrega una barra de desplazamiento horizontal si el contenido es demasiado ancho */
 }
+
+
+#detalle-app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.book-details {
+    display: flex;
+}
+
+
+
+.image-container img {
+    width: 40%;
+    max-height: 400px; /* Establece la altura máxima que prefieras */
+   
+}
+
+
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.content {
+    margin: 0;
+    color: #14213d;
+    width: 100%;
+}
+
