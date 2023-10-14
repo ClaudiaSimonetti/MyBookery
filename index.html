@@ -52,55 +52,59 @@
 
     </navbar>
     <main class="main-container" id="app">
-        <div class="input-search-container">
-            <input id="searchInput" class='input-search' placeholder=" Buscar..." type="text" v-model="searchTerm">
-            <i class="bi bi-search" @click="searchBooks"></i>
-        </div>
 
-        <div id="results" class="results-container">
-            <div v-for="book in searchResults" :key="book.id" class="carta">
-                <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
-                    :alt="'Imagen del libro ' + book.volumeInfo.title">
-                <h2>{{ book.volumeInfo.title }}</h2>
-                <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
-                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
+        <!-- Sección de Libros del buscador -->
+        <div class="buscador">
+            <div class="input-search-container ">
+                <input id="searchInput" class='input-search' placeholder=" Buscar..." type="text" v-model="searchTerm">
+                <i class="bi bi-search" @click="searchBooks"></i>
+            </div>
+
+            <div id="results" class="results-container">
+                <div v-for="book in searchResults" :key="book.id" class="carta">
+                    <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                        :alt="'Imagen del libro ' + book.volumeInfo.title">
+                    <h2>{{ book.volumeInfo.title }}</h2>
+                    <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
+                    <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
+                </div>
             </div>
         </div>
 
 
-        <!-- Sección de Libros de Misterio -->
-        <div class="titulo">
-            <p class="page-title">Misterio</p>
-        </div>
-        <div class="books">
-            <div v-for="book in mysteryBooks" :key="book.id" class="carta">
-                <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
-                    :alt="'Imagen del libro ' + book.volumeInfo.title">
-                <h2>{{ book.volumeInfo.title }}</h2>
-                <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
-                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
+            <!-- Sección de Libros de Misterio -->
+            <div class="titulo">
+                <p class="page-title">Misterio</p>
             </div>
-        </div>
-
-
-
-
-        <!-- Sección de Libros de Cocina -->
-        <div class="titulo">
-            <p class="page-title">Cocina</p>
-        </div>
-        <div class="books">
-            <div v-for="book in cookingBooks" :key="book.id" class="carta">
-                <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
-                    :alt="'Imagen del libro ' + book.volumeInfo.title">
-                <h2>{{ book.volumeInfo.title }}</h2>
-                <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
-                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
+            <div class="books">
+                <div v-for="book in mysteryBooks" :key="book.id" class="carta">
+                    <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                        :alt="'Imagen del libro ' + book.volumeInfo.title">
+                    <h2>{{ book.volumeInfo.title }}</h2>
+                    <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
+                    <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
+                </div>
             </div>
-        </div>
 
 
-      
+
+
+            <!-- Sección de Libros de Cocina -->
+            <div class="titulo">
+                <p class="page-title">Gastronomía</p>
+            </div>
+            <div class="books">
+                <div v-for="book in cookingBooks" :key="book.id" class="carta">
+                    <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                        :alt="'Imagen del libro ' + book.volumeInfo.title">
+                    <h2>{{ book.volumeInfo.title }}</h2>
+                    <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
+                    <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
+                </div>
+            </div>
+
+
+
     </main>
     <footer>
         <div>
