@@ -5,7 +5,9 @@
     --blue: #14213d;
     --orange: #fca311;
     --grey: #f8f9fa;
+    --darkGrey: #888;
     --white: #ffffff;
+    --red: #FF0000;
     --primaryFont: 'Open Sans', sans-serif;
 }
 
@@ -37,7 +39,7 @@ header {
     align-items: center;
 }
 
-.bi-cart {
+.fa-cart-shopping {
     color: var(--orange);
     font-size: 20px;
 }
@@ -145,15 +147,15 @@ nav ul li a {
     border: 2px solid var(--blue);
 }
 
-.bi-search {
+.fa-magnifying-glass {
     border: 1px solid var(--blue);
     border-radius: 5px;
-    padding: 3px 6px 4px 6px;
+    padding: 6px 6px 4px 6px;
     font-size: 15px;
     margin-left: 10px;
 }
 
-.bi-search:hover {
+.fa-magnifying-glass:hover {
     background-color: var(--blue);
     color: var(--orange);
 }
@@ -170,11 +172,17 @@ nav ul li a {
     border: 2px solid var(--orange);
     color: var(--orange);
     margin-top: -55px;
+    padding-left: 10px;
 }
 
 #responsive-menu-btn:hover {
     background-color: var(--orange);
     color: var(--blue);
+    padding-left: 10px;
+}
+
+.fa-caret-down{
+    margin-left: 5px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -480,12 +488,17 @@ footer {
 
 /* Estilo para el botón Agregar al Carrito */
 .btn-modal {
-    background-color: #007BFF;
-    color: #fff;
+    background-color: var(--blue);
+    color: var(--orange);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.btn-modal:hover{
+    background-color: var(--orange);
+    color: var(--blue);
 }
 
 /* Estilo para la imagen dentro del modal */
@@ -498,7 +511,7 @@ footer {
 
 /* Estilo para el contenido del modal */
 .modal-content {
-    background-color: #fff;
+    background-color: var(--white);
     margin: 10% auto;
     padding: 10px;
     /* Reduce el espacio interno del modal */
@@ -542,8 +555,8 @@ footer {
     border: 1px solid var(--blue);
     padding-left: 10px;
     text-align: center;
-    background-color: #f9f9f9;
-    box-shadow: 0px 0px 5px #888;
+    background-color: var(--grey);
+    box-shadow: 0px 0px 5px var(--darkGrey);
     width: 100%;
 }
 
@@ -565,8 +578,9 @@ footer {
     color: var(--orange);
     border-radius: 5px;
     border: 2px solid var(--blue);
-    width: 50px;
-    padding: 10px 15px 10px 10px;
+    width: 35px;
+    height: 35px;
+    /* padding: 5px 10px 5px 10px; */
     margin-left: 30%;
 }
 
@@ -591,4 +605,99 @@ footer {
     background-color:var(--orange);
     color: var(--blue);
     border: 2px solid var(--orange);
+}
+
+#form{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+    width: 95%;
+    /* border: 2px solid blue; */
+}
+
+@media (max-width: 992px) {
+    #form{
+        grid-template-columns:1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    #form{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    #form{
+        grid-template-columns:1fr;
+    }
+}
+
+/* 1200px
+992px
+768px
+600px */
+
+.input-container{
+    width: 90%;
+    height: 90px;
+    /* border: 2px solid red; */
+    margin-left: 10%;
+    
+}
+
+.input-label{
+    padding-bottom: 5px;
+    text-transform: capitalize;
+    font-family: var(--primaryFont);
+}
+
+.input-field{
+    border-radius: 3px; 
+    height: 26px;
+    font-family: var(--primaryFont);
+    background-color: var(--grey);
+    border: 1px solid var(--black);
+    box-shadow: inset 0 1px 1px var(--blue);
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 90%;
+}
+
+.errorMessage{
+    color: red;
+    font-size: 12px;
+    padding-bottom: 12px;
+    margin-left: 2px;
+    margin-top: 2px;
+}
+
+.message-modal{
+    text-align: center;
+}
+.btn-modal-cart{
+    background-color: var(--blue);
+    color: var(--orange);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 70%;
+    margin-top: 30px;
+}
+
+.btn-modal-cart:hover{
+    background-color: var(--orange);
+    color: var(--blue);
+}
+
+.fa-circle-check{
+    background-color: var(--white);
+    color: var(--orange);
+    margin-right: 8px;
+
+}
+
+.confirmation-sending-form{
+    height: 245px;
+    width: auto;
 }

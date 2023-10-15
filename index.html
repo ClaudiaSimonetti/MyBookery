@@ -18,14 +18,14 @@
         <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery" onclick= "categorySelector('novedades')">
         <div class="unit-counter-container" onclick="showCart()">
             <p class="unit-counter">0</p>
-            <i class="bi bi-cart"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
         </div>
     </header>
     <navbar>
         <nav class="menu" id="menu">
             <ul class="list">
                 <li class="list-item"><a class="item" href="#" onclick= "categorySelector('novedades')">Novedades</a></li>
-                <li class="list-item"><a class="item" href="#">Novelas<i class="bi bi-caret-down-fill"></i></a>
+                <li class="list-item"><a class="item" href="#">Novelas<i class="fa-solid fa-caret-down"></i></a>
                     <ul class="slide">
                         <li><a class="item" href="#" onclick= "genderSelector('policial')">Policial</a></li>
                         <li><a class="item" href="#" onclick= "genderSelector('drama')">Drama</a></li>
@@ -33,7 +33,7 @@
                         <li><a class="item" href="#">Misterio</a></li>
                     </ul>
                 </li>
-                <li class="list-item"><a class="item" href="#">No Ficción<i class="bi bi-caret-down-fill"></i></a>
+                <li class="list-item"><a class="item" href="#">No Ficción<i class="fa-solid fa-caret-down"></i></a>
                     <ul class="slide">
                         <li><a class="item" href="#">Gastronomía</a>
                         <li><a class="item" href="#">Bibliográfico</a></li>
@@ -44,12 +44,12 @@
                 <li class="list-item"><a class="item" href="#" target="_self">Lo más vendido</a></li>
                 <li class="list-item"><a class="item" href="#" target="_self">Contacto</a></li>
                 <div class="input-search-container">
-                    <input class='input-search' placeholder=" Buscar..." type="text"><i class="bi bi-search"></i>
+                    <input class='input-search' placeholder=" Buscar..." type="text"><i class="fa-solid fa-magnifying-glass"></i>
                 </div>
             </ul>
         </nav>
         <div class="responsive-btn-container">
-            <button id="responsive-menu-btn" onclick="navHandler()"><i class="bi bi-list"></i></button>
+            <button id="responsive-menu-btn" onclick="navHandler()"><i class="fa-solid fa-bars"></i></button>
         </div>
     </navbar>
     <main class="main-container">
@@ -130,6 +130,7 @@
             </div>
         </div> -->
         <!-- <div> --> 
+            <div class="popUpMessage"></div>
     </main>
     <footer>
         <div>
@@ -137,22 +138,26 @@
         </div>
         <div>
             <div class="footer-icon-container">
-                <a href="https://web.whatsapp.com/" target="_blank"><i class="bi bi-whatsapp footer-icon"></i></a>
+                <a href="https://web.whatsapp.com/" target="_blank">
+                    <i class="fa-brands fa-whatsapp footer-icon"></i>
+                </a>
                 <p class="footer-text">+54 11 5555-5555</p>
             </div>
             <div class="footer-icon-container">
-                <a href="mailto:mybookery@myboolery.com"><i class="bi bi-envelope-fill footer-icon"></i></a>
+                <a href="mailto:mybookery@myboolery.com">
+                    <i class="fa-solid fa-envelope footer-icon"></i>
+                </a>
                 <p class="footer-text">mybookery@mybookery.com</p>
             </div>
             <div class="footer-icon-container">
-                <i class="bi bi-clock-fill footer-icon"></i>
+                <i class="fa-solid fa-clock footer-icon"></i>
                 <p class="footer-text">Horario: Lunes a Viernes de 9.00 a 18.00 horas</p>
             </div>
         </div>
         <div>
             <div class="map-and-social-media-container">
             <div class="footer-map-container">
-                <i class="bi bi-geo-alt-fill footer-icon"></i>
+                <i class="fa-solid fa-location-dot footer-icon"></i>
                 <p class="footer-text">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3284.83210532761!2d-58.379992174260515!3d-34.58311457296175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sCarlos%20H%20Perette%20y%20Calle%2010!5e0!3m2!1ses-419!2sar!4v1695745647304!5m2!1ses-419!2sar" width="150" height="120" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </p>
@@ -160,16 +165,16 @@
             <div class="footer-social-media-container">
                 
                 <a href="https://www.instagram.com/" target="_blank">
-                    <i class="bi bi-instagram footer-icon footer-social-media"></i>
+                    <i class="fa-brands fa-instagram footer-icon footer-social-media"></i>
                 </a>
                 <a href="https://www.facebook.com/" target="_blank">
-                    <i class="bi bi-facebook footer-icon footer-social-media"></i>
+                    <i class="fa-brands fa-facebook footer-icon footer-social-media"></i>
                 </a>
                 <a href="https://web.telegram.org/k/" target="_blank">
-                    <i class="bi bi-telegram footer-icon footer-social-media"></i>
+                    <i class="fa-brands fa-telegram footer-icon footer-social-media"></i>
                 </a>
                 <a href="https://twitter.com/" target="_blank">
-                    <i class="bi bi-twitter footer-icon footer-social-media"></i>
+                    <i class="fa-brands fa-x-twitter footer-icon footer-social-media"></i>
                 </a>
             </div>
         </div>
@@ -180,8 +185,10 @@
         </div>
     </footer>
     <script src="assets/products.js"></script>
+    <script src="assets/inputs.js"></script>
     <script src="js/main.js"></script>
     <!-- <script src="js/books.js"></script> -->
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/d152bd8a2a.js"></script>
 </body>
 </html>

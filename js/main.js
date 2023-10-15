@@ -135,11 +135,11 @@ function showCart(){
         productList.innerHTML += `
             <div class="cart">
                 <img src="${element.img}" alt="" height="90px" onclick="openModal(${element.id})" class="cartGrid">
-                <h2 onclick="openModal(${element.id})" class="cartGrid">${element.title}</h2>
+                <h4 onclick="openModal(${element.id})" class="cartGrid">${element.title}</h4>
                 <p onclick="openModal(${element.id})"class="cartGrid">${element.author}</p>
                 <p onclick="openModal(${element.id})"class="cartGrid">${element.quantity}</p>
                 <p onclick="openModal(${element.id})"class="cartGrid">${element.price}</p>
-                <button class="delete-button" onclick="deleteProduct(${element.id})"class="cartGrid"><i class="bi bi-trash3-fill"></i></button>
+                <button class="delete-button" onclick="deleteProduct(${element.id})"class="cartGrid"><i class="fa-solid fa-trash fa-2xs"></i></button>
             </div>
         `
     })
@@ -191,16 +191,102 @@ function emptyCart(){
     showCart();
 }
 
+const form = document.createElement("form")
+
+function createForm(){
+    form.setAttribute("id" , "form")
+    productList.appendChild(form)
+}
+
+const popUpMessage = document.querySelector('.popUpMessage');
+
+function popUp(message){
+    popUpMessage.innerHTML = `
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-flex-container">
+                    <div class="modal-info">
+                        <p class="message-modal">${message}</p>
+                        <button class="btn-modal-cart" onclick="closePopUp()">Cerrar</button>
+                    </div>   
+                </div> 
+            </div>
+        </div>                  
+    `
+};
+
+function openPopUp(){
+    const modal = document.getElementById("modal");
+    modal.style.display = 'block';
+};
+
+function closePopUp(){
+    const modal = document.getElementById("modal");
+    modal.style.display = 'none';
+};
+
 function finishBuying(){
     if(cartList.length !== 0){
+    form.innerHTML = ""    
     title.innerHTML = `<p class="page-title">Checkout</p>`;
     productList.innerHTML = ""
-    productList.innerHTML = `
-        <div class="cart">
-            <label>Nombre</label><input/>
-        </div>
+    createForm();
+    fields.forEach((field, index)=> {
+    form.innerHTML += `
+        <div class='input-container' >
+            <label class='input-label' for="${field.name}">${field.name}</label>
+            <input class='input-field' type="${field.type}" name="${field.name}" id="${field.name}"/>
+            <p class="errorMessage" id="${field.idField}"></p>
+        </div>    
     `
+    })
+    const formButton = document.createElement("button") 
+    formButton.innerHTML = "Enviar"
+    formButton.setAttribute("class" , "btn-modal-cart")
+    formButton.addEventListener("click" , submit)
+    productList.appendChild(formButton)
     }else{
-        alert("El carrito debe tener al menos 1 producto")
-    }    
+        popUp("El carrito debe contener al menos 1 producto.")
+        openPopUp()
+    } 
+}
+
+function submit(e){
+    e.preventDefault();
+    fields.forEach((el, index) => {
+        const enteredValue = document.getElementById(el.name).value
+            el.value = enteredValue
+        if(el.value.match(el.regex)){
+            el.errorMessage = ""
+            createErrorMessage(el.errorMessage, el.idField) 
+        }else{
+            el.errorMessage = el.message
+            createErrorMessage(el.errorMessage, el.idField) 
+        }
+    })
+    validation()
+}
+
+function createErrorMessage(errorMessage, id){
+    const div = document.getElementById(`${id}`)
+    div.innerHTML = errorMessage
+}
+
+function validation(){
+    if(fields[0].errorMessage === "" 
+    && fields[1].errorMessage === "" &&
+    fields[2].errorMessage === "" && fields[3].errorMessage === "" &&
+    fields[4].errorMessage === "" && fields[5].errorMessage === "" &&
+    fields[6].errorMessage === "" && fields[7].errorMessage === "" &&
+    fields[8].errorMessage === "" && fields[9].errorMessage === "" 
+    ){
+        title.innerHTML = `<p class="page-title confirmation-sending-form">
+                                <i class="fa-solid fa-circle-check"></i></i>Formulario enviado con éxito
+                            </p>
+        `;
+        productList.innerHTML = "" ;
+        cartList = [];
+        productCounter();
+        window.scrollTo(0, 0)
+    }
 }
