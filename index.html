@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -14,20 +15,25 @@
 <body>
     <header>
         <p style="width: 80px;"></p>
-        <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery">
-        <div class="unit-counter-container"><p class="unit-counter">0</p><i class="bi bi-cart"></i></div>
+        <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery" onclick= "categorySelector('novedades')">
+        <div class="unit-counter-container" onclick="showCart()">
+            <p class="unit-counter">0</p>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
     </header>
     <navbar>
         <nav class="menu" id="menu">
             <ul class="list">
-                <li class="list-item"><a class="item" href="#">Novedades</a></li>
-                <li class="list-item"><a class="item" href="#">Novelas<i class="bi bi-caret-down-fill"></i></a>
+                <li class="list-item"><a class="item" href="#" onclick= "categorySelector('novedades')">Novedades</a></li>
+                <li class="list-item"><a class="item" href="#">Novelas<i class="fa-solid fa-caret-down"></i></a>
                     <ul class="slide">
-                        <li><a class="item" href="#">Policial</a></li>
+                        <li><a class="item" href="#" onclick= "genderSelector('policial')">Policial</a></li>
+                        <li><a class="item" href="#" onclick= "genderSelector('drama')">Drama</a></li>
+                        <li><a class="item" href="#" onclick= "genderSelector('aventura')">Aventura</a></li>
                         <li><a class="item" href="#">Misterio</a></li>
                     </ul>
                 </li>
-                <li class="list-item"><a class="item" href="#">No Ficción<i class="bi bi-caret-down-fill"></i></a>
+                <li class="list-item"><a class="item" href="#">No Ficción<i class="fa-solid fa-caret-down"></i></a>
                     <ul class="slide">
                         <li><a class="item" href="#">Gastronomía</a>
                         <li><a class="item" href="#">Bibliográfico</a></li>
@@ -38,16 +44,93 @@
                 <li class="list-item"><a class="item" href="#" target="_self">Lo más vendido</a></li>
                 <li class="list-item"><a class="item" href="#" target="_self">Contacto</a></li>
                 <div class="input-search-container">
-                    <input class='input-search' placeholder=" Buscar..." type="text"><i class="bi bi-search"></i>
+                    <input class='input-search' placeholder=" Buscar..." type="text"><i class="fa-solid fa-magnifying-glass"></i>
                 </div>
             </ul>
         </nav>
         <div class="responsive-btn-container">
-            <button id="responsive-menu-btn"><i class="bi bi-list"></i></button>
+            <button id="responsive-menu-btn" onclick="navHandler()"><i class="fa-solid fa-bars"></i></button>
         </div>
     </navbar>
     <main class="main-container">
-        <p class="page-title">Novedades</p>
+        <div class="titulo">
+            <!-- <p class="page-title">Novedades</p> -->
+        </div>
+        <div class="books">
+            <!-- <div class="carta">
+                <img src="https://i.pinimg.com/originals/f1/48/e2/f148e2c987f9f7c24a2373f25609433f.jpg" alt="Imagen de la carta 1">
+                <h2>Carta 1</h2>
+                <p>Información de la carta 1.</p>
+                <button class="btn-modal" data-target="modal1">Ver Detalles</button>
+            </div>
+            <div class="carta">
+                <img src="https://zumografica.com/wp-content/uploads/2017/09/libro-imprenta-lima.jpg" alt="Imagen de la carta 2">
+                <h2>Carta 2</h2>
+                <p>Información de la carta 2.</p>
+                <button class="btn-modal" data-target="modal2">Ver Detalles</button>
+            </div>
+            <div class="carta">
+                <img src="https://www.rae.es/sites/default/files/portada_cien_anos_de_soledad_0.jpg" alt="Imagen de la carta 3">
+                <h2>Carta 3</h2>
+                <p>Información de la carta 3.</p>
+                <button class="btn-modal" data-target="modal3">Ver Detalles</button>
+            </div> -->
+            
+        </div>
+        <div class="modalBooks"></div>
+        <!-- Modal para el libro 1 -->
+        <!-- <div id="modal1" class="modal">
+            <div class="modal-content">
+                <span class="cerrar-modal" data-target="modal1">&times;</span>
+                <div class="modal-flex-container">
+                    <div class="modal-image">
+                        <img src="https://i.pinimg.com/originals/f1/48/e2/f148e2c987f9f7c24a2373f25609433f.jpg" alt="Imagen del libro 1">
+                    </div>
+                    <div class="modal-info">
+                        <h2>Título del Libro 1</h2>
+                        <p>Descripción del libro 1.</p>
+                        <p>Precio: $XX.XX</p>
+                        <button class="btn-modal" id="addToCart1">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Modal para el libro 2 -->
+        <!-- <div id="modal2" class="modal">
+            <div class="modal-content">
+                <span class="cerrar-modal" data-target="modal2">&times;</span>
+                <div class="modal-flex-container">
+                    <div class="modal-image">
+                        <img src="https://zumografica.com/wp-content/uploads/2017/09/libro-imprenta-lima.jpg" alt="Imagen del libro 1">
+                    </div>
+                    <div class="modal-info">
+                        <h2>Título del Libro 2</h2>
+                        <p>Descripción del libro 2.</p>
+                        <p>Precio: $XX.XX</p>
+                        <button class="btn-modal" id="addToCart2">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Modal para el libro 3 -->
+        <!-- <div id="modal3" class="modal">
+            <div class="modal-content">
+                <span class="cerrar-modal" data-target="modal2">&times;</span>
+                <div class="modal-flex-container">
+                    <div class="modal-image">
+                        <img src="https://www.rae.es/sites/default/files/portada_cien_anos_de_soledad_0.jpg" alt="Imagen del libro 3">
+                    </div>
+                    <div class="modal-info">
+                        <h2>Título del Libro 3</h2>
+                        <p>Descripción del libro 3.</p>
+                        <p>Precio: $XX.XX</p>
+                        <button class="btn-modal" id="addToCart2">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div> --> 
+            <div class="popUpMessage"></div>
     </main>
     <footer>
         <div>
@@ -55,40 +138,57 @@
         </div>
         <div>
             <div class="footer-icon-container">
-                <a href="https://web.whatsapp.com/" target="_blank"><i class="bi bi-whatsapp footer-icon"></i></a>
+                <a href="https://web.whatsapp.com/" target="_blank">
+                    <i class="fa-brands fa-whatsapp footer-icon"></i>
+                </a>
                 <p class="footer-text">+54 11 5555-5555</p>
             </div>
             <div class="footer-icon-container">
-                <a href="mailto:mybookery@myboolery.com"><i class="bi bi-envelope-fill footer-icon"></i></a>
+                <a href="mailto:mybookery@myboolery.com">
+                    <i class="fa-solid fa-envelope footer-icon"></i>
+                </a>
                 <p class="footer-text">mybookery@mybookery.com</p>
             </div>
             <div class="footer-icon-container">
-                <i class="bi bi-clock-fill footer-icon"></i>
+                <i class="fa-solid fa-clock footer-icon"></i>
                 <p class="footer-text">Horario: Lunes a Viernes de 9.00 a 18.00 horas</p>
             </div>
         </div>
         <div>
+            <div class="map-and-social-media-container">
+            <div class="footer-map-container">
+                <i class="fa-solid fa-location-dot footer-icon"></i>
+                <p class="footer-text">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3284.83210532761!2d-58.379992174260515!3d-34.58311457296175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sCarlos%20H%20Perette%20y%20Calle%2010!5e0!3m2!1ses-419!2sar!4v1695745647304!5m2!1ses-419!2sar" width="150" height="120" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </p>
+            </div>
             <div class="footer-social-media-container">
+                
                 <a href="https://www.instagram.com/" target="_blank">
-                    <i class="bi bi-instagram footer-icon footer-social-media"></i>
+                    <i class="fa-brands fa-instagram footer-icon footer-social-media"></i>
                 </a>
                 <a href="https://www.facebook.com/" target="_blank">
-                    <i class="bi bi-facebook footer-icon footer-social-media"></i>
+                    <i class="fa-brands fa-facebook footer-icon footer-social-media"></i>
                 </a>
                 <a href="https://web.telegram.org/k/" target="_blank">
-                    <i class="bi bi-telegram footer-icon footer-social-media"></i>
+                    <i class="fa-brands fa-telegram footer-icon footer-social-media"></i>
                 </a>
                 <a href="https://twitter.com/" target="_blank">
-                    <i class="bi bi-twitter footer-icon footer-social-media"></i>
+                    <i class="fa-brands fa-x-twitter footer-icon footer-social-media"></i>
                 </a>
             </div>
+        </div>
             <div class="footer-icon-container footer-input-container">
                 <input type="text" placeholder=" Ingrese su email..." class="footer-input">
                 <button class="footer-button">Suscribirme al newsletter</button>
             </div>
-        </div>        
+        </div>
     </footer>
+    <script src="assets/products.js"></script>
+    <script src="assets/inputs.js"></script>
     <script src="js/main.js"></script>
+    <!-- <script src="js/books.js"></script> -->
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/d152bd8a2a.js"></script>
 </body>
 </html>
