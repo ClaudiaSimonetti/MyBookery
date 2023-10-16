@@ -103,6 +103,7 @@ function showModals(){
 
 showModals();
 
+
 let cartList = []
 
 function addToCart(bookId){

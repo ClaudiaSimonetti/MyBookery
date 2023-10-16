@@ -411,19 +411,7 @@ footer {
     }
 }
 
-/* cartas y modal  */
 
-/* body {
-    position: relative;
-    min-height: 100%;
-    Establece una altura mínima del 100% de la altura de la ventana
-} */
-
-/* main {
-    padding-bottom: 100%;
-    Establece un margen inferior igual a la altura del footer
-    box-sizing: border-box;
-} */
 
 .titulo {
     text-align: center;
@@ -438,43 +426,31 @@ footer {
     justify-content: center;
 }
 
+
+
+.carta img {
+    max-width: 100%;
+    height: 50%;
+}
+
 .carta {
     border: 1px solid var(--blue);
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
     text-align: center;
     background-color: #f9f9f9;
     box-shadow: 0px 0px 5px #888;
-    width: 250px;
-    /* Ajusta el ancho de la carta según tus preferencias */
-    /* background-color: var(--blue); */
+    width: 200px; /* Establece un ancho fijo para las cartas */
+    height: 300px; /* Establece una altura fija para las cartas */
+    overflow: hidden; /* Evita que el contenido desborde */
+    display: inline-block;
 }
 
-.btn-modal {
-    cursor: pointer;
-    background-color: var(--orange);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
 
-/* Agregar una imagen */
-.carta img {
-    max-width: 100%;
-    height: 60%;
-}
-
-/* Estilo para ocultar los modales por defecto */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 600px;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+/* Ajustes para el texto dentro de la carta */
+.carta h2, .carta p {
+    font-size: 14px; /* Ajusta el tamaño del texto según tus necesidades */
+    margin: 5px 0; /* Ajusta los márgenes según sea necesario */
 }
 
 /* Estilo para el botón de cerrar */
@@ -522,13 +498,31 @@ footer {
     position: relative;
 }
 
-/* Estilo para el contenedor flexbox */
-.modal-flex-container {
+.subtitle {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.content {
+    margin: 0;
+    color: #14213d;
+    width: 100%;
+}
+
+.buscador{
     display: flex;
-    flex-direction: row;
-    /* Organiza en fila (imagen a un lado, info al otro) */
+    flex-direction: column;
     align-items: center;
-    /* Centra verticalmente */
+ 
+}
+
+
+.results-container {
+    white-space: nowrap;
+    overflow-x: auto; /* Esto agrega una barra de desplazamiento horizontal si el contenido es demasiado ancho */
+    max-width: 100%; /* Agrega un ancho máximo para evitar que el contenido se desborde */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
 }
 
 /* Estilo para la columna de la imagen */
@@ -701,3 +695,12 @@ footer {
     height: 245px;
     width: auto;
 }
+#detalle-app {
+    margin-bottom: 40px; /* Ajusta la cantidad de margen según sea necesario */
+}
+
+/* Establece un margen superior al footer */
+footer {
+    margin-top: 20px; /* Ajusta la cantidad de margen según sea necesario */
+}
+
