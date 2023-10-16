@@ -70,52 +70,66 @@ function navHandler(){
 //     modal.style.display = 'block';
 // };
 
-// function closeModal(modalId){
-//     const modal = document.getElementById(`modal${modalId}`);
-//     modal.style.display = 'none';
-//     showCart();
-// };
+function closeModal(modalId){
+    const modal = document.getElementById(`modal${modalId}`);
+    modal.style.display = 'none';
+    showCart();
+};
 
-// const modalBooks = document.querySelector('.modalBooks');
+const modalBooks = document.querySelector('.modalBooks');
 
-// function showModals(){
-//     products.forEach((product)=>{
-//         modalBooks.innerHTML += `
-//             <div id="modal${product.id}" class="modal">
-//                 <div class="modal-content">
-//                     <span class="cerrar-modal" data-target="modal${product.id}" onclick="closeModal(${product.id})">&times;</span>
-//                     <div class="modal-flex-container">
-//                         <div class="modal-image">
-//                             <img src="${product.img}" alt="Imagen del libro 1">
-//                         </div>
-//                         <div class="modal-info">
-//                             <h2>${product.title}</h2>
-//                             <p>${product.description}.</p>
-//                             <p>Precio: $${product.price}</p>
-//                             <button class="btn-modal" id="addToCart${product.id}" onclick="addToCart(${product.id})">Agregar al Carrito</button>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         `
-//     });
-// };
+function showModals(){
+    products.forEach((product)=>{
+        modalBooks.innerHTML += `
+            <div id="modal${product.id}" class="modal">
+                <div class="modal-content">
+                    <span class="cerrar-modal" data-target="modal${product.id}" onclick="closeModal(${product.id})">&times;</span>
+                    <div class="modal-flex-container">
+                        <div class="modal-image">
+                            <img src="${product.img}" alt="Imagen del libro 1">
+                        </div>
+                        <div class="modal-info">
+                            <h2>${product.title}</h2>
+                            <p>${product.description}.</p>
+                            <p>Precio: $${product.price}</p>
+                            <button class="btn-modal" id="addToCart${product.id}" onclick="addToCart(${product.id})">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `
+    });
+};
 
-// showModals();
+showModals();
 
-let cartList = []
 
-function addToCart(bookId){
-    if(cartList.some(prod => parseInt(prod.id) === parseInt(bookId))){
-        let addProduct = cartList.find(findProd=>parseInt(findProd.id) === parseInt(bookId))
-        addProduct.quantity = addProduct.quantity + 1          
-    } else{
-        const nuevoProducto = {...products[bookId-1]}
-        cartList.push(nuevoProducto)
+function addToCart(book) {
+    const bookId = book.id; // O ajusta esto según cómo tengas la propiedad 'id' en tu objeto 'selectedBook'
+
+    if (cartList.some(prod => parseInt(prod.id) === parseInt(bookId))) {
+        let addProduct = cartList.find(findProd => parseInt(findProd.id) === parseInt(bookId))
+        addProduct.quantity = addProduct.quantity + 1;
+    } else {
+        const nuevoProducto = { ...book };
+        cartList.push(nuevoProducto);
     }
     productCounter();
-    closeModal(bookId)
+    // closeModal(bookId); // No estoy seguro de cómo está implementada closeModal, así que esto puede o no ser necesario
 }
+// let cartList = []
+
+// function addToCart(bookId){
+//     if(cartList.some(prod => parseInt(prod.id) === parseInt(bookId))){
+//         let addProduct = cartList.find(findProd=>parseInt(findProd.id) === parseInt(bookId))
+//         addProduct.quantity = addProduct.quantity + 1          
+//     } else{
+//         const nuevoProducto = {...products[bookId-1]}
+//         cartList.push(nuevoProducto)
+//     }
+//     productCounter();
+//     closeModal(bookId)
+// }
 
 let counter = document.querySelector(".unit-counter")
 
