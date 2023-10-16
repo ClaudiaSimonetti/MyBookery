@@ -18,7 +18,7 @@
 <body>
     <header>
         <p style="width: 80px;"></p>
-        <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery" onclick= "categorySelector('novedades')">
+        <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery" onclick="categorySelector('novedades')">
         <div class="unit-counter-container" onclick="showCart()">
             <p class="unit-counter">0</p>
             <i class="fa-solid fa-cart-shopping"></i>
@@ -27,26 +27,28 @@
     <navbar>
         <nav class="menu" id="menu">
             <ul class="list">
-                <li class="list-item"><a class="item" href="#" onclick= "categorySelector('novedades')">Novedades</a></li>
+                <li class="list-item"><a class="item" href="#Novedades" onclick="categorySelector('novedades')">Novedades</a>
+                </li>
                 <li class="list-item"><a class="item" href="#">Novelas<i class="fa-solid fa-caret-down"></i></a>
                     <ul class="slide">
-                        <li><a class="item" href="#" onclick= "genderSelector('policial')">Policial</a></li>
-                        <li><a class="item" href="#" onclick= "genderSelector('drama')">Drama</a></li>
-                        <li><a class="item" href="#" onclick= "genderSelector('aventura')">Aventura</a></li>
-                        <li><a class="item" href="#">Misterio</a></li>
+
+                        <li><a class="item" href="#Romance" onclick="genderSelector('drama')">Romance</a></li>
+                        <li><a class="item" href="#Fantasia" onclick="genderSelector('aventura')">Fantasia</a></li>
+                        <li><a class="item" href="#Misterio">Misterio</a></li>
+                        <li ><a class="item" href="#CienciaFiccion" >Ciencia Ficcion</a></li>
                     </ul>
                 </li>
                 <li class="list-item"><a class="item" href="#">No Ficción<i class="fa-solid fa-caret-down"></i></a>
                     <ul class="slide">
-                        <li><a class="item" href="#">Gastronomía</a>
-                        <li><a class="item" href="#">Bibliográfico</a></li>
-                        <li><a class="item" href="#">Historia</a></li>
+                        <li><a class="item" href="#Gastronomía">Gastronomía</a>
+                        <li><a class="item" href="#Historia">Historia</a></li>
+                        <li><a class="item" href="#Autoayuda" >Autoayuda</a></li>
                     </ul>
                 </li>
-                <li class="list-item"><a class="item" href="#" target="_self">Infantiles y Juveniles</a></li>
-                <li class="list-item"><a class="item" href="#" target="_self">Lo más vendido</a></li>
+                <li class="list-item"><a class="item" href="#MasVendidos" target="_self">Mas Vendidos</a></li>
+                <!-- <li class="list-item"><a class="item" href="#CienciaFiccion" target="_self">Ciencia Ficcion</a></li> -->
                 <li class="list-item"><a class="item" href="#" target="_self">Contacto</a></li>
-
+              
             </ul>
         </nav>
         <div class="responsive-btn-container">
@@ -75,38 +77,137 @@
         </div>
 
 
-            <!-- Sección de Libros de Misterio -->
-            <div class="titulo">
-                <p class="page-title">Misterio</p>
+        <!-- Sección de Libros de Misterio -->
+        <div class="titulo">
+            <p id="Misterio" class="page-title">Misterio</p>
+        </div>
+        <div class="books">
+            <div v-for="book in mysteryBooks" :key="book.id" class="carta">
+                <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                    :alt="'Imagen del libro ' + book.volumeInfo.title">
+                <h2>{{ book.volumeInfo.title }}</h2>
+                <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
+                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
             </div>
-            <div class="books">
-                <div v-for="book in mysteryBooks" :key="book.id" class="carta">
-                    <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
-                        :alt="'Imagen del libro ' + book.volumeInfo.title">
-                    <h2>{{ book.volumeInfo.title }}</h2>
-                    <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
-                    <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
-                </div>
+        </div>
+
+
+
+        <!-- Sección de Libros de Cocina -->
+        <div class="titulo">
+            <p id="Gastronomía" class="page-title">Gastronomía</p>
+        </div>
+        <div class="books">
+            <div v-for="book in cookingBooks" :key="book.id" class="carta">
+                <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                    :alt="'Imagen del libro ' + book.volumeInfo.title">
+                <h2>{{ book.volumeInfo.title }}</h2>
+                <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
+                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
             </div>
+        </div>
 
 
 
-
-            <!-- Sección de Libros de Cocina -->
-            <div class="titulo">
-                <p class="page-title">Gastronomía</p>
+        <!-- Sección de Libros de Historia -->
+        <div class="titulo">
+            <p id="Historia" class="page-title">Historia</p>
+        </div>
+        <div class="books">
+            <div v-for="book in historiaBooks" :key="book.id" class="carta">
+                <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                    :alt="'Imagen del libro ' + book.volumeInfo.title">
+                <h2>{{ book.volumeInfo.title }}</h2>
+                <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
+                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
             </div>
-            <div class="books">
-                <div v-for="book in cookingBooks" :key="book.id" class="carta">
-                    <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
-                        :alt="'Imagen del libro ' + book.volumeInfo.title">
-                    <h2>{{ book.volumeInfo.title }}</h2>
-                    <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
-                    <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
-                </div>
+        </div>
+
+
+
+        <!-- Sección de Libros de Romance -->
+        <div class="titulo">
+            <p id="Romance" class="page-title">Romance</p>
+        </div>
+        <div class="books">
+            <div v-for="book in romanceBooks" :key="book.id" class="carta">
+                <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                    :alt="'Imagen del libro ' + book.volumeInfo.title">
+                <h2>{{ book.volumeInfo.title }}</h2>
+                <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
+                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
             </div>
+        </div>
 
+        <!-- Sección de Libros de Fantasía -->
+        <div class="titulo">
+            <p id="Fantasia" class="page-title">Fantasía</p>
+        </div>
+        <div class="books">
+            <div v-for="book in fantasyBooks" :key="book.id" class="carta">
+                <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                    :alt="'Imagen del libro ' + book.volumeInfo.title">
+                <h2>{{ book.volumeInfo.title }}</h2>
+                <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
+                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
+            </div>
+        </div>
 
+        <!-- Sección de Libros de Autoayuda -->
+        <div class="titulo">
+            <p id="Autoayuda" class="page-title">Autoayuda</p>
+        </div>
+        <div class="books">
+            <div v-for="book in selfHelpBooks" :key="book.id" class="carta">
+                <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                    :alt="'Imagen del libro ' + book.volumeInfo.title">
+                <h2>{{ book.volumeInfo.title }}</h2>
+                <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
+                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
+            </div>
+        </div>
+
+        <!-- Sección de Libros de Ciencia Ficción -->
+        <div class="titulo">
+            <p id="CienciaFiccion" class="page-title">Ciencia Ficción</p>
+        </div>
+        <div class="books">
+            <div v-for="book in scienceFictionBooks" :key="book.id" class="carta">
+                <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                    :alt="'Imagen del libro ' + book.volumeInfo.title">
+                <h2>{{ book.volumeInfo.title }}</h2>
+                <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
+                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
+            </div>
+        </div>
+
+        <!-- Sección de Libros Más Vendidos -->
+        <div class="titulo">
+            <p id="MasVendidos" class="page-title">Más Vendidos</p>
+        </div>
+        <div class="books">
+            <div v-for="book in bestsellerBooks" :key="book.id" class="carta">
+                <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                    :alt="'Imagen del libro ' + book.volumeInfo.title">
+                <h2>{{ book.volumeInfo.title }}</h2>
+                <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
+                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
+            </div>
+        </div>
+
+        <!-- Sección de Libros de Novedades -->
+        <div class="titulo">
+            <p id="Novedades" class="page-title">Novedades</p>
+        </div>
+        <div class="books">
+            <div v-for="book in newBooks" :key="book.id" class="carta">
+                <img :src="book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                    :alt="'Imagen del libro ' + book.volumeInfo.title">
+                <h2>{{ book.volumeInfo.title }}</h2>
+                <p>Autores: {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}</p>
+                <button class="btn-modal" @click="redirectToDetails(book)">Ver Detalles</button>
+            </div>
+        </div>
 
     </main>
     <footer>
@@ -133,28 +234,31 @@
         </div>
         <div>
             <div class="map-and-social-media-container">
-            <div class="footer-map-container">
-                <i class="fa-solid fa-location-dot footer-icon"></i>
-                <p class="footer-text">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3284.83210532761!2d-58.379992174260515!3d-34.58311457296175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sCarlos%20H%20Perette%20y%20Calle%2010!5e0!3m2!1ses-419!2sar!4v1695745647304!5m2!1ses-419!2sar" width="150" height="120" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </p>
+                <div class="footer-map-container">
+                    <i class="fa-solid fa-location-dot footer-icon"></i>
+                    <p class="footer-text">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3284.83210532761!2d-58.379992174260515!3d-34.58311457296175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sCarlos%20H%20Perette%20y%20Calle%2010!5e0!3m2!1ses-419!2sar!4v1695745647304!5m2!1ses-419!2sar"
+                            width="150" height="120" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </p>
+                </div>
+                <div class="footer-social-media-container">
+
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <i class="fa-brands fa-instagram footer-icon footer-social-media"></i>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank">
+                        <i class="fa-brands fa-facebook footer-icon footer-social-media"></i>
+                    </a>
+                    <a href="https://web.telegram.org/k/" target="_blank">
+                        <i class="fa-brands fa-telegram footer-icon footer-social-media"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank">
+                        <i class="fa-brands fa-x-twitter footer-icon footer-social-media"></i>
+                    </a>
+                </div>
             </div>
-            <div class="footer-social-media-container">
-                
-                <a href="https://www.instagram.com/" target="_blank">
-                    <i class="fa-brands fa-instagram footer-icon footer-social-media"></i>
-                </a>
-                <a href="https://www.facebook.com/" target="_blank">
-                    <i class="fa-brands fa-facebook footer-icon footer-social-media"></i>
-                </a>
-                <a href="https://web.telegram.org/k/" target="_blank">
-                    <i class="fa-brands fa-telegram footer-icon footer-social-media"></i>
-                </a>
-                <a href="https://twitter.com/" target="_blank">
-                    <i class="fa-brands fa-x-twitter footer-icon footer-social-media"></i>
-                </a>
-            </div>
-        </div>
             <div class="footer-icon-container footer-input-container">
                 <input type="text" placeholder=" Ingrese su email..." class="footer-input">
                 <button class="footer-button">Suscribirme al newsletter</button>

@@ -426,35 +426,31 @@ footer {
     justify-content: center;
 }
 
+
+
+.carta img {
+    max-width: 100%;
+    height: 50%;
+}
+
 .carta {
     border: 1px solid var(--blue);
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
     text-align: center;
     background-color: #f9f9f9;
     box-shadow: 0px 0px 5px #888;
-    width: 250px;
-    
-}
-
-
-
-/* Agregar una imagen */
-.carta img {
-    max-width: 100%;
-    height: 70%;
-}
-
-
-
-.carta {
-    display: inline-block;
-    margin: 10px; 
     width: 200px; /* Establece un ancho fijo para las cartas */
     height: 300px; /* Establece una altura fija para las cartas */
     overflow: hidden; /* Evita que el contenido desborde */
-    text-align: center;
+    display: inline-block;
+}
 
+
+/* Ajustes para el texto dentro de la carta */
+.carta h2, .carta p {
+    font-size: 14px; /* Ajusta el tamaño del texto según tus necesidades */
+    margin: 5px 0; /* Ajusta los márgenes según sea necesario */
 }
 
 /* Estilo para el botón de cerrar */
@@ -516,10 +512,17 @@ footer {
 
 .buscador{
     display: flex;
-    flex-direction: row;
-    /* Organiza en fila (imagen a un lado, info al otro) */
+    flex-direction: column;
     align-items: center;
-    /* Centra verticalmente */
+ 
+}
+
+
+.results-container {
+    white-space: nowrap;
+    overflow-x: auto; /* Esto agrega una barra de desplazamiento horizontal si el contenido es demasiado ancho */
+    max-width: 100%; /* Agrega un ancho máximo para evitar que el contenido se desborde */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
 }
 
 /* Estilo para la columna de la imagen */
@@ -692,3 +695,12 @@ footer {
     height: 245px;
     width: auto;
 }
+#detalle-app {
+    margin-bottom: 40px; /* Ajusta la cantidad de margen según sea necesario */
+}
+
+/* Establece un margen superior al footer */
+footer {
+    margin-top: 20px; /* Ajusta la cantidad de margen según sea necesario */
+}
+

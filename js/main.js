@@ -11,97 +11,97 @@ function navHandler(){
     }
 }
 
-const title = document.querySelector(".titulo")
-const productList  = document.querySelector(".books");
+// const title = document.querySelector(".titulo")
+// const productList  = document.querySelector(".books");
 
-function renderHome(){
-    title.innerHTML = `<p class="page-title">Novedades</p>`;
-    let productsHome = products.filter((prod)=>prod.category === 'novedades')
-    productsHome.forEach((product)=>{
-        productList.innerHTML += `
-            <div class="carta">
-                <img src="${product.img}" alt="Libro ${product.title}">
-                <h2>${product.title}</h2>
-                <p>${product.description}</p>
-                <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
-            </div>
-        `
-    })
-};
+// function renderHome(){
+//     title.innerHTML = `<p class="page-title">Novedades</p>`;
+//     let productsHome = products.filter((prod)=>prod.category === 'novedades')
+//     productsHome.forEach((product)=>{
+//         productList.innerHTML += `
+//             <div class="carta">
+//                 <img src="${product.img}" alt="Libro ${product.title}">
+//                 <h2>${product.title}</h2>
+//                 <p>${product.description}</p>
+//                 <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
+//             </div>
+//         `
+//     })
+// };
 
-renderHome();
+// renderHome();
 
-function categorySelector(category){
-    productList.innerHTML = "";
-    title.innerHTML = `<p class="page-title">${category}</p>`;
-    let filteredProducts = products.filter(el=>el.category === category)
-    filteredProducts.forEach((product)=>{
-        productList.innerHTML += `
-                <div class="carta">
-                    <img src="${product.img}" alt="Libro ${product.title}">
-                    <h2>${product.title}</h2>
-                    <p>${product.description}</p>
-                    <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
-                </div>
-            `
-    });
-    navHandler();
-}
+// function categorySelector(category){
+//     productList.innerHTML = "";
+//     title.innerHTML = `<p class="page-title">${category}</p>`;
+//     let filteredProducts = products.filter(el=>el.category === category)
+//     filteredProducts.forEach((product)=>{
+//         productList.innerHTML += `
+//                 <div class="carta">
+//                     <img src="${product.img}" alt="Libro ${product.title}">
+//                     <h2>${product.title}</h2>
+//                     <p>${product.description}</p>
+//                     <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
+//                 </div>
+//             `
+//     });
+//     navHandler();
+// }
 
-function genderSelector(gender){
-    productList.innerHTML = ""
-    title.innerHTML = `<p class="page-title">${gender}</p>`
-    let filteredProducts = products.filter(el=>el.gender === gender)
-    filteredProducts.forEach((product)=>{
-        productList.innerHTML += `
-                <div class="carta">
-                    <img src="${product.img}" alt="Libro ${product.title}">
-                    <h2>${product.title}</h2>
-                    <p>${product.description}</p>
-                    <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
-                </div>
-            `
-    });
-    navHandler();
-};
+// function genderSelector(gender){
+//     productList.innerHTML = ""
+//     title.innerHTML = `<p class="page-title">${gender}</p>`
+//     let filteredProducts = products.filter(el=>el.gender === gender)
+//     filteredProducts.forEach((product)=>{
+//         productList.innerHTML += `
+//                 <div class="carta">
+//                     <img src="${product.img}" alt="Libro ${product.title}">
+//                     <h2>${product.title}</h2>
+//                     <p>${product.description}</p>
+//                     <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
+//                 </div>
+//             `
+//     });
+//     navHandler();
+// };
 
-function openModal(modalId){
-    const modal = document.getElementById(`modal${modalId}`);
-    modal.style.display = 'block';
-};
+// function openModal(modalId){
+//     const modal = document.getElementById(`modal${modalId}`);
+//     modal.style.display = 'block';
+// };
 
-function closeModal(modalId){
-    const modal = document.getElementById(`modal${modalId}`);
-    modal.style.display = 'none';
-    showCart();
-};
+// function closeModal(modalId){
+//     const modal = document.getElementById(`modal${modalId}`);
+//     modal.style.display = 'none';
+//     showCart();
+// };
 
-const modalBooks = document.querySelector('.modalBooks');
+// const modalBooks = document.querySelector('.modalBooks');
 
-function showModals(){
-    products.forEach((product)=>{
-        modalBooks.innerHTML += `
-            <div id="modal${product.id}" class="modal">
-                <div class="modal-content">
-                    <span class="cerrar-modal" data-target="modal${product.id}" onclick="closeModal(${product.id})">&times;</span>
-                    <div class="modal-flex-container">
-                        <div class="modal-image">
-                            <img src="${product.img}" alt="Imagen del libro 1">
-                        </div>
-                        <div class="modal-info">
-                            <h2>${product.title}</h2>
-                            <p>${product.description}.</p>
-                            <p>Precio: $${product.price}</p>
-                            <button class="btn-modal" id="addToCart${product.id}" onclick="addToCart(${product.id})">Agregar al Carrito</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `
-    });
-};
+// function showModals(){
+//     products.forEach((product)=>{
+//         modalBooks.innerHTML += `
+//             <div id="modal${product.id}" class="modal">
+//                 <div class="modal-content">
+//                     <span class="cerrar-modal" data-target="modal${product.id}" onclick="closeModal(${product.id})">&times;</span>
+//                     <div class="modal-flex-container">
+//                         <div class="modal-image">
+//                             <img src="${product.img}" alt="Imagen del libro 1">
+//                         </div>
+//                         <div class="modal-info">
+//                             <h2>${product.title}</h2>
+//                             <p>${product.description}.</p>
+//                             <p>Precio: $${product.price}</p>
+//                             <button class="btn-modal" id="addToCart${product.id}" onclick="addToCart(${product.id})">Agregar al Carrito</button>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         `
+//     });
+// };
 
-showModals();
+// showModals();
 
 let cartList = []
 

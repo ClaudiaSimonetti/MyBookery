@@ -43,8 +43,9 @@
                 
             
                 <div class="buttons-container">
-            <button class="btn-modal" @click="addToCart(selectedBook)">Agregar al Carrito <i class="bi bi-cart"></i></button>
-            <button class="btn-regresa" @click="goBack">Regresar </button>      
+            <!-- <button class="btn-modal" @click="addToCart(selectedBook)">Agregar al Carrito <i class="bi bi-cart"></i></button> -->
+            <button class="btn-modal" id="addToCart2">Agregar al Carrito <i class="bi bi-cart"></i></button>
+            <button class="btn-modal" @click="goBack">Regresar </button>      
         </div>
         </div>
         </div>
@@ -106,11 +107,14 @@
         </div>
     </footer>
 
-
+    <script src="./assets/products.js"></script>
+    <script src="./assets/inputs.js"></script>
+    <script src="./js/main.js"></script>
     <!-- Agrega Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-
     <script src="./js/detalle.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/d152bd8a2a.js"></script>
 </body>
 
 </html>
