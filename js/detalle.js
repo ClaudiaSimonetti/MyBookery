@@ -1,3 +1,5 @@
+ // Cargamos los detalles de cada libro en la página detalles usando vue
+
 new Vue({
     el: '#detalle-app',
     data: {
@@ -14,13 +16,13 @@ new Vue({
                 return;
             }
 
-            // Realizamos la solicitud a la API para obtener detalles del libro
+            
             const apiUrl = `https://www.googleapis.com/books/v1/volumes/${bookId}`;
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
                     console.log('Book details:', data);
-                    this.selectedBook = data;  // Corrige esta línea para asignar a selectedBook en lugar de bookDetails
+                    this.selectedBook = data;  
                 })
                 .catch(error => console.error('Error fetching book details:', error));
         },

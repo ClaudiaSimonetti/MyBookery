@@ -1,4 +1,4 @@
-
+// Cargamos la info de los libro con la api usando vue
 
 $(document).ready(function () {
     new Vue({

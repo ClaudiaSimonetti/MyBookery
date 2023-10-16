@@ -11,64 +11,64 @@ function navHandler(){
     }
 }
 
-// const title = document.querySelector(".titulo")
-// const productList  = document.querySelector(".books");
+const title = document.querySelector(".titulo")
+const productList  = document.querySelector(".books");
 
-// function renderHome(){
-//     title.innerHTML = `<p class="page-title">Novedades</p>`;
-//     let productsHome = products.filter((prod)=>prod.category === 'novedades')
-//     productsHome.forEach((product)=>{
-//         productList.innerHTML += `
-//             <div class="carta">
-//                 <img src="${product.img}" alt="Libro ${product.title}">
-//                 <h2>${product.title}</h2>
-//                 <p>${product.description}</p>
-//                 <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
-//             </div>
-//         `
-//     })
-// };
+function renderHome(){
+    title.innerHTML = `<p class="page-title">Novedades</p>`;
+    let productsHome = products.filter((prod)=>prod.category === 'novedades')
+    productsHome.forEach((product)=>{
+        productList.innerHTML += `
+            <div class="carta">
+                <img src="${product.img}" alt="Libro ${product.title}">
+                <h2>${product.title}</h2>
+                <p>${product.description}</p>
+                <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
+            </div>
+        `
+    })
+};
 
-// renderHome();
+renderHome();
 
-// function categorySelector(category){
-//     productList.innerHTML = "";
-//     title.innerHTML = `<p class="page-title">${category}</p>`;
-//     let filteredProducts = products.filter(el=>el.category === category)
-//     filteredProducts.forEach((product)=>{
-//         productList.innerHTML += `
-//                 <div class="carta">
-//                     <img src="${product.img}" alt="Libro ${product.title}">
-//                     <h2>${product.title}</h2>
-//                     <p>${product.description}</p>
-//                     <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
-//                 </div>
-//             `
-//     });
-//     navHandler();
-// }
+function categorySelector(category){
+    productList.innerHTML = "";
+    title.innerHTML = `<p class="page-title">${category}</p>`;
+    let filteredProducts = products.filter(el=>el.category === category)
+    filteredProducts.forEach((product)=>{
+        productList.innerHTML += `
+                <div class="carta">
+                    <img src="${product.img}" alt="Libro ${product.title}">
+                    <h2>${product.title}</h2>
+                    <p>${product.description}</p>
+                    <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
+                </div>
+            `
+    });
+    navHandler();
+}
 
-// function genderSelector(gender){
-//     productList.innerHTML = ""
-//     title.innerHTML = `<p class="page-title">${gender}</p>`
-//     let filteredProducts = products.filter(el=>el.gender === gender)
-//     filteredProducts.forEach((product)=>{
-//         productList.innerHTML += `
-//                 <div class="carta">
-//                     <img src="${product.img}" alt="Libro ${product.title}">
-//                     <h2>${product.title}</h2>
-//                     <p>${product.description}</p>
-//                     <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
-//                 </div>
-//             `
-//     });
-//     navHandler();
-// };
+function genderSelector(gender){
+    productList.innerHTML = ""
+    title.innerHTML = `<p class="page-title">${gender}</p>`
+    let filteredProducts = products.filter(el=>el.gender === gender)
+    filteredProducts.forEach((product)=>{
+        productList.innerHTML += `
+                <div class="carta">
+                    <img src="${product.img}" alt="Libro ${product.title}">
+                    <h2>${product.title}</h2>
+                    <p>${product.description}</p>
+                    <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
+                </div>
+            `
+    });
+    navHandler();
+};
 
-// function openModal(modalId){
-//     const modal = document.getElementById(`modal${modalId}`);
-//     modal.style.display = 'block';
-// };
+function openModal(modalId){
+    const modal = document.getElementById(`modal${modalId}`);
+    modal.style.display = 'block';
+};
 
 function closeModal(modalId){
     const modal = document.getElementById(`modal${modalId}`);
@@ -104,32 +104,19 @@ function showModals(){
 showModals();
 
 
-function addToCart(book) {
-    const bookId = book.id; // O ajusta esto según cómo tengas la propiedad 'id' en tu objeto 'selectedBook'
+let cartList = []
 
-    if (cartList.some(prod => parseInt(prod.id) === parseInt(bookId))) {
-        let addProduct = cartList.find(findProd => parseInt(findProd.id) === parseInt(bookId))
-        addProduct.quantity = addProduct.quantity + 1;
-    } else {
-        const nuevoProducto = { ...book };
-        cartList.push(nuevoProducto);
+function addToCart(bookId){
+    if(cartList.some(prod => parseInt(prod.id) === parseInt(bookId))){
+        let addProduct = cartList.find(findProd=>parseInt(findProd.id) === parseInt(bookId))
+        addProduct.quantity = addProduct.quantity + 1          
+    } else{
+        const nuevoProducto = {...products[bookId-1]}
+        cartList.push(nuevoProducto)
     }
     productCounter();
-    // closeModal(bookId); // No estoy seguro de cómo está implementada closeModal, así que esto puede o no ser necesario
+    closeModal(bookId)
 }
-// let cartList = []
-
-// function addToCart(bookId){
-//     if(cartList.some(prod => parseInt(prod.id) === parseInt(bookId))){
-//         let addProduct = cartList.find(findProd=>parseInt(findProd.id) === parseInt(bookId))
-//         addProduct.quantity = addProduct.quantity + 1          
-//     } else{
-//         const nuevoProducto = {...products[bookId-1]}
-//         cartList.push(nuevoProducto)
-//     }
-//     productCounter();
-//     closeModal(bookId)
-// }
 
 let counter = document.querySelector(".unit-counter")
 
