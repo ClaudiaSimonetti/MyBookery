@@ -13723,4 +13723,16 @@ fieldset:disabled .btn {
     display: none !important;
   }
 }
+.form-container {
+  display: flex;
+  justify-content: center;
+
+}
+
+.formularioContacto {
+  padding-top: 0%;
+  padding-bottom: 5%;
+}
+
+
 /*# sourceMappingURL=styles.css.map */
