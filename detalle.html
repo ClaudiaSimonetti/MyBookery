@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Libro</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="shortcut icon" href="img/logo/favicon.png">
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+    <!-- <link rel="stylesheet" href="scss/styles.css"> -->
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <p style="width: 80px;"></p>
+        <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery">
+        <div class="unit-counter-container">
+            <p class="unit-counter">0</p><i class="bi bi-cart"></i>
+        </div>
+    </header>
+    <div id="detalle-app">
+        
+        <div v-if="selectedBook">
+            <div class="image-container">
+                <img :src="selectedBook.volumeInfo.imageLinks ? selectedBook.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
+                :alt="selectedBook.volumeInfo.title">
+            </div>
+            <div class="info-container">
+                <h1 class="title">{{ selectedBook.volumeInfo.title }}</h1>
+                <p class="subtitle">Autores: {{ selectedBook.volumeInfo.authors ? selectedBook.volumeInfo.authors.join(', ') : 'Desconocido'
+                }}</p>
+            <p class="content">Editorial: {{ selectedBook.volumeInfo.publisher || 'Desconocida' }}</p>
+            <p class="content">Número de Páginas: {{ selectedBook.volumeInfo.pageCount || 'Desconocido' }}</p>
+            <p class="content">Categoría: {{ selectedBook.volumeInfo.categories ? selectedBook.volumeInfo.categories.join(', ') :
+                'Desconocida' }}</p>
+                <p class="content">Fecha de publicación: {{ selectedBook.volumeInfo.publishedDate || 'Desconocida' }}</p>
+                
+            
+                <div class="buttons-container">
+           
+            <button class="btn-modal" >Agregar al Carrito <i class="bi bi-cart"></i></button>
+            <button class="btn-modal" @click="goBack">Regresar </button>      
+      
+      
+        </div>
+        </div>
+        </div>
+        <div v-else>
+            <p>Cargando detalles del libro...</p>
+        </div>
+    </div>
+
+
+    <footer>
+        <div>
+            <img class="logo footer-logo" src="img/logo/myBookery.png" alt="Logo MyBookery">
+        </div>
+        <div>
+            <div class="footer-icon-container">
+                <a href="https://web.whatsapp.com/" target="_blank"><i class="bi bi-whatsapp footer-icon"></i></a>
+                <p class="footer-text">+54 11 5555-5555</p>
+            </div>
+            <div class="footer-icon-container">
+                <a href="mailto:mybookery@myboolery.com"><i class="bi bi-envelope-fill footer-icon"></i></a>
+                <p class="footer-text">mybookery@mybookery.com</p>
+            </div>
+            <div class="footer-icon-container">
+                <i class="bi bi-clock-fill footer-icon"></i>
+                <p class="footer-text">Horario: Lunes a Viernes de 9.00 a 18.00 horas</p>
+            </div>
+        </div>
+        <div>
+            <div class="map-and-social-media-container">
+                <div class="footer-map-container">
+                    <i class="bi bi-geo-alt-fill footer-icon"></i>
+                    <p class="footer-text">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3284.83210532761!2d-58.379992174260515!3d-34.58311457296175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sCarlos%20H%20Perette%20y%20Calle%2010!5e0!3m2!1ses-419!2sar!4v1695745647304!5m2!1ses-419!2sar"
+                            width="150" height="120" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </p>
+                </div>
+                <div class="footer-social-media-container">
+
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <i class="bi bi-instagram footer-icon footer-social-media"></i>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank">
+                        <i class="bi bi-facebook footer-icon footer-social-media"></i>
+                    </a>
+                    <a href="https://web.telegram.org/k/" target="_blank">
+                        <i class="bi bi-telegram footer-icon footer-social-media"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank">
+                        <i class="bi bi-twitter footer-icon footer-social-media"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-icon-container footer-input-container">
+                <input type="text" placeholder=" Ingrese su email..." class="footer-input">
+                <button class="footer-button">Suscribirme al newsletter</button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/products.js"></script>
+    <script src="./assets/inputs.js"></script>
+    <script src="./js/main.js"></script>
+    <!-- Agrega Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="./js/detalle.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/d152bd8a2a.js"></script>
+</body>
+
+</html>
