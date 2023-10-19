@@ -22,11 +22,11 @@
         </div>
     </header>
     <navbar>
-        <nav class="menu" id="menu">
+        <nav class="menu" id="menu" style="z-index: 3">
             <ul class="list">
                 <li class="list-item"><a class="item" href="#" onclick= "categorySelector('novedades')">Novedades</a></li>
                 <li class="list-item"><a class="item" href="#">Novelas<i class="fa-solid fa-caret-down"></i></a>
-                    <ul class="slide">
+                    <ul class="slide" style="z-index: 3">
                         <li><a class="item" href="#" onclick= "genderSelector('policial')">Policial</a></li>
                         <li><a class="item" href="#" onclick= "genderSelector('drama')">Drama</a></li>
                         <li><a class="item" href="#" onclick= "genderSelector('aventura')">Aventura</a></li>
@@ -34,7 +34,7 @@
                     </ul>
                 </li>
                 <li class="list-item"><a class="item" href="#">No Ficción<i class="fa-solid fa-caret-down"></i></a>
-                    <ul class="slide">
+                    <ul class="slide" style="z-index: 3">
                         <li><a class="item" href="#">Gastronomía</a>
                         <li><a class="item" href="#">Bibliográfico</a></li>
                         <li><a class="item" href="#">Historia</a></li>
@@ -53,84 +53,20 @@
         </div>
     </navbar>
     <main class="main-container">
-        <div class="titulo">
-            <!-- <p class="page-title">Novedades</p> -->
-        </div>
-        <div class="books">
-            <!-- <div class="carta">
-                <img src="https://i.pinimg.com/originals/f1/48/e2/f148e2c987f9f7c24a2373f25609433f.jpg" alt="Imagen de la carta 1">
-                <h2>Carta 1</h2>
-                <p>Información de la carta 1.</p>
-                <button class="btn-modal" data-target="modal1">Ver Detalles</button>
-            </div>
-            <div class="carta">
-                <img src="https://zumografica.com/wp-content/uploads/2017/09/libro-imprenta-lima.jpg" alt="Imagen de la carta 2">
-                <h2>Carta 2</h2>
-                <p>Información de la carta 2.</p>
-                <button class="btn-modal" data-target="modal2">Ver Detalles</button>
-            </div>
-            <div class="carta">
-                <img src="https://www.rae.es/sites/default/files/portada_cien_anos_de_soledad_0.jpg" alt="Imagen de la carta 3">
-                <h2>Carta 3</h2>
-                <p>Información de la carta 3.</p>
-                <button class="btn-modal" data-target="modal3">Ver Detalles</button>
+        <div id="info"></div>
+        <div class="slider" id="slider" style="z-index: 1">
+            <!-- <div class="slides">
+                <img src="./img/slide/img1.jpg" alt="">
+                <img src="./img/slide/img2.jpg" alt="">
+                <img src="./img/slide/img3.jpg" alt=""> 
+                <img src="./img/slide/img4.jpg" alt=""> 
+                <img src="./img/slide/img1.jpg" alt="">
             </div> -->
-            
         </div>
+        <div class="title"></div>
+        <div class="books"></div>
         <div class="modalBooks"></div>
-        <!-- Modal para el libro 1 -->
-        <!-- <div id="modal1" class="modal">
-            <div class="modal-content">
-                <span class="cerrar-modal" data-target="modal1">&times;</span>
-                <div class="modal-flex-container">
-                    <div class="modal-image">
-                        <img src="https://i.pinimg.com/originals/f1/48/e2/f148e2c987f9f7c24a2373f25609433f.jpg" alt="Imagen del libro 1">
-                    </div>
-                    <div class="modal-info">
-                        <h2>Título del Libro 1</h2>
-                        <p>Descripción del libro 1.</p>
-                        <p>Precio: $XX.XX</p>
-                        <button class="btn-modal" id="addToCart1">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Modal para el libro 2 -->
-        <!-- <div id="modal2" class="modal">
-            <div class="modal-content">
-                <span class="cerrar-modal" data-target="modal2">&times;</span>
-                <div class="modal-flex-container">
-                    <div class="modal-image">
-                        <img src="https://zumografica.com/wp-content/uploads/2017/09/libro-imprenta-lima.jpg" alt="Imagen del libro 1">
-                    </div>
-                    <div class="modal-info">
-                        <h2>Título del Libro 2</h2>
-                        <p>Descripción del libro 2.</p>
-                        <p>Precio: $XX.XX</p>
-                        <button class="btn-modal" id="addToCart2">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Modal para el libro 3 -->
-        <!-- <div id="modal3" class="modal">
-            <div class="modal-content">
-                <span class="cerrar-modal" data-target="modal2">&times;</span>
-                <div class="modal-flex-container">
-                    <div class="modal-image">
-                        <img src="https://www.rae.es/sites/default/files/portada_cien_anos_de_soledad_0.jpg" alt="Imagen del libro 3">
-                    </div>
-                    <div class="modal-info">
-                        <h2>Título del Libro 3</h2>
-                        <p>Descripción del libro 3.</p>
-                        <p>Precio: $XX.XX</p>
-                        <button class="btn-modal" id="addToCart2">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- <div> --> 
-            <div class="popUpMessage"></div>
+        <div class="popUpMessage"></div>
     </main>
     <footer>
         <div>
@@ -187,6 +123,7 @@
     <script src="assets/products.js"></script>
     <script src="assets/inputs.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/api.js"></script>
     <!-- <script src="js/books.js"></script> -->
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/d152bd8a2a.js"></script>

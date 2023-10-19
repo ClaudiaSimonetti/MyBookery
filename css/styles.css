@@ -265,6 +265,78 @@ nav ul li a {
     height: auto;
 }
 
+#info{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    justify-content: end;
+    text-align: center;
+    height: 20px;
+    background-color: var(--blue);
+    margin: auto;
+}
+
+#info p{
+    font-size: 12px;
+    margin-top: 15px;
+    margin-right: 10px;
+    font-family: var(--primaryFont);
+    color: var(--orange);
+    font-weight: bolder;
+}
+
+.slider{
+    overflow: hidden;
+    object-fit: contain;
+    width: 90vw;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.slider .slides{
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    animation: 20s slider infinite;
+}
+
+.slider .slides img{
+    width: 20%;
+    float: left;
+}
+
+@keyframes slider {
+    0% {
+        left: 0;
+    }
+    20% {
+        left: 0;
+    }
+    25% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    50% {
+        left: -200%;
+    }
+    70% {
+        left: -200%;
+    }
+    75% {
+        left: -300%;
+    }
+    95% {
+        left: -300%;
+    }
+    100% {
+        left: -400%;
+    }
+
+}
+
 .page-title {
     font-size: 20px;
     font-weight: bold;
@@ -425,7 +497,7 @@ footer {
     box-sizing: border-box;
 } */
 
-.titulo {
+.title {
     text-align: center;
     /* Centra el contenido horizontalmente */
 }
@@ -632,14 +704,9 @@ footer {
     }
 }
 
-/* 1200px
-992px
-768px
-600px */
-
 .input-container{
     width: 90%;
-    height: 90px;
+    height: 130px;
     /* border: 2px solid red; */
     margin-left: 10%;
     
@@ -661,6 +728,9 @@ footer {
     padding-left: 8px;
     padding-right: 8px;
     width: 90%;
+    height: 50px;
+    border-radius: 5px;
+    /* border: 2px solid blue; */
 }
 
 .errorMessage{
@@ -674,6 +744,7 @@ footer {
 .message-modal{
     text-align: center;
 }
+
 .btn-modal-cart{
     background-color: var(--blue);
     color: var(--orange);

@@ -11,7 +11,35 @@ function navHandler(){
     }
 }
 
-const title = document.querySelector(".titulo")
+const info =  document.getElementById('info')
+function getExchange(exchange){
+    let date = exchange[0].date;
+    let newDate =date.slice(0, -22);
+    let format = newDate.split("-");
+    let today = format[2]+'/'+format[1] +'/'+format[0]
+    info.innerHTML = ` 
+        <p>Fecha: ${today}</p>
+        <p>Cotización dólar: $ ${exchange[0].value_sell}</p>
+    `
+}
+
+const slider = document.getElementById("slider")
+
+function carrousel(){
+    slider.innerHTML = `
+        <div class="slides">
+            <img src="./img/slide/img1.jpg" alt="">
+            <img src="./img/slide/img2.jpg" alt="">
+            <img src="./img/slide/img3.jpg" alt=""> 
+            <img src="./img/slide/img4.jpg" alt=""> 
+            <img src="./img/slide/img1.jpg" alt="">
+        </div>
+    `
+}
+
+carrousel();
+
+const title = document.querySelector(".title")
 const productList  = document.querySelector(".books");
 
 function renderHome(){
@@ -31,7 +59,12 @@ function renderHome(){
 
 renderHome();
 
+function btnBack(){
+    window.history.back()
+}
+
 function categorySelector(category){
+    carrousel();
     productList.innerHTML = "";
     title.innerHTML = `<p class="page-title">${category}</p>`;
     let filteredProducts = products.filter(el=>el.category === category)
@@ -49,6 +82,7 @@ function categorySelector(category){
 }
 
 function genderSelector(gender){
+    slider.innerHTML = ""
     productList.innerHTML = ""
     title.innerHTML = `<p class="page-title">${gender}</p>`
     let filteredProducts = products.filter(el=>el.gender === gender)
@@ -106,6 +140,7 @@ showModals();
 let cartList = []
 
 function addToCart(bookId){
+    slider.innerHTML = ""
     if(cartList.some(prod => parseInt(prod.id) === parseInt(bookId))){
         let addProduct = cartList.find(findProd=>parseInt(findProd.id) === parseInt(bookId))
         addProduct.quantity = addProduct.quantity + 1          
