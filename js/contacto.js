@@ -1,51 +1,54 @@
-function validateForm() {
+let errorMessageName = document.getElementById("nombre-error")
+let errorMessageSurname = document.getElementById("apellido-error")
+let errorMessageEmail = document.getElementById("email-error")
+let errorMessageConsulta = document.getElementById("consulta-error")
 
-    var nombre = document.getElementById("nombre").value;
-    var apellido = document.getElementById("apellido").value;
-    var email = document.getElementById("email").value;
-    var consulta = document.getElementById("consulta").value;
-
-    var nombreError = document.getElementById("nombre-error");
-    var apellidoError = document.getElementById("apellido-error");
-    var emailError = document.getElementById("email-error");
-    var consultaError = document.getElementById("consulta-error");
-
-    nombreError.innerText="";
-    apellidoError.innerText="";
-    emailError.innerText="";
-    consultaError.innerText="";
-    
-
-    nombre.classList.remove("is-invalid");
-    apellido.classList.remove("is-invalid");
-    email.classList.remove("is-invalid");
-    consulta.classList.remove("is-invalid");
-
-    if (nombre.value.trim() === "") {
-      nombreError.innerText = "Ingrese su nombre.";
-      nombre.classList.add(is-invalid);
-      return false;
-    }
-    if (apellido.value.trim() === "") {
-      apellidoError.innerText = "Ingrese su apellido.";
-      apellido.classList.add(is-invalid);
-      return false;
-    }
-    if (email.value.trim() === "") {
-      emailError.innerText = "Ingrese un email válido.";
-      email.classList.add(is-invalid);
-      return false;
-    }
-    if (consulta.value.trim() === "") {
-      consultaError.innerText = "Ingrese su consulta.";
-      consulta.classList.add(is-invalid);
-      return false;
-    }
-
-    return true;
-
- 
+function contactFormCleaner(){
+  document.getElementById('nombre').value = "";
+  document.getElementById('apellido').value = "";
+  document.getElementById('email').value = "";
+  document.getElementById('consulta').value = "";
+  errorMessageName.innerHTML = "";
+  errorMessageSurname.innerHTML = "";
+  errorMessageEmail.innerHTML = "";
+  errorMessageConsulta.innerHTML = "";
 }
-  
 
+function contactFormValidation(){
+  let nameValue = document.getElementById("nombre").value
+  let surnameValue = document.getElementById("apellido").value
+  let emailValue = document.getElementById("email").value
+  let consultaValue = document.getElementById("consulta").value
+
+  if(!nameValue.match(/^[a-zA-ZÀ-ÿ\s]{2,20}$/)){
+    errorMessageName.innerHTML = '<p>Verifique el dato ingresado. Solo se permiten letras.</p>';
+  }else{
+    errorMessageName.innerHTML = "";
+  }
+
+  if(!surnameValue.match(/^[a-zA-ZÀ-ÿ\s]{2,20}$/)){
+    errorMessageSurname.innerHTML = '<p>Verifique el dato ingresado. Solo se permiten letras.</p>';
+  }else{
+    errorMessageSurname.innerHTML = "";
+  }
+
+  if(!emailValue.match(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)){
+    errorMessageEmail.innerHTML = '<p>Verifique el dato ingresado. Ej: correo@mybookery.com.</p>';
+  }else{
+    errorMessageEmail.innerHTML = "";
+  }
   
+  if(consultaValue === ""){
+    errorMessageConsulta.innerHTML = 'Debe ingresar su consulta';
+  }else{
+    errorMessageConsulta.innerHTML = "";
+  }
+
+  if(nameValue !== "" && errorMessageName.innerHTML === "" &&
+  surnameValue !== "" && errorMessageSurname.innerHTML === "" &&
+  emailValue !== "" && errorMessageEmail.innerHTML === "" &&
+  consultaValue !== "" && errorMessageConsulta.innerHTML === ""
+  ){
+    contactFormCleaner()
+  }
+}

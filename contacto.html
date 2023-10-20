@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyBookery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBookery</title>
     <link rel="shortcut icon" href="img/logo/favicon.png">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="scss/styles.css">
@@ -12,119 +12,102 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-   
 </head>
 <body>
-  <header>
-    <p style="width: 80px;"></p>
-    <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery">
-    <div class="unit-counter-container"><p class="unit-counter">0</p><i class="bi bi-cart"></i></div>
-</header>
-<navbar>
-    <nav class="menu" id="menu">
-        <ul class="list">
-            <li class="list-item"><a class="item in-responsive-menu" href="#">Novedades</a></li>
-            <li class="list-item"><a class="item in-responsive-menu" href="#">Novelas<i class="bi bi-caret-down-fill"></i></a>
-                <ul class="slide">
-                    <li><a class="item in-responsive-menu" href="#">Policial</a></li>
-                    <li><a class="item in-responsive-menu" href="#">Misterio</a></li>
-                </ul>
-            </li>
-            <li class="list-item"><a class="item in-responsive-menu" href="#">No Ficción<i class="bi bi-caret-down-fill"></i></a>
-                <ul class="slide">
-                    <li><a class="item in-responsive-menu" href="#">Gastronomía</a>
-                    <li><a class="item in-responsive-menu" href="#">Bibliográfico</a></li>
-                    <li><a class="item in-responsive-menu" href="#">Historia</a></li>
-                </ul>
-            </li>
-            <li class="list-item"><a class="item in-responsive-menu" href="#" target="_self">Infantiles y Juveniles</a></li>
-            <li class="list-item"><a class="item in-responsive-menu" href="#" target="_self">Lo más vendido</a></li>
-            <li class="list-item"><a class="item in-responsive-menu" href="#" target="_self">Contacto</a></li>
-            <div class="input-search-container">
-                <input class='input-search' placeholder=" Buscar..." type="text"><i class="bi bi-search"></i>
+    <header>
+        <p style="width: 80px;"></p>
+        <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery">
+        <div class="unit-counter-container"><p class="unit-counter">0</p><i class="bi bi-cart"></i></div>
+    </header>
+    <navbar>
+        <nav class="menu" id="menu">
+            <ul class="list">
+                <li class="list-item"><a class="item in-responsive-menu" href="#">Novedades</a></li>
+                <li class="list-item"><a class="item in-responsive-menu" href="#">Novelas<i class="bi bi-caret-down-fill"></i></a>
+                    <ul class="slide">
+                        <li><a class="item in-responsive-menu" href="#">Policial</a></li>
+                        <li><a class="item in-responsive-menu" href="#">Misterio</a></li>
+                    </ul>
+                </li>
+                <li class="list-item"><a class="item in-responsive-menu" href="#">No Ficción<i class="bi bi-caret-down-fill"></i></a>
+                    <ul class="slide">
+                        <li><a class="item in-responsive-menu" href="#">Gastronomía</a>
+                        <li><a class="item in-responsive-menu" href="#">Bibliográfico</a></li>
+                        <li><a class="item in-responsive-menu" href="#">Historia</a></li>
+                    </ul>
+                </li>
+                <li class="list-item"><a class="item in-responsive-menu" href="#" target="_self">Infantiles y Juveniles</a></li>
+                <li class="list-item"><a class="item in-responsive-menu" href="#" target="_self">Lo más vendido</a></li>
+                <li class="list-item"><a class="item in-responsive-menu" href="#" target="_self">Contacto</a></li>
+                <div class="input-search-container">
+                    <input class='input-search' placeholder=" Buscar..." type="text"><i class="bi bi-search"></i>
+                </div>
+            </ul>
+        </nav>
+        <div class="responsive-btn-container">
+            <button id="responsive-menu-btn"><i class="bi bi-list"></i></button>
+        </div>
+    </navbar>
+    <main class="main-container">    
+        <p class="page-title contact-title">Contacto</p>
+        <div form class="container form-container" id="form-contact">
+            <div class="form-group mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre">
+                <div id="nombre-error" class="errorMessage error-form-contact"></div>
             </div>
-        </ul>
-    </nav>
-    <div class="responsive-btn-container">
-        <button id="responsive-menu-btn"><i class="bi bi-list"></i></button>
-    </div>
-</navbar>
-<main class="main-container">    
-
-  <div class="container form-container" form onsubmit="return validateForm()">
-   
-  
-    <div style="width: 60%">
-    <br>
-    <form action="#" method="POST" id="formulario" <form onsubmit="return validateForm()">
-    </form>
-      <div class="formularioContacto"><h2 >Contacto</h2></div>
-      
-      <div class="form-group mb-3">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" name="nombre" is-invalid>
-        <span id="nombre-error" class="invalid-feedback" style="color: crimson;">Ingrese su nombre.</span>
-      </div>
-      <div class="form-group mb-3">
-        <label for="apellido" class="form-label">Apellido</label>
-        <input type="text" class="form-control" id="apellido" name="apellido" is-invalid>
-        <span id="apellido-error" class="invalid-feedback" style="color: crimson;">Ingrese su apellido.</span>
-      </div>
-      <div class="form-group mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" is-invalid>
-        <span id="email-error" class="invalid-feedback" style="color: crimson;">Ingrese en email válido.</span>
-              
-      </div>
-      <div class="form-group mb-3">
-        <label for="consulta" class="form-label">Consulta</label>
-        <textarea class="form-control" id="consulta" name="consulta" rows="5"></textarea is-invalid>
-        <span id="consulta-error" class="invalid-feedback" style="color: crimson;">Ingrese su consulta.</span>
-      </div>
-      <button type="submit" class="btn btn-primary">Limpiar el formulario</button>
-      <button type="submit" class="btn btn-primary">Enviar</button>
-      
-    </form>
-   
-  </div>
-  </div>
-  <br>
-
-  <footer>
-    <div>
-        <img class="logo footer-logo" src="img/logo/myBookery.png" alt="Logo MyBookery">
-    </div>
-    <div>
-        <div class="footer-icon-container">
-            <i class="bi bi-whatsapp footer-icon"></i>
-            <p class="footer-text">+54 11 5555-5555</p>
+            <div class="form-group mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="apellido" name="apellido">
+                <div id="apellido-error" class="errorMessage error-form-contact"></div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" >
+                <div id="email-error" class="errorMessage error-form-contact"></div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="consulta" class="form-label">Consulta</label>
+                <textarea class="form-control" id="consulta" name="consulta" rows="5"></textarea>
+            <div id="consulta-error" class="errorMessage error-form-contact"></div>
         </div>
-        <div class="footer-icon-container">
-            <i class="bi bi-envelope-fill footer-icon"></i>
-            <p class="footer-text">mybookery@mybookery.com</p>
-        </div>
-        <div class="footer-icon-container">
-            <i class="bi bi-clock-fill footer-icon"></i>
-            <p class="footer-text">Horario: Lunes a Viernes de 9.00 a 18.00 horas</p>
+        <div class="btn-contact-container">
+            <button onclick="contactFormCleaner()" class="btn-modal btn-contact-form-cleaner">Limpiar el formulario</button>
+            <button onclick="contactFormValidation()" class="btn-modal btn-contact-form-validation">Enviar</button>
         </div>
     </div>
-    <div>
-        <div class="footer-social-media-container">
-            <i class="bi bi-instagram footer-icon footer-social-media"></i>
-            <i class="bi bi-facebook footer-icon footer-social-media"></i>
-            <i class="bi bi-telegram footer-icon footer-social-media"></i>
-            <i class="bi bi-twitter footer-icon footer-social-media"></i>
+    <footer>
+        <div>
+            <img class="logo footer-logo" src="img/logo/myBookery.png" alt="Logo MyBookery">
         </div>
-        <div class="footer-icon-container footer-input-container">
-            <input type="text" placeholder=" Ingrese su email..." class="footer-input">
-            <button class="footer-button">Suscribirme al newsletter</button>
+        <div>
+            <div class="footer-icon-container">
+                <i class="bi bi-whatsapp footer-icon"></i>
+                <p class="footer-text">+54 11 5555-5555</p>
+            </div>
+            <div class="footer-icon-container">
+                <i class="bi bi-envelope-fill footer-icon"></i>
+                <p class="footer-text">mybookery@mybookery.com</p>
+            </div>
+            <div class="footer-icon-container">
+                <i class="bi bi-clock-fill footer-icon"></i>
+                <p class="footer-text">Horario: Lunes a Viernes de 9.00 a 18.00 horas</p>
+            </div>
         </div>
-        
-    </div>   
-       
-</footer>
-
- 
-  <script src="contacto.js"></script>
-</body>
+        <div>
+            <div class="footer-social-media-container">
+                <i class="bi bi-instagram footer-icon footer-social-media"></i>
+                <i class="bi bi-facebook footer-icon footer-social-media"></i>
+                <i class="bi bi-telegram footer-icon footer-social-media"></i>
+                <i class="bi bi-twitter footer-icon footer-social-media"></i>
+            </div>
+            <div class="footer-icon-container footer-input-container">
+                <input type="text" placeholder=" Ingrese su email..." class="footer-input">
+                <button class="footer-button">Suscribirme al newsletter</button>
+            </div>
+            
+        </div>   
+    </footer>
+    <script src="js/contacto.js"></script>
+    </body>
 </html>
