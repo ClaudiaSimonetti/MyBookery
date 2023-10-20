@@ -138,12 +138,14 @@ function showModals(){
 showModals();
 
 let cartList = []
+console.log("cartList:", cartList)
 
 function addToCart(bookId){
     slider.innerHTML = ""
     if(cartList.some(prod => parseInt(prod.id) === parseInt(bookId))){
-        let addProduct = cartList.find(findProd=>parseInt(findProd.id) === parseInt(bookId))
-        addProduct.quantity = addProduct.quantity + 1          
+        let addProduct = cartList.find(findProd => parseInt(findProd.id) === parseInt(bookId))
+        addProduct.quantity = addProduct.quantity + 1 
+        addProduct.totalPrice = addProduct.price * addProduct.quantity       
     } else{
         const nuevoProducto = {...products[bookId-1]}
         cartList.push(nuevoProducto)
@@ -170,16 +172,39 @@ function showCart(){
         productList.innerHTML += `
             <div class="cart">
                 <img src="${element.img}" alt="" height="90px" onclick="openModal(${element.id})" class="cartGrid">
-                <h4 onclick="openModal(${element.id})" class="cartGrid">${element.title}</h4>
+                <h5 onclick="openModal(${element.id})" class="cartGrid">${element.title}</h5>
                 <p onclick="openModal(${element.id})"class="cartGrid">${element.author}</p>
                 <p onclick="openModal(${element.id})"class="cartGrid">${element.quantity}</p>
-                <p onclick="openModal(${element.id})"class="cartGrid">${element.price}</p>
+                ${!element.totalPrice ? `<p onclick="openModal(${element.id})"class="cartGrid">$ ${element.price}</p>`
+                :`<p onclick="openModal(${element.id})"class="cartGrid">$ ${element.totalPrice}</p>`}
                 <button class="delete-button" onclick="deleteProduct(${element.id})"class="cartGrid"><i class="fa-solid fa-trash fa-2xs"></i></button>
             </div>
         `
     })
+    createTotal()
     createCartButtons();
 };
+
+function createTotal(){
+    const totalRow = document.createElement("div");
+    productList.appendChild(totalRow);
+    totalRow.setAttribute("class", "title-row"); 
+    let total = cartList.map(obj => obj.price * obj.quantity).reduce((prev, curr) => {
+                    return prev + curr
+                });
+    if(cartList.length === 0){
+        totalRow.innerHTML = ""
+    }else{
+        totalRow.innerHTML = `
+            <p class="cartGrid"></p>
+            <p class="cartGrid"></p>
+            <p class="cartGrid"></p>
+            <p class="cartGrid"></p>
+            <p class="cartGrid total-row">$ ${total}</p>
+            <p class="cartGrid"></p>
+        `
+    }
+}
 
 function createFirstRowTitles(){
     const titleRow = document.createElement("div")
@@ -194,7 +219,7 @@ function createFirstRowTitles(){
             <p class="cartGrid">Titulo</p>
             <p class="cartGrid">Autor</p>
             <p class="cartGrid">Unidades</p>
-            <p class="cartGrid">Precio</p>
+            <p class="cartGrid">Precio Total</p>
             <p class="cartGrid"></p>
         `
     }
@@ -218,6 +243,7 @@ function deleteProduct(bookId){
     let newCartList = cartList.filter((el)=>el.id !== bookId)
     cartList = newCartList
     showCart();
+    productCounter();
 }
 
 function emptyCart(){
