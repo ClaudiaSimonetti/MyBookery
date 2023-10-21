@@ -18,6 +18,8 @@
     font-family: var(--primaryFont)
 }
 
+/* HEADER */
+
 header {
     height: 60px;
     display: flex;
@@ -49,6 +51,8 @@ header {
     font-size: 20px;
     margin-top: 20px;
 }
+
+/* NAVBAR */
 
 ul {
     list-style: none;
@@ -261,6 +265,7 @@ nav ul li a {
     }
 }
 
+/* MAIN */
 .main-container {
     height: auto;
 }
@@ -345,16 +350,9 @@ nav ul li a {
     text-transform: capitalize;
 }
 
+/* FOOTER */
+
 footer {
-    /* position: adsolute; 
-    width: 100%;
-    z-index: 1000;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    Establece la altura de tu footer  */
     background-color: var(--blue);
     display: flex;
     flex-direction: row;
@@ -483,23 +481,8 @@ footer {
     }
 }
 
-/* cartas y modal  */
-
-/* body {
-    position: relative;
-    min-height: 100%;
-    Establece una altura mínima del 100% de la altura de la ventana
-} */
-
-/* main {
-    padding-bottom: 100%;
-    Establece un margen inferior igual a la altura del footer
-    box-sizing: border-box;
-} */
-
 .title {
     text-align: center;
-    /* Centra el contenido horizontalmente */
 }
 
 .books {
@@ -518,8 +501,6 @@ footer {
     background-color: #f9f9f9;
     box-shadow: 0px 0px 5px #888;
     width: 250px;
-    /* Ajusta el ancho de la carta según tus preferencias */
-    /* background-color: var(--blue); */
 }
 
 .btn-modal {
@@ -531,13 +512,11 @@ footer {
     border-radius: 5px;
 }
 
-/* Agregar una imagen */
 .carta img {
     max-width: 100%;
     height: 60%;
 }
 
-/* Estilo para ocultar los modales por defecto */
 .modal {
     display: none;
     position: fixed;
@@ -549,7 +528,6 @@ footer {
     z-index: 1;
 }
 
-/* Estilo para el botón de cerrar */
 .cerrar-modal {
     position: absolute;
     top: 0;
@@ -558,7 +536,6 @@ footer {
     cursor: pointer;
 }
 
-/* Estilo para el botón Agregar al Carrito */
 .btn-modal {
     background-color: var(--blue);
     color: var(--orange);
@@ -573,50 +550,35 @@ footer {
     color: var(--blue);
 }
 
-/* Estilo para la imagen dentro del modal */
 .modal-content img {
     max-width: 300px;
-    /* Establece un ancho máximo para la imagen */
     height: 300px;
-    /* Ajusta automáticamente la altura para mantener la proporción */
 }
 
-/* Estilo para el contenido del modal */
 .modal-content {
     background-color: var(--white);
     margin: 10% auto;
     padding: 10px;
-    /* Reduce el espacio interno del modal */
     max-width: 400px;
-    /* Establece un ancho máximo */
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     position: relative;
 }
 
-/* Estilo para el contenedor flexbox */
 .modal-flex-container {
     display: flex;
     flex-direction: row;
-    /* Organiza en fila (imagen a un lado, info al otro) */
     align-items: center;
-    /* Centra verticalmente */
 }
 
-/* Estilo para la columna de la imagen */
 .modal-image {
     flex: 1;
-    /* Toma el 50% del ancho disponible */
     padding: 10px;
-    /* Espacio interno para la imagen */
 }
 
-/* Estilo para la columna de información y botones */
 .modal-info {
     flex: 1;
-    /* Toma el 50% del ancho disponible */
     padding: 10px;
-    /* Espacio interno para la información y los botones */
 }
 
 .cart {
@@ -658,7 +620,6 @@ footer {
 }
 
 .total-row{
-    /* border: 2px solid red; */
     padding-top: 10px;
     font-weight: bold;
 }
@@ -670,7 +631,6 @@ footer {
     border: 2px solid var(--blue);
     width: 35px;
     height: 35px;
-    /* padding: 5px 10px 5px 10px; */
     margin-left: 30%;
 }
 
@@ -701,7 +661,6 @@ footer {
     display: grid;
     grid-template-columns:1fr 1fr 1fr 1fr 1fr;
     width: 95%;
-    /* border: 2px solid blue; */
 }
 
 @media (max-width: 992px) {
@@ -725,7 +684,6 @@ footer {
 .input-container{
     width: 90%;
     height: 130px;
-    /* border: 2px solid red; */
     margin-left: 10%;
     
 }
@@ -748,7 +706,6 @@ footer {
     width: 90%;
     height: 50px;
     border-radius: 5px;
-    /* border: 2px solid blue; */
 }
 
 .errorMessage{
