@@ -11,6 +11,22 @@ function navHandler(){
     }
 }
 
+const slider = document.getElementById("slider")
+
+function carrousel(){
+    slider.innerHTML = `
+        <div class="slides">
+            <img src="./img/slide/img1.jpg" alt="">
+            <img src="./img/slide/img2.jpg" alt="">
+            <img src="./img/slide/img3.jpg" alt=""> 
+            <img src="./img/slide/img4.jpg" alt=""> 
+            <img src="./img/slide/img1.jpg" alt="">
+        </div>
+    `
+}
+
+carrousel();
+
 
 renderHome();
 

@@ -30,8 +30,7 @@
                 <li class="list-item"><a class="item" href="#Novedades" onclick="categorySelector('novedades')">Novedades</a>
                 </li>
                 <li class="list-item"><a class="item" href="#">Novelas<i class="fa-solid fa-caret-down"></i></a>
-                    <ul class="slide">
-
+                    <ul class="slide" style="z-index: 3">
                         <li><a class="item" href="#Romance" onclick="genderSelector('drama')">Romance</a></li>
                         <li><a class="item" href="#Fantasia" onclick="genderSelector('aventura')">Fantasia</a></li>
                         <li><a class="item" href="#Misterio">Misterio</a></li>
@@ -39,23 +38,31 @@
                     </ul>
                 </li>
                 <li class="list-item"><a class="item" href="#">No Ficción<i class="fa-solid fa-caret-down"></i></a>
-                    <ul class="slide">
+                    <ul class="slide" style="z-index: 3">
                         <li><a class="item" href="#Gastronomía">Gastronomía</a>
                         <li><a class="item" href="#Historia">Historia</a></li>
                         <li><a class="item" href="#Autoayuda" >Autoayuda</a></li>
                     </ul>
                 </li>
                 <li class="list-item"><a class="item" href="#MasVendidos" target="_self">Mas Vendidos</a></li>
-                <li class="list-item"><a class="item" href="contacto.html" target="_self">Contacto</a></li>
-              
+                <li class="list-item"><a class="item" href="" onclick="contactForm()" target="_self">Contacto</a></li>
             </ul>
         </nav>
         <div class="responsive-btn-container">
             <button id="responsive-menu-btn" onclick="navHandler()"><i class="fa-solid fa-bars"></i></button>
         </div>
-
     </navbar>
+    <div class="slider" id="slider" style="z-index: 1">
+        <div class="slides">
+            <img src="./img/slide/img1.jpg" alt="">
+            <img src="./img/slide/img2.jpg" alt="">
+            <img src="./img/slide/img3.jpg" alt=""> 
+            <img src="./img/slide/img4.jpg" alt=""> 
+            <img src="./img/slide/img1.jpg" alt="">
+        </div>
+    </div>
     <main class="main-container" id="app">
+        <div class="slider" id="slider" style="z-index: 1"></div>
         <div id="miFormularioParent"></div>
 
         <!-- Sección de Libros del buscador -->
@@ -63,7 +70,7 @@
             <div class="input-search-container ">
                 <input id="searchInput" class='input-search' placeholder=" Buscar..." type="text" v-model="searchTerm">
                 <i class="bi bi-search" @click="searchBooks"></i>
-            </div>
+        </div>
 
             <div id="results" class="results-container">
                 <div v-for="book in searchResults" :key="book.id" class="carta">
@@ -269,6 +276,7 @@
     <script src="assets/inputs.js"></script>
     <script src="js/api.js"></script>
     <script src="js/carrito.js"></script>
+    <script src="js/contacto.js"></script>
     <script src="js/main.js"></script>
     <!-- Agrega Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
