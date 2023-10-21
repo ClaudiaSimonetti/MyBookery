@@ -1,3 +1,6 @@
+ // Variable global para almacenar los detalles del libro actual
+let currentBookDetails = null;
+ 
  // Cargamos los detalles de cada libro en la página detalles usando vue
 
 new Vue({
@@ -22,6 +25,7 @@ new Vue({
                 .then(response => response.json())
                 .then(data => {
                     console.log('Book details:', data);
+                    currentBookDetails = data;
                     this.selectedBook = data;  
                 })
                 .catch(error => console.error('Error fetching book details:', error));
