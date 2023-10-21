@@ -744,12 +744,12 @@ footer {
     margin-top: 10px;  /* Ajusta según tu diseño */
 }
 
-.button.btn-modal-cart {
+/* .button.btn-modal-cart {
     display: inline-block !important;
     
     cursor: pointer;  
     
-}
+} */
 .contact-title{
     text-align: center;
 }
@@ -775,4 +775,27 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.botones {
+    display: flex; /* Establece el contenedor como flexbox */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+}
+
+.boton {
+    margin: 5px; /* Espaciado entre los botones */
+  }
+
+.center-btn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.detalle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left; /* O ajusta según tus necesidades */
 }
