@@ -187,8 +187,8 @@ function showCart(){
 
 function createTotal(){
     const totalRow = document.createElement("div");
-    productList.appendChild(totalRow);
     totalRow.setAttribute("class", "title-row"); 
+    productList.appendChild(totalRow);
     let total = cartList.map(obj => obj.price * obj.quantity).reduce((prev, curr) => {
                     return prev + curr
                 });
@@ -248,8 +248,9 @@ function deleteProduct(bookId){
 
 function emptyCart(){
     cartList = [];
-    productCounter();
     showCart();
+    productCounter();
+    
 }
 
 const form = document.createElement("form")
@@ -262,6 +263,7 @@ function createForm(){
 const popUpMessage = document.querySelector('.popUpMessage');
 
 function popUp(message){
+    console.log("popUp -> message:", message)
     popUpMessage.innerHTML = `
         <div id="modal" class="modal">
             <div class="modal-content">
@@ -349,5 +351,103 @@ function validation(){
         cartList = [];
         productCounter();
         window.scrollTo(0, 0)
+    }
+}
+
+function contactForm(){
+    slider.innerHTML = ""
+    productList.innerHTML = "";
+    title.innerHTML = `<p class="page-title">Contacto</p>`;
+        productList.innerHTML = `
+            <div form class="container form-container" id="form-contact">
+                <div class="form-group mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre">
+                    <div id="nombre-error" class="errorMessage error-form-contact"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido">
+                    <div id="apellido-error" class="errorMessage error-form-contact"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" >
+                    <div id="email-error" class="errorMessage error-form-contact"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="consulta" class="form-label">Consulta</label>
+                    <textarea class="form-control" id="consulta" name="consulta" rows="5"></textarea>
+                <div id="consulta-error" class="errorMessage error-form-contact"></div>
+                </div>
+            <div class="btn-contact-container">
+                <button onclick="contactFormCleaner()" class="btn-modal btn-contact-form-cleaner">Limpiar el formulario</button>
+                <button onclick="contactFormValidation()" class="btn-modal btn-contact-form-validation">Enviar</button>
+            </div> 
+            `
+    navHandler();
+}
+
+function contactFormCleaner(){
+    document.getElementById('nombre').value = "";
+    document.getElementById('apellido').value = "";
+    document.getElementById('email').value = "";
+    document.getElementById('consulta').value = "";
+    let errorMessageName = document.getElementById("nombre-error")
+    let errorMessageSurname = document.getElementById("apellido-error")
+    let errorMessageEmail = document.getElementById("email-error")
+    let errorMessageConsulta = document.getElementById("consulta-error")
+    errorMessageName.innerHTML = "";
+    errorMessageSurname.innerHTML = "";
+    errorMessageEmail.innerHTML = "";
+    errorMessageConsulta.innerHTML = "";
+}
+
+function contactFormValidation(){
+    let errorMessageName = document.getElementById("nombre-error")
+    let errorMessageSurname = document.getElementById("apellido-error")
+    let errorMessageEmail = document.getElementById("email-error")
+    let errorMessageConsulta = document.getElementById("consulta-error")
+
+    let nameValue = document.getElementById("nombre").value
+    let surnameValue = document.getElementById("apellido").value
+    let emailValue = document.getElementById("email").value
+    let consultaValue = document.getElementById("consulta").value
+
+    if(!nameValue.match(/^[a-zA-ZÀ-ÿ\s]{2,20}$/)){
+        errorMessageName.innerHTML = '<p>Verifique el dato ingresado. Solo se permiten letras.</p>';
+    }else{
+    errorMessageName.innerHTML = "";
+    }
+
+    if(!surnameValue.match(/^[a-zA-ZÀ-ÿ\s]{2,20}$/)){
+        errorMessageSurname.innerHTML = '<p>Verifique el dato ingresado. Solo se permiten letras.</p>';
+    }else{
+    errorMessageSurname.innerHTML = "";
+    }
+
+    if(!emailValue.match(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)){
+        errorMessageEmail.innerHTML = '<p>Verifique el dato ingresado. Ej: correo@mybookery.com.</p>';
+    }else{
+    errorMessageEmail.innerHTML = "";
+    }
+
+    if(consultaValue === ""){
+        errorMessageConsulta.innerHTML = 'Debe ingresar su consulta';
+    }else{
+    errorMessageConsulta.innerHTML = "";
+    }
+
+    if(nameValue !== "" && errorMessageName.innerHTML === "" &&
+    surnameValue !== "" && errorMessageSurname.innerHTML === "" &&
+    emailValue !== "" && errorMessageEmail.innerHTML === "" &&
+    consultaValue !== "" && errorMessageConsulta.innerHTML === ""
+    ){
+        console.log('entro primero')
+        contactFormCleaner()
+        console.log('entro segundo')
+        popUp('<i class="fa-solid fa-circle-check"></i></i>Formulario enviado con éxito')
+        openPopUp()
+        console.log('entro tercero')
     }
 }
