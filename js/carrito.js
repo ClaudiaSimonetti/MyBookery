@@ -2,11 +2,19 @@ let cartList = loadCartFromLocalStorage();
 let productList = document.getElementById('detalle-app');
 
 
+const precios = [50, 75, 100, 150, 200];
+function generarPrecioAleatorio() {
+
+    const indiceAleatorio = Math.floor(Math.random() * precios.length);
+    return precios[indiceAleatorio];
+}
 function openCartModal() {
-   
+
 
     if (currentBookDetails && typeof currentBookDetails === 'object' && currentBookDetails.volumeInfo) {
-        const { title, authors, price } = currentBookDetails.volumeInfo;
+        const { title, authors } = currentBookDetails.volumeInfo;
+        // Generar un precio aleatorio
+        const price = generarPrecioAleatorio();
 
         const cartItem = {
 
@@ -21,14 +29,14 @@ function openCartModal() {
 
         const modalContent = `
             <div id="carrito-modal" class="modal">
-                <div class="modal-content">
+                <div class="modal-content centered">
                     <span class="close" onclick="closeModal()">&times;</span>
                     <h2>Detalles del Carrito</h2>
                     <p>Libro: ${title}</p>
                     <p>Autor: ${cartItem.author}</p>
                     <p>Precio: ${cartItem.price}</p>
-                    <button class="btn-modal-cart" onclick="showCart()">Confirmar Compra</button>
-                    <button class="btn-modal-cart" onclick="closeModal()">Cancelar</button>
+                    <button class="btn-modal-cart " onclick="showCart()">Confirmar Compra</button>
+                    <button class="btn-modal-cart " onclick="closeModal()">Cancelar</button>
                 </div>
             </div>
         `;
@@ -55,7 +63,7 @@ function createConfirmationModalContent() {
         <div id="confirmation-modal" class="modal">
             <div class="modal-content">
                 <div class="modal-flex-container">
-                    <div class="modal-info">
+                    <div class="modal-info ">
                         <p class="message-modal">Detalles de la Compra:</p>
                         <!-- Mostrar detalles de la compra aquí -->
                         ${createPurchaseDetailsHTML()}
@@ -100,10 +108,10 @@ function createForm() {
     }
 }
 function showCart() {
-  
+
     closeModal();
     productList.innerHTML = "";
-
+    let totalPrice = 0;
     // Muestra los detalles del carrito
     if (cartList.length !== 0) {
         cartList.forEach((element, index) => {
@@ -111,14 +119,18 @@ function showCart() {
             const cartProductElement = document.createElement('div');
             cartProductElement.classList.add('cart');
             cartProductElement.innerHTML = `
+           
                 <p>${element.title} - ${element.author}</p>
-                <p>Precio Unitario: 100$</p>
+                <p>Precio Unitario: ${element.price}$</p>
                 <button class="btn-modal-cart" onclick="removeItem(${index})">Eliminar</button>
             `;
 
             // Agrega el elemento al contenedor
             productList.appendChild(cartProductElement);
+            // Suma el precio al total
+            totalPrice += parseFloat(element.price);
         });
+
 
         // Agrega botones para vaciar la lista y finalizar la compra
         const clearButton = document.createElement('button');
@@ -132,6 +144,11 @@ function showCart() {
         finishButton.setAttribute('class', 'btn-modal-cart');
         finishButton.addEventListener('click', finishBuying); // Cambio aquí
         productList.appendChild(finishButton);
+
+        const totalPriceElement = document.createElement('p');
+        totalPriceElement.textContent = `Total a Pagar: ${totalPrice}$`;
+        productList.appendChild(totalPriceElement);
+
     } else {
         // Muestra un mensaje si no hay productos en el carrito
         const noItemsMessage = document.createElement('p');
@@ -207,7 +224,7 @@ function finalizePurchase() {
     }
 }
 const form = document.createElement("div");
-const title = document.getElementById('yourTitleId'); 
+const title = document.getElementById('yourTitleId');
 
 function finishBuying() {
     if (cartList.length !== 0) {
