@@ -21,13 +21,42 @@
         <p style="width: 80px;"></p>
         <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery">
         <div class="unit-counter-container">
-            <p class="unit-counter">0</p><i class="bi bi-cart"></i>
+            <p class="unit-counter" id="cartCounter">0</p>
+            <i class="fa-solid fa-cart-shopping"></i>
         </div>
     </header>
+    <navbar>
+        <nav class="menu" id="menu">
+            <ul class="list">
+                <li class="list-item"><a class="item" href="index.html#Novedades" onclick="categorySelector('novedades')">Novedades</a>
+                </li>
+                <li class="list-item"><a class="item" href="#">Novelas<i class="fa-solid fa-caret-down"></i></a>
+                    <ul class="slide">
+
+                        <li><a class="item" href="index.html#Romance" onclick="genderSelector('drama')">Romance</a></li>
+                        <li><a class="item" href="index.html#Fantasia" onclick="genderSelector('aventura')">Fantasia</a></li>
+                        <li><a class="item" href="index.html#Misterio">Misterio</a></li>
+                        <li ><a class="item" href="index.html#CienciaFiccion" >Ciencia Ficcion</a></li>
+                    </ul>
+                </li>
+                <li class="list-item"><a class="item" href="#">No Ficción<i class="fa-solid fa-caret-down"></i></a>
+                    <ul class="slide">
+                        <li><a class="item" href="index.html#Gastronomía">Gastronomía</a>
+                        <li><a class="item" href="index.html#Historia">Historia</a></li>
+                        <li><a class="item" href="index.html#Autoayuda" >Autoayuda</a></li>
+                    </ul>
+                </li>
+                <li class="list-item"><a class="item" href="index.html#MasVendidos" target="_self">Mas Vendidos</a></li>
+                <li class="list-item"><a class="item" href="contacto.html" target="_self">Contacto</a></li>
+              
+            </ul>
+        </nav>
+    </navbar>
     <div id="miFormularioParent"></div>
     <div id="detalle-app">
-        
-        <div v-if="selectedBook">
+        <h2 style="color:  #14213d;; text-align: center;">Detalles del libro</h2>
+        <div v-if="selectedBook" class="detalle-container" >
+      
             <div class="image-container">
                 <img :src="selectedBook.volumeInfo.imageLinks ? selectedBook.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'"
                 :alt="selectedBook.volumeInfo.title">
@@ -43,15 +72,17 @@
                 <p class="content">Fecha de publicación: {{ selectedBook.volumeInfo.publishedDate || 'Desconocida' }}</p>
                 
             
-                <div class="buttons-container">
+                
+        </div>
+        </div>
+        <div class="buttons-container">
            
-                    <button class="btn-modal" onclick="openCartModal()">Agregar al Carrito <i class="bi bi-cart"></i></button>
-                    <button class="btn-modal" @click="goBack">Regresar </button>      
-      
-      
-        </div>
-        </div>
-        </div>
+            <button class="btn-modal" onclick="openCartModal()">Agregar al Carrito <i class="bi bi-cart"></i></button>
+            <button class="btn-modal" @click="goBack">Regresar </button>      
+
+
+</div>
+
         <div v-else>
             <p>Cargando detalles del libro...</p>
         </div>

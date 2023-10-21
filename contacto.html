@@ -17,37 +17,39 @@
     <header>
         <p style="width: 80px;"></p>
         <img class="logo" src="img/logo/myBookery.png" alt="Logo MyBookery">
-        <div class="unit-counter-container"><p class="unit-counter">0</p><i class="bi bi-cart"></i></div>
+        <div class="unit-counter-container">
+            <p class="unit-counter" id="cartCounter">0</p>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
     </header>
     <navbar>
         <nav class="menu" id="menu">
             <ul class="list">
-                <li class="list-item"><a class="item in-responsive-menu" href="#">Novedades</a></li>
-                <li class="list-item"><a class="item in-responsive-menu" href="#">Novelas<i class="bi bi-caret-down-fill"></i></a>
+                <li class="list-item"><a class="item" href="index.html#Novedades" onclick="categorySelector('novedades')">Novedades</a>
+                </li>
+                <li class="list-item"><a class="item" href="#">Novelas<i class="fa-solid fa-caret-down"></i></a>
                     <ul class="slide">
-                        <li><a class="item in-responsive-menu" href="#">Policial</a></li>
-                        <li><a class="item in-responsive-menu" href="#">Misterio</a></li>
+
+                        <li><a class="item" href="index.html#Romance" onclick="genderSelector('drama')">Romance</a></li>
+                        <li><a class="item" href="index.html#Fantasia" onclick="genderSelector('aventura')">Fantasia</a></li>
+                        <li><a class="item" href="index.html#Misterio">Misterio</a></li>
+                        <li ><a class="item" href="index.html#CienciaFiccion" >Ciencia Ficcion</a></li>
                     </ul>
                 </li>
-                <li class="list-item"><a class="item in-responsive-menu" href="#">No Ficción<i class="bi bi-caret-down-fill"></i></a>
+                <li class="list-item"><a class="item" href="#">No Ficción<i class="fa-solid fa-caret-down"></i></a>
                     <ul class="slide">
-                        <li><a class="item in-responsive-menu" href="#">Gastronomía</a>
-                        <li><a class="item in-responsive-menu" href="#">Bibliográfico</a></li>
-                        <li><a class="item in-responsive-menu" href="#">Historia</a></li>
+                        <li><a class="item" href="index.html#Gastronomía">Gastronomía</a>
+                        <li><a class="item" href="index.html#Historia">Historia</a></li>
+                        <li><a class="item" href="index.html#Autoayuda" >Autoayuda</a></li>
                     </ul>
                 </li>
-                <li class="list-item"><a class="item in-responsive-menu" href="#" target="_self">Infantiles y Juveniles</a></li>
-                <li class="list-item"><a class="item in-responsive-menu" href="#" target="_self">Lo más vendido</a></li>
-                <li class="list-item"><a class="item in-responsive-menu" href="#" target="_self">Contacto</a></li>
-                <div class="input-search-container">
-                    <input class='input-search' placeholder=" Buscar..." type="text"><i class="bi bi-search"></i>
-                </div>
+                <li class="list-item"><a class="item" href="index.html#MasVendidos" target="_self">Mas Vendidos</a></li>
+                <li class="list-item"><a class="item" href="contacto.html" target="_self">Contacto</a></li>
+              
             </ul>
         </nav>
-        <div class="responsive-btn-container">
-            <button id="responsive-menu-btn"><i class="bi bi-list"></i></button>
-        </div>
     </navbar>
+    
     <main class="main-container">    
         <p class="page-title contact-title">Contacto</p>
         <div form class="container form-container" id="form-contact">
@@ -108,6 +110,8 @@
             
         </div>   
     </footer>
+    <script src="./js/carrito.js"></script> 
     <script src="js/contacto.js"></script>
+    <script src="https://kit.fontawesome.com/d152bd8a2a.js"></script>
     </body>
 </html>
