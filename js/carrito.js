@@ -1,12 +1,19 @@
 let cartList = loadCartFromLocalStorage();
 let productList = document.getElementById('detalle-app');
-
+productCounter();
 
 const precios = [50, 75, 100, 150, 200];
 function generarPrecioAleatorio() {
-
     const indiceAleatorio = Math.floor(Math.random() * precios.length);
     return precios[indiceAleatorio];
+   
+}
+
+function productCounter() {
+    const cartCounter = document.getElementById('cartCounter');
+    if (cartCounter) {
+        cartCounter.textContent = cartList.length.toString();
+    }
 }
 function openCartModal() {
 
@@ -26,17 +33,17 @@ function openCartModal() {
 
         cartList.push(cartItem);
         saveCartToLocalStorage(cartList);
-
+        productCounter();
         const modalContent = `
             <div id="carrito-modal" class="modal">
                 <div class="modal-content centered">
                     <span class="close" onclick="closeModal()">&times;</span>
-                    <h2>Detalles del Carrito</h2>
+                    <h2>Detalles del Producto</h2>
                     <p>Libro: ${title}</p>
                     <p>Autor: ${cartItem.author}</p>
                     <p>Precio: ${cartItem.price}</p>
-                    <button class="btn-modal-cart " onclick="showCart()">Confirmar Compra</button>
-                    <button class="btn-modal-cart " onclick="closeModal()">Cancelar</button>
+                    <button class="btn-modal-cart center-btn" onclick="showCart()">Ver Carrito</button>
+                    <button class="btn-modal-cart center-btn " onclick="closeModal()">Cancelar</button>
                 </div>
             </div>
         `;
@@ -64,10 +71,10 @@ function createConfirmationModalContent() {
             <div class="modal-content">
                 <div class="modal-flex-container">
                     <div class="modal-info ">
-                        <p class="message-modal">Detalles de la Compra:</p>
+                        <p class="message-modal">Detalles del Producto:</p>
                         <!-- Mostrar detalles de la compra aquí -->
                         ${createPurchaseDetailsHTML()}
-                        <button class="btn-modal-cart" onclick="finishBuying()">Confirmar Compra</button>
+                        <button class="btn-modal-cart" onclick="finishBuying()">Ver Carrito</button>
                         <button class="btn-modal-cart" onclick="closePopUp()">Cancelar</button>
                     </div>   
                 </div> 
@@ -108,10 +115,24 @@ function createForm() {
     }
 }
 function showCart() {
-
     closeModal();
     productList.innerHTML = "";
     let totalPrice = 0;
+
+    // Título del carrito
+    const cartTitleElement = document.createElement('h3');
+    cartTitleElement.textContent = 'Carrito de Compras';
+    cartTitleElement.style.textAlign = 'center';
+    productList.appendChild(cartTitleElement);
+
+    // Contador de elementos y precio total
+    const cartInfoContainer = document.createElement('div');
+    cartInfoContainer.style.textAlign = 'center';
+
+    const cartCountElement = document.createElement('p');
+    cartCountElement.textContent = `Cantidad de Elementos: ${cartList.length}`;
+    cartInfoContainer.appendChild(cartCountElement);
+
     // Muestra los detalles del carrito
     if (cartList.length !== 0) {
         cartList.forEach((element, index) => {
@@ -119,11 +140,13 @@ function showCart() {
             const cartProductElement = document.createElement('div');
             cartProductElement.classList.add('cart');
             cartProductElement.innerHTML = `
-           
+                
                 <p>${element.title} - ${element.author}</p>
                 <p>Precio Unitario: ${element.price}$</p>
-                <button class="btn-modal-cart" onclick="removeItem(${index})">Eliminar</button>
+                <button class="btn-modal-cart" onclick="removeItem(${index})"><i class="fa-solid fa-trash"></i></button>
             `;
+            // Añade un margen o padding al botón de eliminar
+            cartProductElement.style.marginBottom = '10px'; // Puedes ajustar el valor según sea necesario
 
             // Agrega el elemento al contenedor
             productList.appendChild(cartProductElement);
@@ -131,38 +154,60 @@ function showCart() {
             totalPrice += parseFloat(element.price);
         });
 
-
-        // Agrega botones para vaciar la lista y finalizar la compra
-        const clearButton = document.createElement('button');
-        clearButton.innerHTML = 'Vaciar Carrito';
-        clearButton.setAttribute('class', 'btn-modal-cart');
-        clearButton.addEventListener('click', clearCart);
-        productList.appendChild(clearButton);
-
-        const finishButton = document.createElement('button');
-        finishButton.innerHTML = 'Finalizar Compra';
-        finishButton.setAttribute('class', 'btn-modal-cart');
-        finishButton.addEventListener('click', finishBuying); // Cambio aquí
-        productList.appendChild(finishButton);
-
+        // Agrega el precio total al contenedor
         const totalPriceElement = document.createElement('p');
         totalPriceElement.textContent = `Total a Pagar: ${totalPrice}$`;
-        productList.appendChild(totalPriceElement);
+        cartInfoContainer.appendChild(totalPriceElement);
+
+        // Agrega el contenedor al productList
+        productList.appendChild(cartInfoContainer);
+
+        // Botones alineados y centrados en una sola línea
+        const buttonsContainer = document.createElement('div');
+        buttonsContainer.setAttribute('class', 'botones');
+        buttonsContainer.style.display = 'flex'; // Asegúrate de que sea un contenedor flexbox
+        buttonsContainer.style.justifyContent = 'center'; // Centra los elementos horizontalmente
+        buttonsContainer.style.alignItems = 'center'; // Centra los elementos verticalmente
+
+        // Botón Vaciar Carrito
+        const clearButton = document.createElement('button');
+        clearButton.innerHTML = 'Vaciar Carrito';
+        clearButton.setAttribute('class', 'btn-modal-cart boton');
+        clearButton.addEventListener('click', clearCart);
+        buttonsContainer.appendChild(clearButton);
+
+        // Botón Pagar
+        const finishButton = document.createElement('button');
+        finishButton.innerHTML = 'Pagar   <i class="fa-solid fa-credit-card"></i>';
+        finishButton.setAttribute('class', 'btn-modal-cart boton');
+        finishButton.addEventListener('click', finishBuying);
+        buttonsContainer.appendChild(finishButton);
+
+        // Botón Seguir Comprando (siempre presente)
+        const continueShoppingButton = document.createElement('button');
+        continueShoppingButton.innerHTML = 'Seguir Comprando';
+        continueShoppingButton.setAttribute('class', 'btn-modal-cart boton');
+        continueShoppingButton.addEventListener('click', continueShopping);
+        buttonsContainer.appendChild(continueShoppingButton);
+
+        // Agrega los botones al productList
+        productList.appendChild(buttonsContainer);
 
     } else {
         // Muestra un mensaje si no hay productos en el carrito
         const noItemsMessage = document.createElement('p');
         noItemsMessage.textContent = 'No hay productos en el carrito.';
         productList.appendChild(noItemsMessage);
-    }
 
-    // Agrega el botón "Seguir Comprando" independientemente de si hay productos o no
-    const continueShoppingButton = document.createElement('button');
-    continueShoppingButton.innerHTML = 'Seguir Comprando';
-    continueShoppingButton.setAttribute('class', 'btn-modal-cart');
-    continueShoppingButton.addEventListener('click', continueShopping);
-    productList.appendChild(continueShoppingButton);
+        // Agrega el botón "Seguir Comprando" independientemente de si hay productos o no
+        const continueShoppingButton = document.createElement('button');
+        continueShoppingButton.innerHTML = 'Seguir Comprando';
+        continueShoppingButton.setAttribute('class', 'btn-modal-cart boton');
+        continueShoppingButton.addEventListener('click', continueShopping);
+        productList.appendChild(continueShoppingButton);
+    }
 }
+
 
 function continueShopping() {
     // Lógica para redirigir a index.html u otra página de productos
@@ -185,6 +230,7 @@ function removeItem(index) {
     saveCartToLocalStorage(cartList);
     // Actualiza la interfaz del carrito después de eliminar un elemento
     showCart();
+    productCounter();
 }
 
 function clearCart() {
@@ -194,6 +240,7 @@ function clearCart() {
     saveCartToLocalStorage(cartList);
     // Actualiza la interfaz del carrito después de vaciarlo
     showCart();
+    productCounter();
 }
 
 
@@ -207,15 +254,8 @@ function finalizePurchase() {
 
         const errorMessageElement = document.getElementById(field.idField);
 
-        // // Validar el campo
-        // if (!field.regex.test(inputElement.value)) {
-        //     formIsValid = false;
-        //     errorMessageElement.textContent = field.message;
-        // } else {
-        //     errorMessageElement.textContent = ''; // Limpiar mensajes de error anteriores
-        //     formData[field.name] = inputElement.value;
-        // }
-    }); // Si el formulario es válido, guardar los datos en el almacenamiento local
+        
+    }); 
     if (formIsValid) {
         localStorage.setItem('formData', JSON.stringify(formData));
 
