@@ -750,3 +750,24 @@ footer {
     cursor: pointer;  
     
 }
+.contact-title{
+    text-align: center;
+}
+
+.error-form-contact{
+    height: 20px;
+}
+
+.btn-contact-container{
+    display: flex;
+    justify-content: end;
+}
+
+.btn-contact-form-cleaner{
+    margin-right: 5px;
+}
+
+.btn-contact-form-validation{
+    margin-left: 5px;
+}
+
