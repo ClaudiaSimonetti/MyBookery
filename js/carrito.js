@@ -268,8 +268,8 @@ const title = document.getElementById('yourTitleId');
 
 function finishBuying() {
     if (cartList.length !== 0) {
-        // form.innerHTML = "";
-        // title.innerHTML = `<p class="page-title">Checkout</p>`;
+     
+     
         productList.innerHTML = "";
         createForm();
     } else {

@@ -854,3 +854,28 @@ footer {
     align-items: center;
     text-align: left; /* O ajusta según tus necesidades */
 }
+
+
+.input-container {
+    margin-bottom: 15px;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-field {
+    width: 90%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+

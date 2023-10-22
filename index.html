@@ -64,12 +64,13 @@
     <main class="main-container" id="app">
         <div id="miFormularioParent"></div>
 
+       
         <!-- Sección de Libros del buscador -->
         <div class="buscador">
-            <div class="input-search-container ">
-                <input id="searchInput" class='input-search' placeholder=" Buscar..." type="text" v-model="searchTerm">
-                <i class="bi bi-search" @click="searchBooks"></i>
-        </div>
+            <div style="margin-top: 20px;" class="input-search-container ">
+                Encuentra tu libro aqui<i class="fa-solid fa-arrow-right"></i> <input id="searchInput" class='input-search' placeholder=" Buscar..." type="text" v-model="searchTerm">
+                 <i class="fa-solid fa-magnifying-glass" @click="searchBooks"></i> 
+            </div>
 
             <div id="results" class="results-container">
                 <div v-for="book in searchResults" :key="book.id" class="carta">
