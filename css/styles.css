@@ -54,6 +54,10 @@ header {
 
 /* NAVBAR */
 
+.menu{
+    height: 50px;
+}
+
 ul {
     list-style: none;
 }
