@@ -11,6 +11,26 @@ function navHandler(){
     }
 }
 
+let novelsNavbar = document.getElementById('novelasUl')
+let noFictionNavbar = document.getElementById('noFictionUl')
+
+function menuNavbar(){
+    let novels = products.filter((el)=> el.category.toLowerCase() === 'novela')
+
+    let gendersNovels = novels.map((el)=>{return el.gender})
+    let genderN = new Set(gendersNovels)
+    genderN.forEach((el)=>{
+        novelsNavbar.innerHTML += `<li><a class="item" href="#" onclick= "genderSelector('${el}')">${el}</a></li>`})
+
+    let noFiction = products.filter((el)=> el.category.toLowerCase() === 'no ficcion')
+    let gendersNoFiction = noFiction.map((el)=>{return el.gender})
+    let genderNF = new Set(gendersNoFiction)
+    genderNF.forEach((el)=>{
+        noFictionNavbar.innerHTML += `<li><a class="item" href="#" onclick= "genderSelector('${el}')">${el}</a></li>`})
+}
+
+menuNavbar()
+
 const info =  document.getElementById('info')
 function getExchange(exchange){
     let date = exchange[0].date;
@@ -44,7 +64,7 @@ const productList  = document.querySelector(".books");
 
 function renderHome(){
     title.innerHTML = `<p class="page-title">Novedades</p>`;
-    let productsHome = products.filter((prod)=>prod.category === 'novedades')
+    let productsHome = products.filter((prod)=>prod.isNovelty)
     productsHome.forEach((product)=>{
         productList.innerHTML += `
             <div class="carta">
@@ -59,17 +79,29 @@ function renderHome(){
 
 renderHome();
 
-function btnBack(){
-    window.history.back()
-}
-
 function categorySelector(category){
-    carrousel();
+    slider.innerHTML = "";
     productList.innerHTML = "";
     title.innerHTML = `<p class="page-title">${category}</p>`;
-    let filteredProducts = products.filter(el=>el.category === category)
-    filteredProducts.forEach((product)=>{
-        productList.innerHTML += `
+
+    if(category === 'infantiles y juveniles'){
+        let filteredProducts = products.filter(el=>el.category.toLowerCase() === category.toLowerCase())
+        filteredProducts.forEach((product)=>{
+            productList.innerHTML += `
+                    <div class="carta">
+                        <img src="${product.img}" alt="Libro ${product.title}">
+                        <h2>${product.title}</h2>
+                        <p>${product.description}</p>
+                        <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
+                    </div>
+                `
+        });
+    }
+
+    if(category === 'lo mas vendido'){
+        let filteredProducts2 = products.filter(el=>el.isTop10)
+        filteredProducts2.forEach((product)=>{
+            productList.innerHTML += `
                 <div class="carta">
                     <img src="${product.img}" alt="Libro ${product.title}">
                     <h2>${product.title}</h2>
@@ -77,7 +109,23 @@ function categorySelector(category){
                     <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
                 </div>
             `
-    });
+        });
+    }
+
+    if(category === 'novedades'){
+        carrousel();
+        let filteredProducts3 = products.filter(el=>el.isNovelty)
+        filteredProducts3.forEach((product)=>{
+            productList.innerHTML += `
+                <div class="carta">
+                    <img src="${product.img}" alt="Libro ${product.title}">
+                    <h2>${product.title}</h2>
+                    <p>${product.description}</p>
+                    <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
+                </div>
+            `
+        });
+    }
     navHandler();
 }
 
@@ -85,7 +133,7 @@ function genderSelector(gender){
     slider.innerHTML = ""
     productList.innerHTML = ""
     title.innerHTML = `<p class="page-title">${gender}</p>`
-    let filteredProducts = products.filter(el=>el.gender === gender)
+    let filteredProducts = products.filter(el=>el.gender.toLowerCase() === gender.toLowerCase())
     filteredProducts.forEach((product)=>{
         productList.innerHTML += `
                 <div class="carta">
@@ -138,7 +186,6 @@ function showModals(){
 showModals();
 
 let cartList = []
-console.log("cartList:", cartList)
 
 function addToCart(bookId){
     slider.innerHTML = ""
@@ -157,14 +204,14 @@ function addToCart(bookId){
 let counter = document.querySelector(".unit-counter")
 
 function productCounter(){
-    let total = 0
-    cartList.forEach((el) => {
-        total += el.quantity 
-    })
+    let total = cartList.map(obj => obj.quantity).reduce((prev, curr) => {
+                    return prev + curr
+                },0);
     counter.innerText = `${total}`
 }
 
 function showCart(){
+    slider.innerHTML = "";
     title.innerHTML = `<p class="page-title">Mis Compras</p>`;
     productList.innerHTML = ""
     createFirstRowTitles();
@@ -191,7 +238,7 @@ function createTotal(){
     productList.appendChild(totalRow);
     let total = cartList.map(obj => obj.price * obj.quantity).reduce((prev, curr) => {
                     return prev + curr
-                });
+                },0);
     if(cartList.length === 0){
         totalRow.innerHTML = ""
     }else{
@@ -263,7 +310,6 @@ function createForm(){
 const popUpMessage = document.querySelector('.popUpMessage');
 
 function popUp(message){
-    console.log("popUp -> message:", message)
     popUpMessage.innerHTML = `
         <div id="modal" class="modal">
             <div class="modal-content">
@@ -443,11 +489,8 @@ function contactFormValidation(){
     emailValue !== "" && errorMessageEmail.innerHTML === "" &&
     consultaValue !== "" && errorMessageConsulta.innerHTML === ""
     ){
-        console.log('entro primero')
         contactFormCleaner()
-        console.log('entro segundo')
         popUp('<i class="fa-solid fa-circle-check"></i></i>Formulario enviado con éxito')
         openPopUp()
-        console.log('entro tercero')
     }
 }

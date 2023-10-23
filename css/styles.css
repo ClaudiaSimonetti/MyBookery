@@ -83,6 +83,7 @@ nav ul li a {
     color: var(--blue);
     font-family: var(--primaryFont);
     padding-bottom: 11px;
+    text-transform: capitalize;
 }
 
 .item:hover {
