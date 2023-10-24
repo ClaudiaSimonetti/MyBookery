@@ -69,8 +69,11 @@ function renderHome(){
         productList.innerHTML += `
             <div class="carta">
                 <img src="${product.img}" alt="Libro ${product.title}">
-                <h2>${product.title}</h2>
-                <p>${product.description}</p>
+                <div class="card-div">
+                    <p class="card-title">${product.title}</p>
+                    <p>Autor: ${product.author}</p>
+                    <p>Ar$ ${product.price}</p>
+                </div>
                 <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
             </div>
         `
@@ -89,9 +92,12 @@ function categorySelector(category){
         filteredProducts.forEach((product)=>{
             productList.innerHTML += `
                     <div class="carta">
-                        <img src="${product.img}" alt="Libro ${product.title}">
-                        <h2>${product.title}</h2>
-                        <p>${product.description}</p>
+                    <img src="${product.img}" alt="Libro ${product.title}">
+                    <div class="card-div">
+                        <p class="card-title">${product.title}</p>
+                        <p>Autor: ${product.author}</p>
+                        <p>Ar$ ${product.price}</p>
+                    </div>
                         <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
                     </div>
                 `
@@ -104,8 +110,11 @@ function categorySelector(category){
             productList.innerHTML += `
                 <div class="carta">
                     <img src="${product.img}" alt="Libro ${product.title}">
-                    <h2>${product.title}</h2>
-                    <p>${product.description}</p>
+                    <div class="card-div">
+                        <p class="card-title">${product.title}</p>
+                        <p>Autor: ${product.author}</p>
+                        <p>Ar$ ${product.price}</p>
+                    </div>
                     <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
                 </div>
             `
@@ -119,8 +128,11 @@ function categorySelector(category){
             productList.innerHTML += `
                 <div class="carta">
                     <img src="${product.img}" alt="Libro ${product.title}">
-                    <h2>${product.title}</h2>
-                    <p>${product.description}</p>
+                    <div class="card-div">
+                        <p class="card-title">${product.title}</p>
+                        <p>Autor: ${product.author}</p>
+                        <p>Ar$ ${product.price}</p>
+                    </div>
                     <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
                 </div>
             `
@@ -138,8 +150,11 @@ function genderSelector(gender){
         productList.innerHTML += `
                 <div class="carta">
                     <img src="${product.img}" alt="Libro ${product.title}">
-                    <h2>${product.title}</h2>
-                    <p>${product.description}</p>
+                    <div class="card-div">
+                        <p class="card-title">${product.title}</p>
+                        <p>Autor: ${product.author}</p>
+                        <p>Ar$ ${product.price}</p>
+                    </div>
                     <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
                 </div>
             `
@@ -169,12 +184,17 @@ function showModals(){
                     <div class="modal-flex-container">
                         <div class="modal-image">
                             <img src="${product.img}" alt="Imagen del libro 1">
+                            <div class="modal-title">
+                                <p class="modal-card-title">${product.title}</p>
+                                <p>Autor: ${product.author}</p>
+                                <p>Género: ${product.gender}</p>
+                                <p>Ar$ ${product.price}</p>
+                                <button class="btn-modal btn-add-cart" id="addToCart${product.id}" onclick="addToCart(${product.id})">Agregar al Carrito</button>
+                            </div>
                         </div>
                         <div class="modal-info">
-                            <h2>${product.title}</h2>
+                            <p class="card-title">Sinopsis:</p><br/>
                             <p>${product.description}.</p>
-                            <p>Precio: $${product.price}</p>
-                            <button class="btn-modal" id="addToCart${product.id}" onclick="addToCart(${product.id})">Agregar al Carrito</button>
                         </div>
                     </div>
                 </div>
