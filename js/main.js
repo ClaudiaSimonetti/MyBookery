@@ -43,21 +43,21 @@ function getExchange(exchange){
     `
 }
 
-const slider = document.getElementById("slider")
+// const slider = document.getElementById("slider")
 
-function carrousel(){
-    slider.innerHTML = `
-        <div class="slides">
-            <img src="./img/slide/img1.jpg" alt="">
-            <img src="./img/slide/img2.jpg" alt="">
-            <img src="./img/slide/img3.jpg" alt=""> 
-            <img src="./img/slide/img4.jpg" alt=""> 
-            <img src="./img/slide/img1.jpg" alt="">
-        </div>
-    `
-}
+// function carrousel(){
+//     slider.innerHTML = `
+//         <div class="slides">
+//             <img src="./img/slide/img1.jpg" alt="">
+//             <img src="./img/slide/img2.jpg" alt="">
+//             <img src="./img/slide/img3.jpg" alt=""> 
+//             <img src="./img/slide/img4.jpg" alt=""> 
+//             <img src="./img/slide/img1.jpg" alt="">
+//         </div>
+//     `
+// }
 
-carrousel();
+// carrousel();
 
 const title = document.querySelector(".title")
 const productList  = document.querySelector(".books");
@@ -67,14 +67,13 @@ function renderHome(){
     let productsHome = products.filter((prod)=>prod.isNovelty)
     productsHome.forEach((product)=>{
         productList.innerHTML += `
-            <div class="carta">
+            <div class="card" data-target="modal${product.id}" onclick="openModal(${product.id})">
                 <img src="${product.img}" alt="Libro ${product.title}">
                 <div class="card-div">
                     <p class="card-title">${product.title}</p>
                     <p>Autor: ${product.author}</p>
                     <p>Ar$ ${product.price}</p>
                 </div>
-                <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
             </div>
         `
     })
@@ -91,14 +90,13 @@ function categorySelector(category){
         let filteredProducts = products.filter(el=>el.category.toLowerCase() === category.toLowerCase())
         filteredProducts.forEach((product)=>{
             productList.innerHTML += `
-                    <div class="carta">
+                    <div class="card" data-target="modal${product.id}" onclick="openModal(${product.id})">
                     <img src="${product.img}" alt="Libro ${product.title}">
-                    <div class="card-div">
-                        <p class="card-title">${product.title}</p>
-                        <p>Autor: ${product.author}</p>
-                        <p>Ar$ ${product.price}</p>
-                    </div>
-                        <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
+                        <div class="card-div">
+                            <p class="card-title">${product.title}</p>
+                            <p>Autor: ${product.author}</p>
+                            <p>Ar$ ${product.price}</p>
+                        </div>
                     </div>
                 `
         });
@@ -108,17 +106,16 @@ function categorySelector(category){
         let filteredProducts2 = products.filter(el=>el.isTop10)
         filteredProducts2.forEach((product)=>{
             productList.innerHTML += `
-                <div class="carta">
+                <div class="card" data-target="modal${product.id}" onclick="openModal(${product.id})">
                     <img src="${product.img}" alt="Libro ${product.title}">
                     <div class="card-div">
                         <p class="card-title">${product.title}</p>
                         <p>Autor: ${product.author}</p>
                         <p>Ar$ ${product.price}</p>
                     </div>
-                    <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
                 </div>
             `
-        });
+        });   
     }
 
     if(category === 'novedades'){
@@ -126,14 +123,13 @@ function categorySelector(category){
         let filteredProducts3 = products.filter(el=>el.isNovelty)
         filteredProducts3.forEach((product)=>{
             productList.innerHTML += `
-                <div class="carta">
+                <div class="card" data-target="modal${product.id}" onclick="openModal(${product.id})">
                     <img src="${product.img}" alt="Libro ${product.title}">
                     <div class="card-div">
                         <p class="card-title">${product.title}</p>
                         <p>Autor: ${product.author}</p>
                         <p>Ar$ ${product.price}</p>
                     </div>
-                    <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
                 </div>
             `
         });
@@ -148,14 +144,13 @@ function genderSelector(gender){
     let filteredProducts = products.filter(el=>el.gender.toLowerCase() === gender.toLowerCase())
     filteredProducts.forEach((product)=>{
         productList.innerHTML += `
-                <div class="carta">
+                <div class="card" data-target="modal${product.id}" onclick="openModal(${product.id})">
                     <img src="${product.img}" alt="Libro ${product.title}">
                     <div class="card-div">
                         <p class="card-title">${product.title}</p>
                         <p>Autor: ${product.author}</p>
                         <p>Ar$ ${product.price}</p>
                     </div>
-                    <button class="btn-modal" data-target="modal${product.id}" onclick="openModal(${product.id})">Ver Detalles</button>
                 </div>
             `
     });
@@ -170,7 +165,6 @@ function openModal(modalId){
 function closeModal(modalId){
     const modal = document.getElementById(`modal${modalId}`);
     modal.style.display = 'none';
-    showCart();
 };
 
 const modalBooks = document.querySelector('.modalBooks');
@@ -209,16 +203,17 @@ let cartList = []
 
 function addToCart(bookId){
     slider.innerHTML = ""
-    if(cartList.some(prod => parseInt(prod.id) === parseInt(bookId))){
+    let exists = cartList.some(prod => parseInt(prod.id) === parseInt(bookId))
+    if(exists){
         let addProduct = cartList.find(findProd => parseInt(findProd.id) === parseInt(bookId))
         addProduct.quantity = addProduct.quantity + 1 
-        addProduct.totalPrice = addProduct.price * addProduct.quantity       
+        addProduct.subTotal = addProduct.price * addProduct.quantity       
     } else{
         const nuevoProducto = {...products[bookId-1]}
-        cartList.push(nuevoProducto)
+        cartList.push({...nuevoProducto, subTotal:nuevoProducto.price})
     }
     productCounter();
-    closeModal(bookId)
+    closeModal(bookId);
 }
 
 let counter = document.querySelector(".unit-counter")
@@ -237,20 +232,47 @@ function showCart(){
     createFirstRowTitles();
     cartList.forEach((element)=>{
         productList.innerHTML += `
-            <div class="cart">
-                <img src="${element.img}" alt="" height="90px" onclick="openModal(${element.id})" class="cartGrid">
-                <h5 onclick="openModal(${element.id})" class="cartGrid">${element.title}</h5>
-                <p onclick="openModal(${element.id})"class="cartGrid">${element.author}</p>
-                <p onclick="openModal(${element.id})"class="cartGrid">${element.quantity}</p>
-                ${!element.totalPrice ? `<p onclick="openModal(${element.id})"class="cartGrid">$ ${element.price}</p>`
-                :`<p onclick="openModal(${element.id})"class="cartGrid">$ ${element.totalPrice}</p>`}
-                <button class="delete-button" onclick="deleteProduct(${element.id})"class="cartGrid"><i class="fa-solid fa-trash fa-2xs"></i></button>
+            <div class="cart-container">
+                <img class="cart-1" src="${element.img}" alt="">
+                <div class="cart-info-container">
+                    <p class="cart-2">${element.title}</p>
+                    <p class="cart-3">Ar$ ${element.price}</p>
+                    <div class="cart-4"> 
+                        <div class="counter-sym dec" onclick="decrease(${element.id})">-</div>
+                        <div class="numCounter">${element.quantity}</div>
+                        <div class="counter-sym inc" onclick="increase(${element.id})">+</div>
+                    </div>
+                    <p class="cart-5">Ar$ ${element.subTotal}</p>
+                    <div class="cart-6">
+                        <i class="fa-regular fa-circle-xmark fa-xl" onclick="deleteProduct(${element.id})"></i>
+                    </div> 
+                </div>    
             </div>
         `
     })
     createTotal()
     createCartButtons();
 };
+
+function increase(bookId){
+    let findProduct = cartList.find((el)=> el.id === bookId);
+    findProduct.quantity += 1;
+    findProduct.subTotal = findProduct.price * findProduct.quantity;
+    showCart();
+}
+
+function decrease(bookId){
+    let findProduct = cartList.find((el)=> el.id === bookId)
+    if(findProduct.quantity >= 1){
+    findProduct.quantity -= 1
+    findProduct.subTotal = findProduct.price * findProduct.quantity
+    }else{
+        findProduct.quantity
+        findProduct.subTotal
+        deleteProduct(bookId)
+    }
+    showCart()
+}
 
 function createTotal(){
     const totalRow = document.createElement("div");
@@ -275,21 +297,21 @@ function createTotal(){
 
 function createFirstRowTitles(){
     const titleRow = document.createElement("div")
-    productList.appendChild(titleRow)
-    titleRow.setAttribute("class", "title-row")
-    if(cartList.length === 0){
-        titleRow.innerHTML = `<h1>El carrito está vacío</h1>`
-        titleRow.setAttribute("class", "empty-cart")
-    }else{
-        titleRow.innerHTML = `
-            <p class="cartGrid"></p>
-            <p class="cartGrid">Titulo</p>
-            <p class="cartGrid">Autor</p>
-            <p class="cartGrid">Unidades</p>
-            <p class="cartGrid">Precio Total</p>
-            <p class="cartGrid"></p>
-        `
-    }
+    // productList.appendChild(titleRow)
+    // titleRow.setAttribute("class", "title-row")
+    // if(cartList.length === 0){
+    //     titleRow.innerHTML = `<h1>El carrito está vacío</h1>`
+    //     titleRow.setAttribute("class", "empty-cart")
+    // }else{
+    //     titleRow.innerHTML = `
+    //         <p class="cartGrid"></p>
+    //         <p class="cartGrid">Producto</p>
+    //         <p class="cartGrid">Precio</p>
+    //         <p class="cartGrid">Cantidad</p>
+    //         <p class="cartGrid">Subtotal</p>
+    //         <p class="cartGrid"></p>
+    //     `
+    // }
 }
 
 function createCartButtons(){

@@ -1,0 +1,132 @@
+.main-container {
+    height: auto;
+}
+
+/* INFORMACION FECHA Y CAMBIO */
+
+#info{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    text-align: center;
+    height: 20px;
+    background-color: var(--blue);
+    margin: auto;
+}
+
+#info p{
+    font-size: 12px;
+    margin-top: 15px;
+    margin-right: 10px;
+    font-family: var(--primaryFont);
+    color: var(--orange);
+    font-weight: bolder;
+}
+
+/* SLIDER */
+
+.slider{
+    overflow: hidden;
+    object-fit: contain;
+    width: 90vw;
+    margin: auto;
+    /* margin-top: 10px; */
+}
+
+.slider .slides{
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    animation: 20s slider infinite;
+}
+
+.slider .slides img{
+    width: 20%;
+    float: left;
+}
+
+@keyframes slider {
+    0% {
+        left: 0;
+    }
+    20% {
+        left: 0;
+    }
+    25% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    50% {
+        left: -200%;
+    }
+    70% {
+        left: -200%;
+    }
+    75% {
+        left: -300%;
+    }
+    95% {
+        left: -300%;
+    }
+    100% {
+        left: -400%;
+    }
+
+}
+
+.page-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 30px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.books {
+    margin-bottom: 100px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+/* CARDS */
+
+.card {
+    border: 1px solid var(--blue);
+    /* padding: 20px; */
+    padding-top: 20px;
+    /* padding-bottom: 20px; */
+    margin: 5px;
+    text-align: center;
+    background-color: var(--white);
+    box-shadow: 0px 0px 5px #888;
+    width: 250px;
+   
+    /* border: 5px solid blue; */
+    border-radius: 5px;
+    max-height: 300px;
+}
+
+.card img {
+    /* max-width: 100%; */
+    height: 50%;
+    /* border: 1px solid var(--darkGrey); */
+    border-radius: 1%;
+    object-fit: contain;
+}
+
+.card-div{
+    height: 50%;
+    /* border:2px solid blue; */
+}
+
+.card-title{
+    margin-top: 5px;
+    font-weight: bold;
+}

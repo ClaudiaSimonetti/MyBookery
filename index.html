@@ -23,7 +23,7 @@
     <navbar>
         <nav class="menu" id="menu" style="z-index: 3">
             <ul class="list">
-                <li class="list-item"><li class="list-item"><a class="item" href="#" onclick= "categorySelector('novedades')">Novedades</a></li>
+                <li class="list-item"><li class="list-item"><a class="item" href="javascript:categorySelector('novedades')">Novedades</a></li>
                 <li class="list-item"><a class="item" href="#">Novelas<i class="fa-solid fa-caret-down"></i></a>
                     <ul class="slide" style="z-index: 3" id="novelasUl">
                     </ul>
@@ -32,37 +32,13 @@
                     <ul class="slide" style="z-index: 3" id="noFictionUl">
                     </ul>
                 </li>
-                <li class="list-item"><a class="item" href="#" target="_self" onclick= "categorySelector('infantiles y juveniles')">Infantiles y Juveniles</a></li>
-                <li class="list-item"><a class="item" href="#" target="_self" onclick= "categorySelector('lo mas vendido')">Lo más vendido</a></li>
-                <li class="list-item"><a class="item" id="contacto" target="_self" onclick="contactForm()">Contacto</a></li>
+                <li class="list-item"><a class="item" href="javascript:categorySelector('infantiles y juveniles')" target="_self">Infantiles y Juveniles</a></li>
+                <li class="list-item"><a class="item" href="javascript:categorySelector('lo mas vendido')" target="_self" >Lo más vendido</a></li>
+                <li class="list-item"><a class="item" id="contacto" href="javascript:contactForm()" target="_self">Contacto</a></li>
                 <div class="input-search-container">
                     <input class='input-search' placeholder=" Buscar..." type="text"><i class="fa-solid fa-magnifying-glass"></i>
                 </div>
             </ul>
-            <!-- <ul class="list">
-                <li class="list-item"><a class="item" href="#" onclick= "categorySelector('novedades')">Novedades</a></li>
-                <li class="list-item"><a class="item" href="#">Novelas<i class="fa-solid fa-caret-down"></i></a>
-                    <ul class="slide" style="z-index: 3">
-                        <li><a class="item" href="#" onclick= "genderSelector('policial')">Policial</a></li>
-                        <li><a class="item" href="#" onclick= "genderSelector('drama')">Drama</a></li>
-                        <li><a class="item" href="#" onclick= "genderSelector('aventura')">Aventura</a></li>
-                        <li><a class="item" href="#">Misterio</a></li>
-                    </ul>
-                </li>
-                <li class="list-item"><a class="item" href="#">No Ficción<i class="fa-solid fa-caret-down"></i></a>
-                    <ul class="slide" style="z-index: 3">
-                        <li><a class="item" href="#">Gastronomía</a>
-                        <li><a class="item" href="#">Bibliográfico</a></li>
-                        <li><a class="item" href="#">Historia</a></li>
-                    </ul>
-                </li>
-                <li class="list-item"><a class="item" href="#" target="_self">Infantiles y Juveniles</a></li>
-                <li class="list-item"><a class="item" href="#" target="_self">Lo más vendido</a></li>
-                <li class="list-item"><a class="item" href="#" target="_self" onclick="contactForm()">Contacto</a></li>
-                <div class="input-search-container">
-                    <input class='input-search' placeholder=" Buscar..." type="text"><i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </ul> -->
         </nav>
         <div class="responsive-btn-container">
             <button id="responsive-menu-btn" onclick="navHandler()"><i class="fa-solid fa-bars"></i></button>
@@ -70,8 +46,7 @@
     </navbar>
     <main class="main-container">
         <div id="info"></div>
-        <div class="slider" id="slider" style="z-index: 1">
-        </div>
+        <div class="slider" id="slider" style="z-index: 1"></div>
         <div class="title"></div>
         <div class="books"></div>
         <div class="modalBooks"></div>

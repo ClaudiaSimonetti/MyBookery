@@ -1,0 +1,31 @@
+header {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--blue);
+}
+
+.logo {
+    padding: 5px 0 2px 0;
+    height: 55px;
+}
+
+.unit-counter-container {
+    width: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.fa-cart-shopping {
+    color: var(--orange);
+    font-size: 20px;
+}
+
+.unit-counter {
+    color: var(--orange);
+    font-size: 20px;
+    margin-top: 20px;
+}
