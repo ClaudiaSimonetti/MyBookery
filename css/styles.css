@@ -108,7 +108,6 @@ p{
 .modal-info {
     flex: 1;
     padding: 10px;
-    /* border: 2px solid yellow; */
 }
 
 .cerrar-modal {
@@ -135,67 +134,13 @@ p{
 
 
 
-/* FORM */
 
 
-#form{
-    display: grid;
-    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
-    width: 95%;
-}
 
-@media (max-width: 992px) {
-    #form{
-        grid-template-columns:1fr 1fr 1fr;
-    }
-}
 
-@media (max-width: 768px) {
-    #form{
-        grid-template-columns:1fr 1fr;
-    }
-}
 
-@media (max-width: 600px) {
-    #form{
-        grid-template-columns:1fr;
-    }
-}
 
-.input-container{
-    width: 90%;
-    height: 130px;
-    margin-left: 10%;
-    
-}
 
-.input-label{
-    padding-bottom: 5px;
-    text-transform: capitalize;
-    font-family: var(--primaryFont);
-}
-
-.input-field{
-    border-radius: 3px; 
-    height: 26px;
-    font-family: var(--primaryFont);
-    background-color: var(--grey);
-    border: 1px solid var(--black);
-    box-shadow: inset 0 1px 1px var(--blue);
-    padding-left: 8px;
-    padding-right: 8px;
-    width: 90%;
-    height: 50px;
-    border-radius: 5px;
-}
-
-.errorMessage{
-    color: red;
-    font-size: 12px;
-    padding-bottom: 12px;
-    margin-left: 2px;
-    margin-top: 2px;
-}
 
 .message-modal{
     text-align: center;

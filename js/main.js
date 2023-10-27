@@ -59,6 +59,8 @@ function getExchange(exchange){
 
 // carrousel();
 
+//////////////////////////-----------MAIN-----------/////////////////////////////////////////////////////////////////////////////
+
 const title = document.querySelector(".title")
 const productList  = document.querySelector(".books");
 
@@ -199,6 +201,8 @@ function showModals(){
 };
 
 showModals();
+
+/////////////////////////////////////------------CARRITO-------------////////////////////////////////////////////////////////////////////
 
 let cartList = []
 
@@ -366,12 +370,7 @@ function emptyCart(){
 
 
 
-const form = document.createElement("form")
 
-function createForm(){
-    form.setAttribute("id" , "form")
-    productList.appendChild(form)
-}
 
 const popUpMessage = document.querySelector('.popUpMessage');
 
@@ -400,6 +399,20 @@ function closePopUp(){
     modal.style.display = 'none';
 };
 
+
+
+
+
+
+////////////////////-------------FORMULARIO CHECKOUT--------------////////////////////////////////////////////////////////////////////////
+
+const form = document.createElement("form")
+
+function createForm(){
+    form.setAttribute("id" , "form")
+    productList.appendChild(form)
+}
+
 function finishBuying(){
     if(cartList.length !== 0){
     form.innerHTML = ""    
@@ -409,9 +422,9 @@ function finishBuying(){
     fields.forEach((field, index)=> {
     form.innerHTML += `
         <div class='input-container' >
-            <label class='input-label' for="${field.name}">${field.name}</label>
-            <input class='input-field' type="${field.type}" name="${field.name}" id="${field.name}"/>
-            <p class="errorMessage" id="${field.idField}"></p>
+            <label class='input-label' for="${field.idField}">${field.name}</label>
+            <input class='input-field' type="${field.type}" name="${field.name}" id="${field.idField}"/>
+            <p class="errorMessage" id="error-${field.idField}"></p>
         </div>    
     `
     })
@@ -429,7 +442,7 @@ function finishBuying(){
 function submit(e){
     e.preventDefault();
     fields.forEach((el, index) => {
-        const enteredValue = document.getElementById(el.name).value
+        const enteredValue = document.getElementById(el.idField).value
             el.value = enteredValue
         if(el.value.match(el.regex)){
             el.errorMessage = ""
@@ -443,7 +456,7 @@ function submit(e){
 }
 
 function createErrorMessage(errorMessage, id){
-    const div = document.getElementById(`${id}`)
+    const div = document.getElementById(`error-${id}`)
     div.innerHTML = errorMessage
 }
 
@@ -465,6 +478,9 @@ function validation(){
         window.scrollTo(0, 0)
     }
 }
+
+
+//////////////////////////////-------FORMULARIO CONTACTO-------////////////////////////////////////////////////////////////
 
 function contactForm(){
     slider.innerHTML = ""

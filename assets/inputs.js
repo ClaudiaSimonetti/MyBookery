@@ -41,7 +41,7 @@ const fields = [
     },
     {
         idField: 5,
-        type: 'password',
+        type: 'text',
         name: 'codigo de seguridad',
         for:'codigo de seguridad',
         value: '',
@@ -100,4 +100,5 @@ const fields = [
         regex: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     },
 ]
+console.log("fields:", fields)
 
