@@ -308,13 +308,6 @@ function createTotal(){
     }
 }
 
-{/* <p class="cartGrid"></p>
-            <p class="cartGrid"></p>
-            <p class="cartGrid"></p>
-            <p class="cartGrid"></p>
-            <p class="cartGrid total-row">$ ${total}</p>
-            <p class="cartGrid"></p> */}
-
 
 function createFirstRowTitles(){
     const titleRow = document.createElement("div")
