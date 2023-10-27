@@ -82,6 +82,7 @@ function renderHome(){
 renderHome();
 
 function categorySelector(category){
+    console.log("categorySelector -> category:", category)
     slider.innerHTML = "";
     productList.innerHTML = "";
     title.innerHTML = `<p class="page-title">${category}</p>`;
@@ -119,7 +120,7 @@ function categorySelector(category){
     }
 
     if(category === 'novedades'){
-        carrousel();
+        // carrousel();
         let filteredProducts3 = products.filter(el=>el.isNovelty)
         filteredProducts3.forEach((product)=>{
             productList.innerHTML += `
@@ -259,6 +260,7 @@ function increase(bookId){
     findProduct.quantity += 1;
     findProduct.subTotal = findProduct.price * findProduct.quantity;
     showCart();
+    productCounter();
 }
 
 function decrease(bookId){
@@ -271,7 +273,8 @@ function decrease(bookId){
         findProduct.subTotal
         deleteProduct(bookId)
     }
-    showCart()
+    showCart();
+    productCounter()
 }
 
 function createTotal(){
@@ -285,33 +288,59 @@ function createTotal(){
         totalRow.innerHTML = ""
     }else{
         totalRow.innerHTML = `
-            <p class="cartGrid"></p>
-            <p class="cartGrid"></p>
-            <p class="cartGrid"></p>
-            <p class="cartGrid"></p>
-            <p class="cartGrid total-row">$ ${total}</p>
-            <p class="cartGrid"></p>
+
+        <div class="title-cart-container total-container">
+            <div class="title-product">Total</div>
+            <div class="div-title-cart">
+                <div></div>
+                <div class="title-price"></div>
+                <div> 
+                    <p class="title-quantity"></p>
+                </div>
+                <div class="title-subTotal total">Ar$ ${total}</div>
+                <div>
+                    <div></div>
+                </div> 
+            </div>    
+        </div>
+            
         `
     }
 }
 
+{/* <p class="cartGrid"></p>
+            <p class="cartGrid"></p>
+            <p class="cartGrid"></p>
+            <p class="cartGrid"></p>
+            <p class="cartGrid total-row">$ ${total}</p>
+            <p class="cartGrid"></p> */}
+
+
 function createFirstRowTitles(){
     const titleRow = document.createElement("div")
-    // productList.appendChild(titleRow)
-    // titleRow.setAttribute("class", "title-row")
-    // if(cartList.length === 0){
-    //     titleRow.innerHTML = `<h1>El carrito está vacío</h1>`
-    //     titleRow.setAttribute("class", "empty-cart")
-    // }else{
-    //     titleRow.innerHTML = `
-    //         <p class="cartGrid"></p>
-    //         <p class="cartGrid">Producto</p>
-    //         <p class="cartGrid">Precio</p>
-    //         <p class="cartGrid">Cantidad</p>
-    //         <p class="cartGrid">Subtotal</p>
-    //         <p class="cartGrid"></p>
-    //     `
-    // }
+    productList.appendChild(titleRow)
+    titleRow.setAttribute("class", "title-row")
+    if(cartList.length === 0){
+        titleRow.innerHTML = `<h1>El carrito está vacío</h1>`
+        titleRow.setAttribute("class", "empty-cart")
+    }else{
+        titleRow.innerHTML = `
+        <div class="title-cart-container">
+            <div class="title-product">Producto</div>
+            <div class="div-title-cart">
+                <div></div>
+                <div class="title-price">Precio</div>
+                <div> 
+                    <p class="title-quantity">Cantidad</p>
+                </div>
+                <div class="title-subTotal">Subtotal</div>
+                <div>
+                    <div></div>
+                </div> 
+            </div>    
+        </div>
+        `
+    }
 }
 
 function createCartButtons(){
@@ -339,8 +368,10 @@ function emptyCart(){
     cartList = [];
     showCart();
     productCounter();
-    
 }
+
+
+
 
 const form = document.createElement("form")
 
