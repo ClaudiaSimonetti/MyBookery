@@ -422,7 +422,7 @@ function finishBuying(){
     fields.forEach((field, index)=> {
     form.innerHTML += `
         <div class='input-container' >
-            <label class='input-label' for="${field.idField}">${field.name}</label>
+            <label class='input-label' for="${field.idField}">${field.label}</label>
             <input class='input-field' type="${field.type}" name="${field.name}" id="${field.idField}"/>
             <p class="errorMessage" id="error-${field.idField}"></p>
         </div>    
