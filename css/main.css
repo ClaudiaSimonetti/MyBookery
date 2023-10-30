@@ -319,6 +319,12 @@
     border-radius: 5px;
 }
 
+
+.option-select{
+    color: var(--darkGrey);
+    font-style: italic;
+}
+
 .errorMessage{
     color: red;
     font-size: 12px;

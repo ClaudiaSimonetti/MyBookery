@@ -413,6 +413,8 @@ function createForm(){
     productList.appendChild(form)
 }
 
+// `<option value="">"${el.nameCard}"</option>` 
+
 function finishBuying(){
     if(cartList.length !== 0){
     form.innerHTML = ""    
@@ -420,10 +422,28 @@ function finishBuying(){
     productList.innerHTML = ""
     createForm();
     fields.forEach((field, index)=> {
-    form.innerHTML += `
+        
+    form.innerHTML += 
+    `
         <div class='input-container' >
-            <label class='input-label' for="${field.idField}">${field.label}</label>
-            <input class='input-field' type="${field.type}" name="${field.name}" id="${field.idField}"/>
+            ${
+                field.option.length > 0 ? 
+                ` 
+                    <label class='input-label' for="${field.idField}">${field.label}</label>
+                    <select  class='input-field' name="nombre-tarjeta" id="${field.idField}">
+                        <option class="option-select" value="">Seleccionar opción</option>
+                        ${field.option.map((el)=>{ 
+                            return `<option value="${el.nameOption}">${el.nameOption}</option>`
+                        })}
+                    </select>
+                `
+            : 
+                `
+                    <label class='input-label' for="${field.idField}">${field.label}</label>
+                    <input class='input-field' type="${field.type}" name="${field.name}" id="${field.idField}"/>
+                `
+            }
+                
             <p class="errorMessage" id="error-${field.idField}"></p>
         </div>    
     `
@@ -443,6 +463,7 @@ function submit(e){
     e.preventDefault();
     fields.forEach((el, index) => {
         const enteredValue = document.getElementById(el.idField).value
+            console.log("fields.forEach -> enteredValue:", enteredValue)
             el.value = enteredValue
         if(el.value.match(el.regex)){
             el.errorMessage = ""
