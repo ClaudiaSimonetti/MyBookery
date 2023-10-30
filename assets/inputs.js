@@ -66,7 +66,7 @@ const fields = [
         value: '',
         message: 'Debe colocar una dirección correcta.',
         errorMessage:'',
-        regex: /^[a-zA-Z0-9\_\-]{10,10}$/,
+        regex: /^[a-zA-ZÀ-ÿ\s]{2,20}$/,
     },
     {
         idField: 7,

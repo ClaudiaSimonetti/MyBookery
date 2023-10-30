@@ -377,8 +377,8 @@ const popUpMessage = document.querySelector('.popUpMessage');
 function popUp(message){
     popUpMessage.innerHTML = `
         <div id="modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-flex-container">
+            <div class="popUp-content">
+                <div class="modal-flex-container ">
                     <div class="modal-info">
                         <p class="message-modal">${message}</p>
                         <button class="btn-modal-cart" onclick="closePopUp()">Cerrar</button>

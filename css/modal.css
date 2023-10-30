@@ -1,0 +1,131 @@
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 2% auto;
+    padding: 10px;
+    max-width: 90vw;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal-flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-info {
+    flex: 1;
+    padding: 10px;
+}
+
+/*solo para modal agregar en carrito*/
+.modal-image {
+    flex: 1;
+    padding: 10px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.modal-image img {
+    max-width: 100%;
+    height: 300px;
+    border: 1px solid var(--darkGrey);
+    border-radius: 2%;
+}
+
+.modal-title{
+    margin-left: 10px;
+}
+
+.modal-card-title{
+    font-family: var(--primaryFont);
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    .modal-image {
+        flex-direction: column;
+        align-items: center;
+    }
+    .modal-image img {
+        min-width: 50%;
+    }
+    .modal-title{
+        margin-top: 20px;
+        margin-left: 10px;
+        min-width: 100%;
+    }
+    .btn-add-cart{
+        margin-left: 50%;
+    }
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.btn-modal {
+    background-color: var(--blue);
+    color: var(--orange);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-modal:hover{
+    background-color: var(--orange);
+    color: var(--blue);
+}
+
+/*solo para modal finalizar compra sin productos*/
+.popUp-content{
+    background-color: var(--white);
+    margin: 2% auto;
+    padding: 10px;
+    max-width: 30vw;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.message-modal{
+    text-align: center;
+}
+
+.btn-modal-cart{
+    background-color: var(--blue);
+    color: var(--orange);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 70%;
+    margin-top: 30px;
+}
+
+.btn-modal-cart:hover{
+    background-color: var(--orange);
+    color: var(--blue);
+}
+
