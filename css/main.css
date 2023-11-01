@@ -114,6 +114,7 @@
 
 .card-div{
     height: 50%;
+    border: 0.1px solid transparent;
 }
 
 .card-title{
@@ -146,16 +147,16 @@
 }
 
 .title-price{
-    margin-left: -10px;
+    margin-left: 15px;
 }
 
 .title-quantity{
-    margin-left: -15px ;
+    margin-left: -20px ;
 }
 
 .title-subTotal{
-    width: 80px;
-    margin-left: -45px;
+    width: 85px;
+    margin-left: -30px;
 }
 
 .cart-container{
@@ -249,7 +250,8 @@
 }
 
 .div-title-cart .total{
-    margin-left: 85px;
+    margin-left: 70px;
+
 }
 
 .total-container{
@@ -333,4 +335,17 @@
     margin-top: 2px;
 }
 
+.send-checkout-button {
+    background-color: var(--blue);
+    color: var(--orange);
+    border-radius: 5px;
+    border: 2px solid var(--blue);
+    height: 50px;
+    width: 150px;
+}
 
+.send-checkout-button:hover{
+    background-color:var(--orange);
+    color: var(--blue);
+    border: 2px solid var(--orange);
+}

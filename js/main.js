@@ -1,37 +1,70 @@
-let nav = document.getElementById("menu")
-let showMenu = true
+let nav = document.getElementById("menu");
+let showMenu = true;
 
 function navHandler(){
-    if (showMenu) {
+    if(showMenu){
         nav.style.left = "0"
         showMenu = false
-    } else {
+    }else{
         nav.style.left = "-200%"
         showMenu = true
     }
-}
+};
 
-let novelsNavbar = document.getElementById('novelasUl')
-let noFictionNavbar = document.getElementById('noFictionUl')
+let novelsNavbar = document.getElementById('novelasUl');
+let noFictionNavbar = document.getElementById('noFictionUl');
 
 function menuNavbar(){
     let novels = products.filter((el)=> el.category.toLowerCase() === 'novela')
-
     let gendersNovels = novels.map((el)=>{return el.gender})
     let genderN = new Set(gendersNovels)
     genderN.forEach((el)=>{
-        novelsNavbar.innerHTML += `<li><a class="item" href="#" onclick= "genderSelector('${el}')">${el}</a></li>`})
+        novelsNavbar.innerHTML += `<li><a class="item" href="#" onclick= "genderSelector('${el}')">${el}</a></li>`
+    });
 
     let noFiction = products.filter((el)=> el.category.toLowerCase() === 'no ficcion')
     let gendersNoFiction = noFiction.map((el)=>{return el.gender})
     let genderNF = new Set(gendersNoFiction)
     genderNF.forEach((el)=>{
-        noFictionNavbar.innerHTML += `<li><a class="item" href="#" onclick= "genderSelector('${el}')">${el}</a></li>`})
+        noFictionNavbar.innerHTML += `<li><a class="item" href="#" onclick= "genderSelector('${el}')">${el}</a></li>`
+    });
 }
 
-menuNavbar()
+menuNavbar();
+
+const title = document.querySelector(".title");
+const productList  = document.querySelector(".books");
+const search = document.getElementById('search');
+
+function searchForBooks(){
+    productList.innerHTML = "";
+    let searchResult = [];
+    let searchedValue = search.value.toLowerCase();
+    let titleResult = products.filter(obj => obj.title.toLocaleLowerCase().includes(searchedValue));
+    let authorResult = products.filter(obj => obj.author.toLocaleLowerCase().includes(searchedValue));
+    searchResult = new Set([...[...titleResult.concat([...authorResult])]]);
+    title.innerHTML = `<p class="page-title">${searchResult.size === 1 || searchedValue === "" ? 'Resultado' : 'Resultados'} de su búsqueda</p>`
+    if(searchResult.size === 0 || searchedValue === "" ){
+        productList.innerHTML = `<p class="page-title">Ningún producto encontrado...</p>`
+    }else{
+        searchResult.forEach((product)=>{ 
+            productList.innerHTML += `
+                <div class="card" data-target="modal${product.id}" onclick="openModal(${product.id})">
+                    <img src="${product.img}" alt="Libro ${product.title}">
+                    <div class="card-div">
+                        <p class="card-title">${product.title}</p>
+                        <p>Autor: ${product.author}</p>
+                        <p>Ar$ ${product.price}</p>
+                    </div>
+                </div>
+            `
+        })
+    }
+    search.value = ""
+}
 
 const info =  document.getElementById('info')
+
 function getExchange(exchange){
     let date = exchange[0].date;
     let newDate =date.slice(0, -22);
@@ -61,9 +94,6 @@ function getExchange(exchange){
 
 //////////////////////////-----------MAIN-----------/////////////////////////////////////////////////////////////////////////////
 
-const title = document.querySelector(".title")
-const productList  = document.querySelector(".books");
-
 function renderHome(){
     title.innerHTML = `<p class="page-title">Novedades</p>`;
     let productsHome = products.filter((prod)=>prod.isNovelty)
@@ -84,24 +114,22 @@ function renderHome(){
 renderHome();
 
 function categorySelector(category){
-    console.log("categorySelector -> category:", category)
     slider.innerHTML = "";
     productList.innerHTML = "";
     title.innerHTML = `<p class="page-title">${category}</p>`;
-
     if(category === 'infantiles y juveniles'){
         let filteredProducts = products.filter(el=>el.category.toLowerCase() === category.toLowerCase())
         filteredProducts.forEach((product)=>{
             productList.innerHTML += `
-                    <div class="card" data-target="modal${product.id}" onclick="openModal(${product.id})">
-                    <img src="${product.img}" alt="Libro ${product.title}">
-                        <div class="card-div">
-                            <p class="card-title">${product.title}</p>
-                            <p>Autor: ${product.author}</p>
-                            <p>Ar$ ${product.price}</p>
-                        </div>
+                <div class="card" data-target="modal${product.id}" onclick="openModal(${product.id})">
+                <img src="${product.img}" alt="Libro ${product.title}">
+                    <div class="card-div">
+                        <p class="card-title">${product.title}</p>
+                        <p>Autor: ${product.author}</p>
+                        <p>Ar$ ${product.price}</p>
                     </div>
-                `
+                </div>
+            `
         });
     }
 
@@ -147,15 +175,15 @@ function genderSelector(gender){
     let filteredProducts = products.filter(el=>el.gender.toLowerCase() === gender.toLowerCase())
     filteredProducts.forEach((product)=>{
         productList.innerHTML += `
-                <div class="card" data-target="modal${product.id}" onclick="openModal(${product.id})">
-                    <img src="${product.img}" alt="Libro ${product.title}">
-                    <div class="card-div">
-                        <p class="card-title">${product.title}</p>
-                        <p>Autor: ${product.author}</p>
-                        <p>Ar$ ${product.price}</p>
-                    </div>
+            <div class="card" data-target="modal${product.id}" onclick="openModal(${product.id})">
+                <img src="${product.img}" alt="Libro ${product.title}">
+                <div class="card-div">
+                    <p class="card-title">${product.title}</p>
+                    <p>Autor: ${product.author}</p>
+                    <p>Ar$ ${product.price}</p>
                 </div>
-            `
+            </div>
+        `
     });
     navHandler();
 };
@@ -292,22 +320,16 @@ function createTotal(){
         totalRow.innerHTML = ""
     }else{
         totalRow.innerHTML = `
-
-        <div class="title-cart-container total-container">
-            <div class="title-product">Total</div>
-            <div class="div-title-cart">
-                <div></div>
-                <div class="title-price"></div>
-                <div> 
-                    <p class="title-quantity"></p>
-                </div>
-                <div class="title-subTotal total">Ar$ ${total}</div>
-                <div>
+            <div class="title-cart-container total-container">
+                <div class="title-product">Total</div>
+                <div class="div-title-cart">
                     <div></div>
-                </div> 
-            </div>    
-        </div>
-            
+                    <div class="title-price"></div>
+                    <div><p class="title-quantity"></p></div>
+                    <div class="title-subTotal total">Ar$ ${total}</div>
+                    <div><div></div></div> 
+                </div>    
+            </div>
         `
     }
 }
@@ -322,20 +344,20 @@ function createFirstRowTitles(){
         titleRow.setAttribute("class", "empty-cart")
     }else{
         titleRow.innerHTML = `
-        <div class="title-cart-container">
-            <div class="title-product">Producto</div>
-            <div class="div-title-cart">
-                <div></div>
-                <div class="title-price">Precio</div>
-                <div> 
-                    <p class="title-quantity">Cantidad</p>
-                </div>
-                <div class="title-subTotal">Subtotal</div>
-                <div>
+            <div class="title-cart-container">
+                <div class="title-product">Producto</div>
+                <div class="div-title-cart">
                     <div></div>
-                </div> 
-            </div>    
-        </div>
+                    <div class="title-price">Precio</div>
+                    <div> 
+                        <p class="title-quantity">Cantidad</p>
+                    </div>
+                    <div class="title-subTotal">Subtotal</div>
+                    <div>
+                        <div></div>
+                    </div> 
+                </div>    
+            </div>
         `
     }
 }
@@ -367,11 +389,6 @@ function emptyCart(){
     productCounter();
 }
 
-
-
-
-
-
 const popUpMessage = document.querySelector('.popUpMessage');
 
 function popUp(message){
@@ -399,11 +416,6 @@ function closePopUp(){
     modal.style.display = 'none';
 };
 
-
-
-
-
-
 ////////////////////-------------FORMULARIO CHECKOUT--------------////////////////////////////////////////////////////////////////////////
 
 const form = document.createElement("form")
@@ -413,8 +425,6 @@ function createForm(){
     productList.appendChild(form)
 }
 
-// `<option value="">"${el.nameCard}"</option>` 
-
 function finishBuying(){
     if(cartList.length !== 0){
     form.innerHTML = ""    
@@ -422,35 +432,33 @@ function finishBuying(){
     productList.innerHTML = ""
     createForm();
     fields.forEach((field, index)=> {
-        
-    form.innerHTML += 
-    `
-        <div class='input-container' >
-            ${
-                field.option.length > 0 ? 
-                ` 
-                    <label class='input-label' for="${field.idField}">${field.label}</label>
-                    <select  class='input-field' name="nombre-tarjeta" id="${field.idField}">
-                        <option class="option-select" value="">Seleccionar opción</option>
-                        ${field.option.map((el)=>{ 
-                            return `<option value="${el.nameOption}">${el.nameOption}</option>`
-                        })}
-                    </select>
-                `
-            : 
-                `
-                    <label class='input-label' for="${field.idField}">${field.label}</label>
-                    <input class='input-field' type="${field.type}" name="${field.name}" id="${field.idField}"/>
-                `
-            }
-                
-            <p class="errorMessage" id="error-${field.idField}"></p>
-        </div>    
-    `
+        form.innerHTML += `
+            <div class='input-container' >
+                ${
+                    field.option.length > 0 ? 
+                    ` 
+                        <label class='input-label' for="${field.idField}">${field.label}</label>
+                        <select  class='input-field' name="nombre-tarjeta" id="${field.idField}">
+                            <option class="option-select" value="">Seleccionar opción</option>
+                            ${field.option.map((el)=>{ 
+                                return `<option value="${el.nameOption}">${el.nameOption}</option>`
+                            })}
+                        </select>
+                    `
+                : 
+                    `
+                        <label class='input-label' for="${field.idField}">${field.label}</label>
+                        <input class='input-field' type="${field.type}" name="${field.name}" id="${field.idField}"/>
+                    `
+                }
+                    
+                <p class="errorMessage" id="error-${field.idField}"></p>
+            </div>    
+        `
     })
     const formButton = document.createElement("button") 
     formButton.innerHTML = "Enviar"
-    formButton.setAttribute("class" , "btn-modal-cart")
+    formButton.setAttribute("class" , "send-checkout-button")
     formButton.addEventListener("click" , submit)
     productList.appendChild(formButton)
     }else{
@@ -463,7 +471,6 @@ function submit(e){
     e.preventDefault();
     fields.forEach((el, index) => {
         const enteredValue = document.getElementById(el.idField).value
-            console.log("fields.forEach -> enteredValue:", enteredValue)
             el.value = enteredValue
         if(el.value.match(el.regex)){
             el.errorMessage = ""
@@ -489,17 +496,17 @@ function validation(){
     fields[6].errorMessage === "" && fields[7].errorMessage === "" &&
     fields[8].errorMessage === "" && fields[9].errorMessage === "" 
     ){
-        title.innerHTML = `<p class="page-title confirmation-sending-form">
-                                <i class="fa-solid fa-circle-check"></i></i>Formulario enviado con éxito
-                            </p>
-        `;
+        title.innerHTML = `
+            <p class="page-title confirmation-sending-form">
+                <i class="fa-solid fa-circle-check"></i></i>Formulario enviado con éxito
+            </p>
+        `
         productList.innerHTML = "" ;
         cartList = [];
         productCounter();
         window.scrollTo(0, 0)
     }
 }
-
 
 //////////////////////////////-------FORMULARIO CONTACTO-------////////////////////////////////////////////////////////////
 

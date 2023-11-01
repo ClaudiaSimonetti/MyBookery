@@ -213,3 +213,7 @@ nav ul li a {
         height: auto;
     }
 }
+
+#search {
+    padding-left: 5px;
+}
