@@ -92,6 +92,7 @@ nav ul li a {
 
 .input-search {
     border-radius: 5px;
+    width: 200px;
     height: 30px;
     border: 2px solid var(--orange);
 }
@@ -204,6 +205,10 @@ nav ul li a {
 
     .slide li a:hover {
         width: 90%;
+    }
+
+    .input-search{
+        margin-left: -15px;
     }
 }
 

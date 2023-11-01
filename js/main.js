@@ -60,7 +60,8 @@ function searchForBooks(){
             `
         })
     }
-    search.value = ""
+    search.value = "";
+    navHandler();
 }
 
 const info =  document.getElementById('info')
