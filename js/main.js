@@ -243,7 +243,7 @@ function addToCart(bookId){
         addProduct.subTotal = addProduct.price * addProduct.quantity       
     } else{
         const nuevoProducto = {...products[bookId-1]}
-        cartList.push({...nuevoProducto, subTotal:nuevoProducto.price})
+        cartList.push({...nuevoProducto, quantity: 1, subTotal:nuevoProducto.price})
     }
     productCounter();
     closeModal(bookId);
