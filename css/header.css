@@ -12,7 +12,7 @@ header {
 }
 
 .unit-counter-container {
-    width: 50px;
+    width: 70px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -22,10 +22,11 @@ header {
 .fa-cart-shopping {
     color: var(--orange);
     font-size: 20px;
+    padding: 0px 5px 0px 5px;
 }
 
 .unit-counter {
     color: var(--orange);
     font-size: 20px;
-    margin-top: 20px;
+    font-family: var(--primaryFont);
 }
