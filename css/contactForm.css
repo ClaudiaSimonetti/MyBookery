@@ -1,0 +1,27 @@
+/* FORMULARIO DE CONTACTO */
+
+.contact-form-container{
+    width: 90vw;
+}
+
+#idContactForm4{
+    min-height: 100px;
+    padding: 10px 10px 10px 10px;
+}
+
+.error-form-contact{
+    height: 20px;
+}
+
+.btn-contact-container{
+    display: flex;
+    justify-content: end;
+}
+
+.btn-contact-form-cleaner{
+    margin-right: 5px;
+}
+
+.btn-contact-form-validation{
+    margin-left: 5px;
+}
