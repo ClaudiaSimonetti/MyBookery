@@ -24,38 +24,3 @@
     font-family: var(--primaryFont)
 }
 
-
-.fa-circle-check{
-    background-color: var(--white);
-    color: var(--orange);
-    margin-right: 8px;
-
-}
-
-.confirmation-sending-form{
-    height: 245px;
-    width: auto;
-}
-
-.error-form-contact{
-    height: 20px;
-}
-
-.btn-contact-container{
-    display: flex;
-    justify-content: end;
-}
-
-.btn-contact-form-cleaner{
-    margin-right: 5px;
-}
-
-.btn-contact-form-validation{
-    margin-left: 5px;
-}
-.centered {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
