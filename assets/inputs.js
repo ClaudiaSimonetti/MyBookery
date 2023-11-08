@@ -77,7 +77,7 @@ const fields = [
         value: '',
         message: 'Por favor verifique los datos ingresados. El campo solo admite números.',
         errorMessage:'',
-        regex:  /^\d{1,5}$/,
+        regex:  /^\d{1,20}$/,
     },
     {
         idField: 8,

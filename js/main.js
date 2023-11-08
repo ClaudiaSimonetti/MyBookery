@@ -498,13 +498,11 @@ function createErrorMessage(errorMessage, id){
 }
 
 function validation(){
-    if(fields[0].errorMessage === "" 
-    && fields[1].errorMessage === "" &&
-    fields[2].errorMessage === "" && fields[3].errorMessage === "" &&
-    fields[4].errorMessage === "" && fields[5].errorMessage === "" &&
-    fields[6].errorMessage === "" && fields[7].errorMessage === "" &&
-    fields[8].errorMessage === "" && fields[9].errorMessage === "" 
-    ){
+    let trueCounter = []
+    fields.map((el)=> {if(el.errorMessage === ""){
+        trueCounter.push(true)
+    }})
+    if(trueCounter.length === fields.length){
         title.innerHTML = `
             <p class="page-title confirmation-sending-form">
                 <i class="fa-solid fa-circle-check"></i></i>Formulario enviado con éxito
@@ -515,6 +513,7 @@ function validation(){
         productCounter();
         window.scrollTo(0, 0)
     }
+   
 }
 
 //////////////////////////////-------FORMULARIO CONTACTO-------////////////////////////////////////////////////////////////
