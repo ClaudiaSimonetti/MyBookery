@@ -36,6 +36,14 @@ const title = document.querySelector(".title");
 const productList  = document.querySelector(".books");
 const search = document.getElementById('search');
 
+search.addEventListener("keypress", searchForBooksPressingEnter)
+
+function searchForBooksPressingEnter(e){
+    if(e.key === "Enter"){
+        searchForBooks()
+    }
+}
+
 function searchForBooks(){
     productList.innerHTML = "";
     let searchResult = [];

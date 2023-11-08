@@ -16,7 +16,6 @@
 
 #info p{
     font-size: 12px;
-    margin-top: 15px;
     margin-right: 10px;
     font-family: var(--primaryFont);
     color: var(--orange);
@@ -78,14 +77,13 @@
 .page-title {
     font-size: 20px;
     font-weight: bold;
-    margin-left: 20px;
-    margin-top: 30px;
+    padding: 20px 0 10px 0;
     text-transform: capitalize;
     text-align: center;
 }
 
 .books {
-    margin-bottom: 100px;
+    padding: 10px 0 20px 0;
     font-family: var(--primaryFont);
     display: flex;
     flex-wrap: wrap;

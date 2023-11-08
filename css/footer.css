@@ -5,6 +5,8 @@ footer {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    /* border: 6px solid var(--blue); */
+
 }
 
 .footer-logo {

@@ -39,6 +39,7 @@ nav ul li a {
 
 .slide a {
     text-decoration: none;
+    margin-left: 20px;
 }
 
 .list-item {
@@ -185,7 +186,7 @@ nav ul li a {
     }
 
     .list-item>.slide li a {
-        margin-left: 20px;
+        margin-left: 40px;
     }
 }
 

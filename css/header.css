@@ -4,6 +4,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     background-color: var(--blue);
+    border-bottom: 1px solid var(--white);
 }
 
 .logo {
