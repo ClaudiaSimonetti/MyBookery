@@ -1,4 +1,30 @@
-let nav = document.getElementById("menu");
+const nav = document.getElementById("menu");
+
+function navbar() {
+    nav.innerHTML = `
+        <ul class="list">
+            <li class="list-item"><li class="list-item"><a class="item" href="javascript:categorySelector('novedades')" onclick="('novedades')">Novedades</a></li>
+            <li class="list-item"><a class="item" href="#">Novelas<i class="fa-solid fa-caret-down"></i></a>
+                <ul class="slide" style="z-index: 3" id="novelasUl"></ul>
+            </li>
+            <li class="list-item"><a class="item" href="#">No Ficción<i class="fa-solid fa-caret-down"></i></a>
+                <ul class="slide" style="z-index: 3" id="noFictionUl"></ul>
+            </li>
+            <li class="list-item"><a class="item" href="javascript:categorySelector('infantiles y juveniles')" target="_self">Infantiles y Juveniles</a></li>
+            <li class="list-item"><a class="item" href="javascript:categorySelector('lo mas vendido')" target="_self">Lo más vendido</a></li>
+            <li class="list-item"><a class="item" id="contacto" href="javascript:contactForm()" target="_self">Contacto</a></li>
+            <div>
+                <input class='input-search' placeholder=" Buscar título o autor..." type="text" id="search"><i class="fa-solid fa-magnifying-glass" onclick="searchForBooks()"></i>
+            </div>
+            <div class="user-container" onclick="signIn()">
+                <p class="user-name">Iniciar Sesión</p>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </ul>
+    `
+};
+navbar();
+
 let showMenu = true;
 
 function navHandler(){
@@ -70,6 +96,127 @@ function searchForBooks(){
     }
     search.value = "";
     navHandler();
+}
+
+function signIn(){
+    loginPopUp()
+    openLoginPopUp()
+}
+
+const userMessage = document.querySelector('.popUpUser');
+
+function loginPopUp(){
+    userMessage.innerHTML = `
+        <div id="modalLogin" class="modal">
+            <div class="popUp-content">
+                <div class="modal-flex-container ">
+                    <div class="modal-info">
+                        <label class='input-label' for="user">Usuario</label>
+                        <input class='input-field' type="text" name="user" id="user"/>
+                        <br/><br/>
+                        <label class='input-label' for="pass">Contraseña</label>
+                        <input class='input-field' type="text" name="pass" id="pass"/>
+                        <p id="messageLogin" style="padding-top:10px; font-size: 12.5px"></p>
+                        <button class="btn-modal-cart" onclick="login()">Ingresar</button>
+                    </div>   
+                </div> 
+            </div>
+        </div>                  
+    `
+}
+
+function openLoginPopUp(){
+const modal = document.getElementById("modalLogin");
+    modal.style.display = 'block';
+    
+};
+
+function closeLoginPopUp(){
+    const modal = document.getElementById("modalLogin");
+    modal.style.display = 'none';
+};
+
+function login(){
+    const userLogin = document.getElementById('user').value.toLocaleLowerCase()
+    const passLogin = document.getElementById('pass').value.toLocaleLowerCase()
+
+    users.forEach(user => {
+        if(user.nameUser.toLocaleLowerCase() === userLogin && user.password.toLocaleLowerCase() === passLogin){
+            if(user.credencial === 'usuario'){
+                closeLoginPopUp()
+            }else{
+                const menuNavbar = document.getElementById('menu')
+                menuNavbar.innerHTML = ""
+                menuNavbar.innerHTML = `
+                    <ul class="list">
+                        <li class="list-item"><li class="list-item"><a class="item" href="" onclick="listOfProducts()">Productos</a></li>
+                        <li class="list-item"><a class="item" href="" target="_self" onclick="registerProduct()">Alta Productos</a></li>
+                        <div>
+                            <input class='input-search' placeholder=" Buscar título o autor..." type="text" id="search"><i class="fa-solid fa-magnifying-glass" onclick="searchForBooks()"></i>
+                        </div>
+                        <div class="user-container" onclick="signOut()">
+                            <p class="user-name">Hola ${user.nameUser} </p>
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                    </ul>
+                `
+                title.innerHTML = `<p class="page-title">Listado de Productos</p>`;
+                productList.innerHTML = ''
+                listOfProducts()
+                closeLoginPopUp()
+            }
+        }else{
+            const messageLogin = document.getElementById("messageLogin")
+            messageLogin.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Contraseña o nombre de usuario incorrecto`
+        }
+    })
+}
+
+function listOfProducts(){
+    productList.innerHTML = `<button class='product-registration-btn' onclick="registerProduct()">Alta Producto</button>`
+    products.forEach((product)=>{
+        productList.innerHTML += `
+        <div class="card-list-of-products" >
+            <img src="${product.img}" alt="Libro ${product.title}">
+            <div class="card-div-list-of-products">
+                <p class="card-title">${product.title}</p>
+                <p>Autor: ${product.author}</p>
+                <p>Ar$ ${product.price}</p>
+                <div class="btn-div-list-of-products">
+                <button class='edit-btn-list-of-products' data-target="modal${product.id}" onclick="openModalEdit(${product.id})">Editar</button>
+                <button class='delete-btn-list-of-products'>Eliminar</button>
+                </div>
+            </div>
+        </div>
+    `
+    })
+};
+
+function openModalEdit(modalId){
+    const modal = document.getElementById(`modalEdit${modalId}`);
+    modal.style.display = 'block';
+};
+
+function closeModalEdit(modalId){
+    const modal = document.getElementById(`modalEdit${modalId}`);
+    modal.style.display = 'none';
+};
+
+function signOut(){
+    // 
+    // userMessage.innerHTML = `
+    // <div id="modal" class="modal">
+    //         <div class="popUp-content">
+    //             <div class="modal-flex-container ">
+    //                 <div class="modal-info">
+    //                     <p class="message-modal">Desea cerrar sesión?</p>
+    //                     <button class="btn-modal-cart" onclick="closePopUp()">Aceptar</button>
+    //                 </div>   
+    //             </div> 
+    //         </div>
+    //     </div>
+
+    // `
 }
 
 const info =  document.getElementById('info')
@@ -175,7 +322,7 @@ function categorySelector(category){
         });
     }
     navHandler();
-}
+};
 
 function genderSelector(gender){
     slider.innerHTML = ""
@@ -238,6 +385,178 @@ function showModals(){
 };
 
 showModals();
+
+const form = document.createElement("form")
+
+function createForm(){
+    form.setAttribute("id" , "form")
+    productList.appendChild(form)
+} 
+
+function registerProduct(){
+    // productList.innerHTML = "";
+    createForm();
+    form.innerHTML += `
+    <div class="modal-info">
+                            <div class="div-img-and-title">
+                                <div class="div-img">
+                                    <label class='' for="imgBook-${product.id}">Imagen</label>
+                                    <img class='img-modal-edit'  id="imgBook-${product.id}" src="${product.img}"/>
+                                    <input class='' type="file" style="color: transparent" accept="image/*" onchange="fileUpload(${product.id})" name="fileBook-${product.id}" id="fileBook-${product.id}" src="${product.img}"/>
+                                </div>
+
+                                <div class="div-title">
+                                    <label class='input-label' for="idBook-${product.id}">ID</label>
+                                    <input class='input-form-edit' disabled type="text" name="idBook-${product.id}" id="idBook-${product.id}" value="${product.id}"/>
+                                    
+                                    <label class='input-label' for="titleBook-${product.id}">Título</label>
+                                    <input class='input-form-edit' type="text" name="titleBook-${product.id}" id="titleBook-${product.id}" value="${product.title}"/>
+                                    
+                                    <label class='input-label' for="authorBook-${product.id}">Autor</label>
+                                    <input class='input-form-edit' type="text" name="authorBook-${product.id}" id="authorBook-${product.id}" value="${product.author}"/>
+                                    
+                                    <label class='input-label' for="categoryBook-${product.id}">Categoria</label>
+                                    <input class='input-form-edit' type="text" name="categoryBook-${product.id}" id="categoryBook-${product.id}" value="${product.category}"/>
+                                    
+                                    <label class='input-label' for="genderBook-${product.id}">Genero</label>
+                                    <input class='input-form-edit' type="text" name="genderBook-${product.id}" id="genderBook-${product.id}" value="${product.gender}"/>
+                                    
+                                    <div class="div-price">
+                                    <div style="margin-bottom: 15px">
+                                        <label class='input-label' for="priceBook-${product.id}">Precio</label>
+                                        <input class='input-form-edit' type="text" name="priceBook-${product.id}" id="priceBook-${product.id}" value="${product.price}"/>
+                                    </div>
+
+                                    <div> 
+                                        <label class='input-label' for="checkboxNovelty-${product.id}">Es novedad</label>
+                                        <input class='checkbox-form-edit' type="checkbox" name="checkboxNovelty-${product.id}" id="checkboxNovelty-${product.id}" value="${product.isNovelty}"/>
+                                    </div>
+                                    
+                                    <div> 
+                                        <label class='input-label' for="checkboxTop10-${product.id}">Es top 10</label>
+                                        <input class='checkbox-form-edit' type="checkbox" name="checkboxTop10-${product.id}" id="checkboxTop10-${product.id}" value="${product.isTop10}"/>    
+                                    </div>  
+                                    
+                                        </div>
+                                </div>
+
+                            </div>
+
+                            <div class="div-text-area">
+                            <label class='input-label' for="descriptionBook-${product.id}">Sinopsis</label>
+                            <textarea class='text-area-from-edit' type="text" name="descriptionBook-${product.id}" id="descriptionBook-${product.id}" value="${product.description}">${product.description}</textarea>
+</div>
+                        </div>   
+    
+    
+    
+    `
+
+}
+
+function modalToEdit(){
+    products.forEach((product)=>{
+        modalBooks.innerHTML += `
+            <div id="modalEdit${product.id}" class="modal" style="overflow-y: scroll;">
+                <div class="modal-content">
+                    <span class="cerrar-modal" data-target="modal${product.id}" onclick="closeModalEdit(${product.id})">&times;</span>
+                    <div class="modal-flex-container ">
+                        <div class="modal-info">
+                            <div class="div-img-and-title">
+                                <div class="div-img">
+                                    <label class='' for="imgBook-${product.id}">Imagen</label>
+                                    <img class='img-modal-edit'  id="imgBook-${product.id}" src="${product.img}"/>
+                                    <input class='' type="file" style="color: transparent" accept="image/*" onchange="fileUpload(${product.id})" name="fileBook-${product.id}" id="fileBook-${product.id}" src="${product.img}"/>
+                                </div>
+
+                                <div class="div-title">
+                                    <label class='input-label' for="idBook-${product.id}">ID</label>
+                                    <input class='input-form-edit' disabled type="text" name="idBook-${product.id}" id="idBook-${product.id}" value="${product.id}"/>
+                                    
+                                    <label class='input-label' for="titleBook-${product.id}">Título</label>
+                                    <input class='input-form-edit' type="text" name="titleBook-${product.id}" id="titleBook-${product.id}" value="${product.title}"/>
+                                    
+                                    <label class='input-label' for="authorBook-${product.id}">Autor</label>
+                                    <input class='input-form-edit' type="text" name="authorBook-${product.id}" id="authorBook-${product.id}" value="${product.author}"/>
+                                    
+                                    <label class='input-label' for="categoryBook-${product.id}">Categoria</label>
+                                    <input class='input-form-edit' type="text" name="categoryBook-${product.id}" id="categoryBook-${product.id}" value="${product.category}"/>
+                                    
+                                    <label class='input-label' for="genderBook-${product.id}">Genero</label>
+                                    <input class='input-form-edit' type="text" name="genderBook-${product.id}" id="genderBook-${product.id}" value="${product.gender}"/>
+                                    
+                                    <div class="div-price">
+                                    <div style="margin-bottom: 15px">
+                                        <label class='input-label' for="priceBook-${product.id}">Precio</label>
+                                        <input class='input-form-edit' type="text" name="priceBook-${product.id}" id="priceBook-${product.id}" value="${product.price}"/>
+                                    </div>
+
+                                    <div> 
+                                        <label class='input-label' for="checkboxNovelty-${product.id}">Es novedad</label>
+                                        <input class='checkbox-form-edit' type="checkbox" name="checkboxNovelty-${product.id}" id="checkboxNovelty-${product.id}" value="${product.isNovelty}"/>
+                                    </div>
+                                    
+                                    <div> 
+                                        <label class='input-label' for="checkboxTop10-${product.id}">Es top 10</label>
+                                        <input class='checkbox-form-edit' type="checkbox" name="checkboxTop10-${product.id}" id="checkboxTop10-${product.id}" value="${product.isTop10}"/>    
+                                    </div>  
+                                    
+                                        </div>
+                                </div>
+
+                            </div>
+
+                            <div class="div-text-area">
+                            <label class='input-label' for="descriptionBook-${product.id}">Sinopsis</label>
+                            <textarea class='text-area-from-edit' type="text" name="descriptionBook-${product.id}" id="descriptionBook-${product.id}" value="${product.description}">${product.description}</textarea>
+</div>
+                        </div>   
+                    </div> 
+                    <button class="btn-modal btn-add-cart" id="editProduct${product.id}" onclick="editProduct(${product.id})">Editar</button>
+                </div>
+            </div>
+        `
+    });
+};
+
+modalToEdit()
+
+function fileUpload(idBook){
+    let dataFile = document.getElementById(`fileBook-${idBook}`).files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(dataFile);
+    reader.onloadend = function () {
+        document.getElementById(`imgBook-${idBook}`).src = reader.result;
+    }
+}
+
+function editProduct(idBook){
+    let imgBook = document.getElementById(`imgBook-${idBook}`).src
+    let titleBook = document.getElementById(`titleBook-${idBook}`).value
+    let authorBook = document.getElementById(`authorBook-${idBook}`).value
+    let categoryBook = document.getElementById(`categoryBook-${idBook}`).value
+    let genderBook =  document.getElementById(`genderBook-${idBook}`).value
+    let priceBook = document.getElementById(`priceBook-${idBook}`).value
+    let noveltyBook = document.getElementById(`checkboxNovelty-${idBook}`).checked
+    let top10Book = document.getElementById(`checkboxTop10-${idBook}`).checked
+    let descriptionBook = document.getElementById(`descriptionBook-${idBook}`).value
+
+    let productFound = products.find((prod)=>{return prod.id === idBook})
+    console.log("editProduct -> productFound:", productFound)
+
+    productFound.img = imgBook
+    productFound.title = titleBook
+    productFound.author = authorBook
+    productFound.category = categoryBook
+    productFound.gender = genderBook
+    productFound.price = priceBook
+    productFound.isNovelty = noveltyBook
+    productFound.isTop10 = top10Book
+    productFound.description = descriptionBook
+
+    listOfProducts()
+    closeModalEdit(idBook)
+}
 
 /////////////////////////////////////------------CARRITO-------------////////////////////////////////////////////////////////////////////
 
@@ -427,12 +746,12 @@ function closePopUp(){
 
 ////////////////////-------------FORMULARIO CHECKOUT--------------////////////////////////////////////////////////////////////////////////
 
-const form = document.createElement("form")
+// const form = document.createElement("form")
 
-function createForm(){
-    form.setAttribute("id" , "form")
-    productList.appendChild(form)
-}
+// function createForm(){
+//     form.setAttribute("id" , "form")
+//     productList.appendChild(form)
+// }
 
 function finishBuying(){
     if(cartList.length !== 0){
@@ -503,17 +822,26 @@ function validation(){
         trueCounter.push(true)
     }})
     if(trueCounter.length === fields.length){
+        let order = [...cartList]
+        console.log("validation -> order:", order)
         title.innerHTML = `
             <p class="page-title confirmation-sending-form">
-                <i class="fa-solid fa-circle-check"></i></i>Formulario enviado con éxito
+                <i class="fa-solid fa-circle-check"></i></i>Pedido confirmado. Detalle de su pedido
             </p>
         `
-        productList.innerHTML = "" ;
+        productList.innerHTML = ""
+        order.forEach((el)=>{
+            productList.innerHTML += `<p>${el.author}</p>
+            
+            
+            `;
+
+        })
+        
         cartList = [];
         productCounter();
         window.scrollTo(0, 0)
     }
-   
 }
 
 //////////////////////////////-------FORMULARIO CONTACTO-------////////////////////////////////////////////////////////////
@@ -587,4 +915,21 @@ function contactFormValidation(e){
             createErrorMessage(el.errorMessage, el.idField) 
         }
     })
+
+    let trueCounter = []
+    contactFormFields.map((el)=> {if(el.errorMessage === ""){
+        trueCounter.push(true)
+    }})
+    if(trueCounter.length === contactFormFields.length){
+        title.innerHTML = `
+            <p class="page-title confirmation-sending-form">
+                <i class="fa-solid fa-circle-check"></i></i>Formulario enviado con éxito
+            </p>
+        `
+        productList.innerHTML = "" ;
+        cartList = [];
+        productCounter();
+        window.scrollTo(0, 0)
+    }
+
 }

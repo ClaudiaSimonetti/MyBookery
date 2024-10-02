@@ -16,6 +16,7 @@ nav ul li a {
 
 .list {
     display: flex;
+    align-items: center;
     justify-content: space-around;
     text-align: left;
     padding: 10px 10px 9px 10px;
@@ -87,10 +88,6 @@ nav ul li a {
     transition: all 0.5s;
 }
 
-.input-search-container {
-    padding-left: 34px;
-}
-
 .input-search {
     border-radius: 5px;
     width: 200px;
@@ -108,11 +105,27 @@ nav ul li a {
     padding: 6px 6px 4px 6px;
     font-size: 15px;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .fa-magnifying-glass:hover {
     background-color: var(--blue);
     color: var(--orange);
+}
+
+.user-container{
+    color: var(--blue);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: var(--primaryFont);
+}
+
+.user-name{
+    margin-right: 5px;
 }
 
 #responsive-menu-btn {
@@ -140,7 +153,7 @@ nav ul li a {
     margin-left: 5px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1038px) {
     #responsive-menu-btn {
         display: block;
     }
@@ -187,6 +200,10 @@ nav ul li a {
 
     .list-item>.slide li a {
         margin-left: 40px;
+    }
+
+    .user-container{
+        margin-top: 20px;
     }
 }
 

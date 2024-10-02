@@ -129,6 +129,86 @@
 }
 
 .confirmation-sending-form{
-    height: 245px;
     width: auto;
 }
+
+/* CARDS LISTADO DE PRODUCTOS */
+
+.product-registration-btn {
+    border: 1px solid var(--blue);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #888;
+    text-align: center;
+    background-color: var(--grey);
+    color: var(--blue);
+    width: 30%;
+    height: 40px;
+    font-family: var(--primaryFont);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.product-registration-btn:hover{
+    background-color: var(--blue);
+    color: var(--orange);
+    cursor: pointer;
+}
+
+.card-list-of-products {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--blue);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #888;
+    /* padding-top: 20px; */
+    margin: 4px;
+    text-align: center;
+    background-color: var(--white);
+    width: 90%;
+    height: auto;
+}
+
+.card-list-of-products img {
+    height: 100%;
+    width: 100px;
+    border-radius: 1%;
+    object-fit: contain;
+}
+
+.card-div-list-of-products{
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 0.1px solid transparent;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.card-title{
+    font-weight: bold;
+}
+
+.btn-div-list-of-products{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.edit-btn-list-of-products{
+    background-color: var(--green);
+    border: 1px solid var(--green);
+    border-radius: 5px;
+    color: var(--white);
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.delete-btn-list-of-products{
+    background-color: var(--red);
+    border: 1px solid var(--red);
+    border-radius: 5px;
+    color: var(--white);
+    width: 100%;
+    margin-top: 5px;
+}
+

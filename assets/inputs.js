@@ -22,7 +22,7 @@ const fields = [
         value: '',
         message: 'Los datos ingresados no deben contener espacios ni letras.',
         errorMessage:'',
-        regex: /^\d{16,16}$/,
+        regex: /^\d{1,1}$/,
     },
     {
         idField: 3,
@@ -77,7 +77,7 @@ const fields = [
         value: '',
         message: 'Por favor verifique los datos ingresados. El campo solo admite números.',
         errorMessage:'',
-        regex:  /^\d{1,20}$/,
+        regex:  /^\d{1,1}$/,
     },
     {
         idField: 8,
@@ -124,7 +124,7 @@ const fields = [
         value: '',
         message: 'Debe colocar un teléfono correcto. Sin guiones ni espacios.',
         errorMessage:'',
-        regex:/^\d{7,14}$/,
+        regex:/^\d{1,1}$/,
     },
     {
         idField: 10,

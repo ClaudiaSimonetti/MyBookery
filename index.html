@@ -21,23 +21,7 @@
         </div>
     </header>
     <navbar>
-        <nav class="menu" id="menu" style="z-index: 3">
-            <ul class="list">
-                <li class="list-item"><li class="list-item"><a class="item" href="javascript:categorySelector('novedades')" onclick="('novedades')">Novedades</a></li>
-                <li class="list-item"><a class="item" href="#">Novelas<i class="fa-solid fa-caret-down"></i></a>
-                    <ul class="slide" style="z-index: 3" id="novelasUl"></ul>
-                </li>
-                <li class="list-item"><a class="item" href="#">No Ficción<i class="fa-solid fa-caret-down"></i></a>
-                    <ul class="slide" style="z-index: 3" id="noFictionUl"></ul>
-                </li>
-                <li class="list-item"><a class="item" href="javascript:categorySelector('infantiles y juveniles')" target="_self">Infantiles y Juveniles</a></li>
-                <li class="list-item"><a class="item" href="javascript:categorySelector('lo mas vendido')" target="_self">Lo más vendido</a></li>
-                <li class="list-item"><a class="item" id="contacto" href="javascript:contactForm()" target="_self">Contacto</a></li>
-                <div class="input-search-container">
-                    <input class='input-search' placeholder=" Buscar título o autor..." type="text" id="search"><i class="fa-solid fa-magnifying-glass" onclick="searchForBooks()"></i>
-                </div>
-            </ul>
-        </nav>
+        <nav class="menu" id="menu" style="z-index: 3"></nav>
         <div class="responsive-btn-container">
             <button id="responsive-menu-btn" onclick="navHandler()"><i class="fa-solid fa-bars"></i></button>
         </div>
@@ -49,6 +33,7 @@
         <div class="books"></div>
         <div class="modalBooks"></div>
         <div class="popUpMessage"></div>
+        <div class="popUpUser"></div>
     </main>
     <footer>
         <div>
@@ -102,6 +87,7 @@
             </div>
         </div>
     </footer>
+    <script src="assets/users.js"></script>
     <script src="assets/products.js"></script>
     <script src="assets/contactFormFields.js"></script>
     <script src="assets/inputs.js"></script>
